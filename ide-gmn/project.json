@@ -1,0 +1,8 @@
+{
+    "guid": "ide-gmn",
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/StanZGenchev/ide-gmn.git"
+    }
+}

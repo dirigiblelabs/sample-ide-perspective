@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--
+  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ All rights reserved. This program and the accompanying materials
+  ~ are made available under the terms of the Eclipse Public License v2.0
+  ~ which accompanies this distribution, and is available at
+  ~ http://www.eclipse.org/legal/epl-v20.html
+  ~ Contributors:
+  ~ SAP - initial API and implementation
+  -->
+<html lang="en" ng-app="gmn" ng-controller="GmnViewController" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title brandtitle perspective-name="Guess my number!">Guess my number!</title>
+
+	<link brandicon />
+
+	<link href="../../../../services/v4/web/resources/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"
+		rel="stylesheet">
+
+	<!-- AngularJS -->
+	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular.min.js"></script>
+	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular-resource.min.js"></script>
+
+	<!-- jQuery -->
+	<script src="../../../../services/v4/web/resources/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Twitter Bootstrap with Theme Support -->
+	<link rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/bootstrap.min.css">
+	<script src="../../../../services/v4/web/resources/bootstrap/3.3.7/bootstrap.min.js"></script>
+
+	<!-- GoldenLayout with Theme Support -->
+	<link type="text/css" rel="stylesheet"
+		href="../../../../services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
+	<link type="text/css" rel="stylesheet"
+		href="../../../../services/v4/js/theme/resources.js/goldenlayout-theme.css" />
+	<script type="text/javascript" src="../../../../services/v4/web/resources/goldenlayout/1.5.9/goldenlayout.min.js">
+	</script>
+
+	<!-- MessageHub -->
+	<script src="../../../../services/v4/web/ide-core/ui/message-hub.js"></script>
+
+	<!-- IDE Core UI -->
+	<script type="text/javascript" src="../../../../services/v4/web/ide-core/ui/ui-layout.js"></script>
+	<script type="text/javascript" src="../../../../services/v4/web/ide-core/ui/ui-core-ng-modules.js"></script>
+
+	<!-- Custom IDE Styles -->
+	<link type="text/css" rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/ide.css" />
+
+	<!-- Project-specific stuff -->
+	<script src="js/gmn.js"></script>
+	<script src="js/firstController.js"></script>
+	<script src="js/secondController.js"></script>
+	<script src="js/thirdController.js"></script>
+	<script src="js/fourthController.js"></script>
+
+</head>
+
+<body class="view gmn-body">
+
+	<!-- Top IDE panel and it's contents -->
+	<div menu menu-data-url="../../js/ide-gmn/extensions/menu/menu-gmn.js"></div>
+
+	<!-- The shell which holds the sidebar and main plane view -->
+	<div class="shell">
+		<div class="sidebar list-group" sidebar active="Guess my number"></div>
+		<div id="gmn" class="plane" views-layout views-layout-model="GmnViewController.layoutModel">
+			<div ng-include="'partials/firstController.html'"></div>
+			<div ng-include="'partials/secondController.html'"></div>
+			<div ng-include="'partials/thirdController.html'"></div>
+			<div ng-include="'partials/fourthController.html'"></div>
+		</div>
+	</div>
+
+	<!-- Bottom IDE status bar -->
+	<div class="statusbar" status-bar>{{message}}</div>
+
+</body>
+
+</html>

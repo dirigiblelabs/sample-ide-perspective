@@ -1,0 +1,5 @@
+{
+	"module": "ide/services/menu/help",
+	"extensionPoint": "ide-gmn-menu",
+	"description": "Help Menu"
+}

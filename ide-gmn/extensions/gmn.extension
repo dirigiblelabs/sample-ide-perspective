@@ -1,0 +1,5 @@
+{
+    "module": "ide-gmn/services/gmn-view.js",
+    "extensionPoint": "ide-view",
+    "description": "Guess my number view"
+}

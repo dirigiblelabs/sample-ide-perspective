@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ All rights reserved. This program and the accompanying materials
+  ~ are made available under the terms of the Eclipse Public License v2.0
+  ~ which accompanies this distribution, and is available at
+  ~ http://www.eclipse.org/legal/epl-v20.html
+  ~ Contributors:
+  ~ SAP - initial API and implementation
+  -->
+<div class="container text-center" ng-controller="firstController" ng-show="isVisible">
+	<h1>Guess my number!</h1>
+	<h3>Choose a number and select its color from the buttons below.</h3>
+	<h4>Do not click on your chosen number.</h4>
+	<br>
+	<div class="panel panel-default">
+		<table class="table table-bordered text-center">
+			<tr ng-repeat="group in numberGroups">
+				<td ng-repeat="number in group" ng-style="{ color: number[1] }">{{number[0]}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="btn-group btn-group-lg">
+		<button ng-repeat="color in colors" type="button" class="btn btn-default btn-lg" ng-style="{ color: color }"
+            ng-click="setColor(color)">{{color}}</button>
+	</div>
+</div>

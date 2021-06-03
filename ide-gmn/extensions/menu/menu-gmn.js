@@ -9,15 +9,15 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var extensions = require('core/v4/extensions');
-var response = require('http/v4/response');
+let extensions = require('core/v4/extensions');
+let response = require('http/v4/response');
 
-var mainmenu = [];
-var menuExtensions = extensions.getExtensions('ide-gmn-menu');
-for (var i = 0; i < menuExtensions.length; i++) {
-    var module = menuExtensions[i];
-    menuExtension = require(module);
-    var menu = menuExtension.getMenu();
+let mainmenu = [];
+let menuExtensions = extensions.getExtensions('ide-gmn-menu');
+for (let i = 0; i < menuExtensions.length; i++) {
+    let module = menuExtensions[i];
+    let menuExtension = require(module);
+    let menu = menuExtension.getMenu();
     mainmenu.push(menu);
 }
 mainmenu.sort(function (p, n) {

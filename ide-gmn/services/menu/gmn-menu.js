@@ -9,18 +9,26 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var extensions = require('core/v4/extensions');
-var response = require('http/v4/response');
-
-var mainmenu = [];
-var menuExtensions = extensions.getExtensions('ide-gmn-menu');
-for (var i = 0; i < menuExtensions.length; i++) {
-    var module = menuExtensions[i];
-    menuExtension = require(module);
-    var menu = menuExtension.getMenu();
-    mainmenu.push(menu);
+exports.getMenu = function () {
+	var menu = {
+		"name": "GMN",
+		"link": "#",
+		"order": "100",
+		"onClick": "",
+		"items": [
+			{
+				"name": "GitHub page",
+				"link": "https://github.com/StanZGenchev/ide-gmn.git",
+				"order": "110",
+				"onClick": ""
+			},
+			{
+				"name": "About",
+				"link": "#",
+				"order": "120",
+				"onClick": ""
+			}
+		]
+	};
+	return menu;
 }
-mainmenu.sort(function (p, n) {
-    return (parseInt(p.order) - parseInt(n.order));
-});
-response.println(JSON.stringify(mainmenu));

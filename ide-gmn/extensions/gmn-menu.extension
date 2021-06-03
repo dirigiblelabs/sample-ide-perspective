@@ -1,0 +1,5 @@
+{
+    "module": "ide-gmn/services/menu/gmn-menu.js",
+    "extensionPoint": "ide-gmn-menu",
+    "description": "Guess my number menu"
+}

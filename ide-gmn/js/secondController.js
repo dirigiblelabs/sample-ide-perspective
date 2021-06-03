@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-gnmView.controller('secondController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gnmGameView.controller('secondController', ['$scope', '$messageHub', function ($scope, $messageHub) {
     $scope.isVisible = false;
     $scope.firstNum = 0;
     $scope.secondNum = 99;

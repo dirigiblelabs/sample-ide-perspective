@@ -11,12 +11,12 @@
  */
 exports.getView = function () {
 	var view = {
-		"id": "gmn",
+		"id": "gmn-game",
 		"name": "Guess my number",
 		"factory": "frame",
-		"region": "center-bottom",
+		"region": "center-middle",
 		"label": "Guess my number",
-		"link": "../ide-gmn/gmn.html"
+		"link": "../ide-gmn/gmn-game.html"
 	};
 	return view;
 }

@@ -52,10 +52,6 @@
 
 	<!-- Project-specific stuff -->
 	<script src="js/gmn.js"></script>
-	<script src="js/firstController.js"></script>
-	<script src="js/secondController.js"></script>
-	<script src="js/thirdController.js"></script>
-	<script src="js/fourthController.js"></script>
 
 </head>
 
@@ -68,13 +64,9 @@
 	<div class="shell">
 		<div class="sidebar list-group" sidebar active="Guess my number"></div>
 		<div id="gmn" class="plane" views-layout views-layout-model="GmnViewController.layoutModel">
-			<div ng-include="'partials/firstController.html'"></div>
-			<div ng-include="'partials/secondController.html'"></div>
-			<div ng-include="'partials/thirdController.html'"></div>
-			<div ng-include="'partials/fourthController.html'"></div>
 		</div>
 	</div>
-
+	<div alert></div>
 	<!-- Bottom IDE status bar -->
 	<div class="statusbar" status-bar>{{message}}</div>
 

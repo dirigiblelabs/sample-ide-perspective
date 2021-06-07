@@ -16,10 +16,10 @@ gnmGameView.controller('secondController', ['$scope', '$messageHub', function ($
 
     $scope.nextScreen = function () {
         $scope.isVisible = false;
-        $messageHub.message('gtn.controller.third', { isVisible: true });
+        $messageHub.message('gmn.controller.third', { isVisible: true });
     };
 
-    $messageHub.on('gtn.controller.second', function (msg) {
+    $messageHub.on('gmn.controller.second', function (msg) {
         if ("isVisible" in msg.data) {
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;

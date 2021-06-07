@@ -68,10 +68,10 @@ gnmGameView.controller('firstController', ['$scope', '$messageHub', function ($s
     $scope.setColor = function (color) {
         selectedNumberColor = color;
         $scope.isVisible = false;
-        $messageHub.message('gtn.controller.second', { isVisible: true });
+        $messageHub.message('gmn.controller.second', { isVisible: true });
     };
 
-    $messageHub.on('gtn.controller.first', function (msg) {
+    $messageHub.on('gmn.controller.first', function (msg) {
         if ("isVisible" in msg.data) {
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;

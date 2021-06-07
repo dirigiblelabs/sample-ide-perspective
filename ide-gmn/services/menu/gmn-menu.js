@@ -14,19 +14,16 @@ exports.getMenu = function () {
 		"name": "GMN",
 		"link": "#",
 		"order": "100",
-		"onClick": "",
 		"items": [
 			{
 				"name": "GitHub page",
 				"link": "https://github.com/StanZGenchev/ide-gmn.git",
-				"order": "110",
-				"onClick": ""
+				"order": "110"
 			},
 			{
 				"name": "About",
 				"link": "#",
-				"order": "120",
-				"onClick": ""
+				"order": "120"
 			}
 		]
 	};

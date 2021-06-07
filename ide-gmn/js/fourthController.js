@@ -33,14 +33,15 @@ gnmGameView.controller('fourthController', ['$scope', '$messageHub', function ($
                 console.log("Should not be here...");
         }
         $scope.finishedGame = true;
+        $messageHub.message('gmn.controller.history', { addNumber: $scope.number });
     };
 
     $scope.playAgain = function () {
         $scope.isVisible = false;
-        $messageHub.message('gtn.controller.first', { isVisible: true });
+        $messageHub.message('gmn.controller.first', { isVisible: true });
     };
 
-    $messageHub.on('gtn.controller.fourth', function (msg) {
+    $messageHub.on('gmn.controller.fourth', function (msg) {
         if ("isVisible" in msg.data) {
             $scope.$apply(function () {
                 $scope.finishedGame = false;
@@ -52,7 +53,7 @@ gnmGameView.controller('fourthController', ['$scope', '$messageHub', function ($
         }
         if ("numbers" in msg.data) {
             $scope.numbers = msg.data.numbers;
-            $messageHub.message('gtn.controller.first', { controller: "gtn.controller.fourth", get: "selectedColor" });
+            $messageHub.message('gmn.controller.first', { controller: "gmn.controller.fourth", get: "selectedColor" });
         }
         if ("selectedColor" in msg.data) {
             $scope.numbers.forEach(element => {

@@ -38,8 +38,19 @@
 
 </head>
 
-<body ng-app="gmn-history" ng-controller="GmnHistoryViewController" class="view gmn-history-body">
-	<h1>History</h1>
+<body ng-app="gmn-history" ng-controller="HistoryViewController" class="view gmn-history-body">
+	<div class="panel panel-default">
+		<table class="table">
+			<tr>
+				<th>Game</th>
+				<th>Your number</th>
+			</tr>
+			<tr ng-repeat="number in history">
+				<td>{{$index + 1}}</td>
+				<td>{{number}}</td>
+			</tr>
+		</table>
+	</div>
 </body>
 
 </html>

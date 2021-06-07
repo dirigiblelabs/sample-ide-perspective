@@ -8,7 +8,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" ng-app="gmn" ng-controller="GmnViewController" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="gmn" ng-controller="GmnViewController as gmn" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta charset="utf-8" />
@@ -63,7 +63,7 @@
 	<!-- The shell which holds the sidebar and main plane view -->
 	<div class="shell">
 		<div class="sidebar list-group" sidebar active="Guess my number"></div>
-		<div id="gmn" class="plane" views-layout views-layout-model="GmnViewController.layoutModel">
+		<div id="gmn" class="plane" views-layout views-layout-model="gmn.layoutModel">
 		</div>
 	</div>
 	<div alert></div>

@@ -15,12 +15,12 @@ gnmGameView.controller('thirdController', ['$scope', '$messageHub', function ($s
 
     $scope.selectedGroup = function (group) {
         $scope.isVisible = false;
-        $messageHub.message('gtn.controller.fourth', { isVisible: true, numbers: group });
+        $messageHub.message('gmn.controller.fourth', { isVisible: true, numbers: group });
     };
 
-    $messageHub.on('gtn.controller.third', function (msg) {
+    $messageHub.on('gmn.controller.third', function (msg) {
         if ("isVisible" in msg.data) {
-            $messageHub.message('gtn.controller.first', { controller: "gtn.controller.third", get: "numberGroups" });
+            $messageHub.message('gmn.controller.first', { controller: "gmn.controller.third", get: "numberGroups" });
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;
             });

@@ -12,7 +12,7 @@
 exports.getPerspective = function () {
 	var perspective = {
 		"name": "Guess my number",
-		"link": "../ide-gmn/gmn.html", // Link to the section
+		"link": "../ide-gmn/gmn-perspective.html", // Link to the section
 		"order": "1000", // Used to sort the tabs in the sidebar
 		"image": "gamepad" // Font awesome icon name
 	};

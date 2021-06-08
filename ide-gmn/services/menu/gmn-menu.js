@@ -12,7 +12,6 @@
 exports.getMenu = function () {
 	var menu = {
 		"name": "GMN",
-		"link": "#",
 		"order": "100",
 		"items": [
 			{

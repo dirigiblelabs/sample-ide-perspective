@@ -7,7 +7,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<div class="container text-center" ng-controller="firstController" ng-show="isVisible">
+<div class="container text-center" ng-controller="GameScreenOne" ng-show="isVisible">
 	<h1>Guess my number!</h1>
 	<h3>Choose a number and select its color from the buttons below.</h3>
 	<h4>Do not click on your chosen number.</h4>
@@ -22,6 +22,6 @@
 
 	<div class="btn-group btn-group-lg">
 		<button ng-repeat="color in colors" type="button" class="btn btn-default btn-lg" ng-style="{ color: color }"
-            ng-click="setColor(color)">{{color}}</button>
+			ng-click="setColor(color)">{{color}}</button>
 	</div>
 </div>

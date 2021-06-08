@@ -9,25 +9,23 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-gnmGameView.controller('thirdController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gnmGameView.controller('GameScreenTwo', ['$scope', '$messageHub', function ($scope, $messageHub) {
     $scope.isVisible = false;
-    $scope.numberGroups;
+    $scope.firstNum = 0;
+    $scope.secondNum = 99;
 
-    $scope.selectedGroup = function (group) {
+    $scope.nextScreen = function () {
         $scope.isVisible = false;
-        $messageHub.message('gmn.controller.fourth', { isVisible: true, numbers: group });
+        $messageHub.message('gmn.controller.third', { isVisible: true });
     };
 
-    $messageHub.on('gmn.controller.third', function (msg) {
+    $messageHub.on('gmn.controller.second', function (msg) {
         if ("isVisible" in msg.data) {
-            $messageHub.message('gmn.controller.first', { controller: "gmn.controller.third", get: "numberGroups" });
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;
+                $scope.firstNum = 0;
+                $scope.secondNum = 99;
             });
-        }
-        if ("numberGroups" in msg.data) {
-            $scope.numberGroups = msg.data.numberGroups;
-            $scope.$apply();
         }
     }.bind(this));
 }]);

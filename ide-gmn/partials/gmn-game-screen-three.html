@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ All rights reserved. This program and the accompanying materials
+  ~ are made available under the terms of the Eclipse Public License v2.0
+  ~ which accompanies this distribution, and is available at
+  ~ http://www.eclipse.org/legal/epl-v20.html
+  ~ Contributors:
+  ~ SAP - initial API and implementation
+  -->
+<div class="container text-center" ng-controller="GameScreenThree" ng-show="isVisible">
+  <h1>Click on the box which contains your number.</h1>
+  <br>
+  <div class="row">
+    <button type="button" ng-repeat="group in numberGroups"
+      class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 btn btn-default btn-lg">
+      <div class="row" ng-click="selectedGroup(group)">
+        <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-repeat="number in group">{{number[0]}}
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

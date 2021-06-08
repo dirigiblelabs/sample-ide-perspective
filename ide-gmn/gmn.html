@@ -8,7 +8,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" ng-app="gmn" ng-controller="GmnViewController as gmn" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="gmn" ng-controller="GmnViewController as gvc" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta charset="utf-8" />
@@ -21,18 +21,18 @@
 	<link href="../../../../services/v4/web/resources/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"
 		rel="stylesheet">
 
-	<!-- AngularJS -->
+	<!-- Internal AngularJS -->
 	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular.min.js"></script>
 	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular-resource.min.js"></script>
 
-	<!-- jQuery -->
+	<!-- Internal jQuery -->
 	<script src="../../../../services/v4/web/resources/jquery/3.4.1/jquery.min.js"></script>
 
-	<!-- Twitter Bootstrap with Theme Support -->
+	<!-- Internal Bootstrap with Theme Support -->
 	<link rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/bootstrap.min.css">
 	<script src="../../../../services/v4/web/resources/bootstrap/3.3.7/bootstrap.min.js"></script>
 
-	<!-- GoldenLayout with Theme Support -->
+	<!-- Internal GoldenLayout with Theme Support -->
 	<link type="text/css" rel="stylesheet"
 		href="../../../../services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
 	<link type="text/css" rel="stylesheet"
@@ -51,7 +51,7 @@
 	<link type="text/css" rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/ide.css" />
 
 	<!-- Project-specific stuff -->
-	<script src="js/gmn.js"></script>
+	<script src="js/gmn-perspective.js"></script>
 
 </head>
 
@@ -63,7 +63,7 @@
 	<!-- The shell which holds the sidebar and main plane view -->
 	<div class="shell">
 		<div class="sidebar list-group" sidebar active="Guess my number"></div>
-		<div id="gmn" class="plane" views-layout views-layout-model="gmn.layoutModel">
+		<div id="gmn" class="plane" views-layout views-layout-model="gvc.layoutModel">
 		</div>
 	</div>
 	<div alert></div>

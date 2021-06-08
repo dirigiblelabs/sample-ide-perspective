@@ -35,20 +35,21 @@
 
 	<!-- Project-specific stuff -->
 	<script src="js/gmn-game.js"></script>
-	<script src="js/firstController.js"></script>
-	<script src="js/secondController.js"></script>
-	<script src="js/thirdController.js"></script>
-	<script src="js/fourthController.js"></script>
+	<script src="js/gmn-game-screen-one.js"></script>
+	<script src="js/gmn-game-screen-two.js"></script>
+	<script src="js/gmn-game-screen-three.js"></script>
+	<script src="js/gmn-game-screen-four.js"></script>
 
 </head>
 
-<body ng-app="gmn-game" ng-controller="GmnGameViewController" class="view gmn-game-body">
+<body ng-app="gmn-game" ng-controller="GmnGameViewController as ggc" class="view gmn-game-body">
 
 	<!-- Importing our controller views -->
-	<div ng-include="'partials/firstController.html'"></div>
-    <div ng-include="'partials/secondController.html'"></div>
-    <div ng-include="'partials/thirdController.html'"></div>
-    <div ng-include="'partials/fourthController.html'"></div>
+	<div ng-include="'partials/gmn-game-screen-one.html'"></div>
+	<div ng-include="'partials/gmn-game-screen-two.html'"></div>
+	<div ng-include="'partials/gmn-game-screen-three.html'"></div>
+	<div ng-include="'partials/gmn-game-screen-four.html'"></div>
+
 </body>
 
 </html>

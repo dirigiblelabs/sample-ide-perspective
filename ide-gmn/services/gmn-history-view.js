@@ -14,7 +14,7 @@ exports.getView = function () {
 		"id": "gmn-history",
 		"name": "Game history",
 		"factory": "frame",
-		"region": "left-top",
+		"region": "left",
 		"label": "Game history",
 		"link": "../ide-gmn/gmn-history.html"
 	};

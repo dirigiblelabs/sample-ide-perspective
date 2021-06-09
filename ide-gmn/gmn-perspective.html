@@ -18,21 +18,22 @@
 
 	<link brandicon />
 
+	<!-- Font Awesome -->
 	<link href="../../../../services/v4/web/resources/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"
 		rel="stylesheet">
 
-	<!-- Internal AngularJS -->
+	<!-- AngularJS -->
 	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular.min.js"></script>
 	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular-resource.min.js"></script>
 
-	<!-- Internal jQuery -->
+	<!-- jQuery -->
 	<script src="../../../../services/v4/web/resources/jquery/3.4.1/jquery.min.js"></script>
 
-	<!-- Internal Bootstrap with Theme Support -->
+	<!-- Bootstrap with Theme Support -->
 	<link rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/bootstrap.min.css">
 	<script src="../../../../services/v4/web/resources/bootstrap/3.3.7/bootstrap.min.js"></script>
 
-	<!-- Internal GoldenLayout with Theme Support -->
+	<!-- GoldenLayout with Theme Support -->
 	<link type="text/css" rel="stylesheet"
 		href="../../../../services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
 	<link type="text/css" rel="stylesheet"
@@ -62,11 +63,16 @@
 
 	<!-- The shell which holds the sidebar and main plane view -->
 	<div class="shell">
+
+		<!-- IDE sidebar, holding the shortcuts for all Dirigible perspectives -->
 		<div class="sidebar list-group" sidebar active="Guess my number"></div>
+
+		<!-- Main 'plane' view which holds the layout and will show our subviews -->
 		<div id="gmn" class="plane" views-layout views-layout-model="gvc.layoutModel">
+
 		</div>
 	</div>
-	<div alert></div>
+
 	<!-- Bottom IDE status bar -->
 	<div class="statusbar" status-bar>{{message}}</div>
 

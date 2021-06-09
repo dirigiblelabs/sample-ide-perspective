@@ -9,9 +9,10 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var gnmGameView = angular.module('gmn-game', []);
+var gmnGameView = angular.module('gmn-game', []);
 
-gnmGameView.factory('$messageHub', [function () {
+// Initialize messageHub
+gmnGameView.factory('$messageHub', [function () {
     var messageHub = new FramesMessageHub();
     var message = function (evtName, data) {
         messageHub.post({ data: data }, evtName);
@@ -25,5 +26,6 @@ gnmGameView.factory('$messageHub', [function () {
     };
 }]);
 
-gnmGameView.controller('GmnGameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+// Initialize controller
+gmnGameView.controller('GmnGameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
 }]);

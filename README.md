@@ -6,7 +6,7 @@ Example project showcasing how to write Eclipse Dirigible modules.
 
 ### Main perspective
 
-The main perspective contains the main IDE view, with the top menu, sidebar, bottom status bar and the main plane view where all the subviews will be placed.
+The main perspective contains the main IDE view, top menu, sidebar, bottom status bar and the main plane view where all the subviews will be placed.
 
 - ide-gmn/gmn-perspective.html
 - ide-gmn/extensions/gmn-perspective.extension
@@ -38,9 +38,9 @@ This subview contains the game itself.
 - ide-gmn/js/gmn-history.js
 - ide-gmn/services/gmn-history-view.js
 
-## Extensions
+## Creating Extensions
 
-The extension files are used by Dirigible to know that this project contains Dirigible modules/plugins.
+The extension files are used by Dirigible to know that this project contains Dirigible modules.
 
 1. Perspective extension
 
@@ -48,14 +48,14 @@ The extension files are used by Dirigible to know that this project contains Dir
 // ide-gmn/extensions/gmn-perspective.extension
 
 {
-    "module": "ide-gmn/services/gmn-perspective.js",
+    "module": "ide-gmn/services/gmn-perspective-view.js",
     "extensionPoint": "ide-perspective",
     "description": "Guess my number perspective"
 }
 ```
 
-- `module`: Path go the JavaScript file exporting the project perspective.
-- `extensionPoint`: The place where this perspective will be shown. 'ide-perspective' means that it will be opened in its own page and it will not be embedded. Some of the posssible values are:
+- `module`: Path to the JavaScript file exporting the project perspective.
+- `extensionPoint`: Where and how this perspective will be shown. 'ide-perspective' means that it will be opened in its own page and it will not be embedded. Some of the possible values are:
 
     - ide-perspective
     - ide-view
@@ -67,14 +67,14 @@ The extension files are used by Dirigible to know that this project contains Dir
 The JavaScript service file should look like this:
 
 ```
-// ide-gmn/services/gmn-perspective.js
+// ide-gmn/services/gmn-perspective-view.js
 
 exports.getPerspective = function () {
 	var perspective = {
 		"name": "Guess my number",
-		"link": "../ide-gmn/gmn-perspective.html", // Link to the section
-		"order": "1000", // Used to sort the tabs in the sidebar
-		"image": "gamepad" // Font awesome icon name
+		"link": "../ide-gmn/gmn-perspective.html",
+		"order": "1000",
+		"image": "gamepad"
 	};
 	return perspective;
 }
@@ -82,10 +82,10 @@ exports.getPerspective = function () {
 
 - `name`: The name of this perspective
 - `link`: Relative link to the main html file which contains the perspective and all subviews.
-- `order`: Every perspective should have a button in the WebIDE sidebar which will lead to the perspective using the link. 'order' is the position of the button in the sidebar. Bigger number means lower position.
+- `order`: Every perspective should have a button in the WebIDE sidebar which will lead to the perspective view. 'order' is the position of the button in the sidebar. Bigger number equals lower position.
 - `image`: Name of the icon from the Font Awesome icon set.
 
-2. View/Subview extention
+2. View/Subview extension
 
 ```
 // ide-gmn/extensions/gmn-game.extension
@@ -108,7 +108,7 @@ exports.getView = function () {
 		"id": "gmn-game",
 		"name": "Guess my number",
 		"factory": "frame",
-		"region": "center-middle",
+		"region": "main",
 		"label": "Guess my number",
 		"link": "../ide-gmn/gmn-game.html"
 	};
@@ -150,7 +150,7 @@ exports.getView = function () {
 }
 ```
 
-Same as the perspective extension, except here we specify our own 'extensionPoint', specific to the perspective to which the menu belogs to. In order to create an extension point, we create a '.extensionpoint' file, which looks like this:
+Same as the perspective extension, except here we specify our own 'extensionPoint', specific to the perspective to which the menu belongs to. In order to create an extension point, we create a '.extensionpoint' file, which looks like this:
 
 ```
 // ide-gmn/extensions/menu/menu.extensionpoint
@@ -206,6 +206,120 @@ exports.getMenu = function () {
 ```
 
 - `name`: The name of the menu item.
-- `link`: When clicked, the menu could lead to another page. If this is a top-level menu with submenus, then this item can be omitted from the object or it can link to notheing (#).
+- `link`: When clicked, the menu could open another page. If this is a top-level menu with submenus, then this item can be omitted from the object or it can link to nothing (#).
 - `order`: The position of the menu in the menubar. `1` is the first position, `2` is the second, etc.
 - `items`: Submenu items with the same properties.
+
+## Creating Views
+
+1. View
+
+In order to create a view, you must start with a basic html file. All views are created by mainly using the following third-party components:
+
+ - AngularJS
+ - jQuery
+ - Bootstrap
+ - Font Awesome
+ - GoldenLayout
+
+Before learning about internal Dirigible components and how to create a view, make sure you have at least a basic understanding of the components listed above.
+
+You will also need some components, developed in-house, specifically for Dirigible.
+
+- MessageHub
+- IDE Core UI
+- IDE Styles
+
+You can see a full example in `ide-gmn/gmn-game.html` and `ide-gmn/js/gmn-game.js`
+All components must be included in the project itself or in Dirigible. Views should *NOT* rely on CDN resources.
+
+2. Perspective View
+
+The perspective is a special kind of view with some components added in.
+
+First difference is that when you create a controller, you *must* also create an alias to it.
+This alias will later be used to initialize the layout.
+
+Example:
+
+```
+<html ng-app="gmn" ng-controller="GmnViewController as gvc">
+...
+<div id="gmn" class="plane" views-layout views-layout-model="gvc.layoutModel">
+```
+
+```
+var gnmPerspective = angular.module('gmn', ['ngResource', 'ideUiCore']);
+
+gnmPerspective.controller('GmnViewController', ['Layouts', function (Layouts) {
+    this.layoutModel = {
+        // Array of view ids
+        views: ['gmn-history', 'gmn-game']
+    };
+}]);
+```
+
+You can look at `ide-gmn/gmn-perspective.html` and `ide-gmn/js/gmn-perspective.js` to see a full example.
+
+## MessageHub
+
+MessageHub is an internal library based on `window.postMessage()`. It's used to trigger events and transfer data between views.
+
+Example:
+
+- Include MessageHub
+
+```
+<script src="../../../../services/v4/web/ide-core/ui/message-hub.js"></script>
+```
+
+- Initialize MessageHub
+
+```
+someView.factory('$messageHub', [function () {
+    var messageHub = new FramesMessageHub();
+    var message = function (evtName, data) {
+        messageHub.post({ data: data }, evtName);
+    };
+    var on = function (topic, callback) {
+        messageHub.subscribe(callback, topic);
+    };
+    return {
+        message: message,
+        on: on
+    };
+}]);
+```
+
+- Include it along with the scope of the controller
+
+```
+gmnGameView.controller('GmnGameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+}]);
+```
+
+- Trigger an event
+
+```
+$messageHub.message('dot.separated.event.name');
+```
+
+- Trigger an event with data
+
+```
+$messageHub.message('dot.separated.event.name', { hasData: "yes" });
+```
+
+- Subscribe and handle events
+
+```
+$messageHub.on('dot.separated.event.name', function (msg) {
+    if ("hasData" in msg.data) {
+        $scope.$apply(function () {
+            console.log(msg.data.hasData);
+        });
+    }
+}.bind(this));
+```
+
+For a full example, look at the `ide-gmn/js/gmn-game.js` and `ide-gmn/js/gmn-game-screen-*.js` files.

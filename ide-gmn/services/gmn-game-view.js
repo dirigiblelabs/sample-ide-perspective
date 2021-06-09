@@ -14,7 +14,7 @@ exports.getView = function () {
 		"id": "gmn-game",
 		"name": "Guess my number",
 		"factory": "frame",
-		"region": "center-middle",
+		"region": "main",
 		"label": "Guess my number",
 		"link": "../ide-gmn/gmn-game.html"
 	};

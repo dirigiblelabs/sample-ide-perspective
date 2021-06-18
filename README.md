@@ -259,7 +259,49 @@ gnmPerspective.controller('GmnViewController', ['Layouts', function (Layouts) {
 }]);
 ```
 
-You can look at `ide-gmn/gmn-perspective.html` and `ide-gmn/js/gmn-perspective.js` to see a full example.
+You can add more options to the layout model like events, per view settings, and main layout settings. For more information, see [Layout settings](#layout-settings).
+
+You can look at `ide-gmn/gmn-perspective.html` and `ide-gmn/js/gmn-perspective.js` files, to see a full example.
+
+## Layout settings
+
+Dirigible makes use of GoldenLayout in order to have multiple, rearrangeable views on one page.
+You do not interact with GoldenLayout directly, however some of the options are exposed through the layout model object.
+
+1. `layoutSettings`
+
+This option directly maps to the `settings` object in the GoldenLayout configuration object. You can hide tabs, constrain the area in which items can be dragged, disable rearrangeable views, show or hide the layout popout, maximize and close buttons, etc.
+For more information, see the [official documentation](http://golden-layout.com/docs/Config.html).
+
+Example of a layout with tabs enabled and close and maximize buttons disabled:
+
+```
+this.layoutModel = {
+    views: ['gmn-history', 'gmn-game'],
+    layoutSettings: {
+        hasHeaders: true,
+        showMaximiseIcon: false,
+        showCloseIcon: false
+    }
+};
+```
+
+2. `viewSettings`
+
+This option directly maps to the `General` section of the `content` object list in GoldenLayut. You can hide the close button on a particular tab/view, set a tab to be active by default, etc. You however cannot change the id or title.
+For more information, see the [official documentation](http://golden-layout.com/docs/ItemConfig.html).
+
+Example of two tabs/views, whose close buttons are disabled:
+
+```
+this.layoutModel = {
+    views: ['gmn-history', 'gmn-game'],
+    viewSettings: {
+        'gmn-history': { isClosable: false },
+        'gmn-game': { isClosable: false },
+    }
+};
+```
 
 ## MessageHub
 

@@ -34,6 +34,15 @@ gmnPerspective.factory('$messageHub', [function () {
 gmnPerspective.controller('GmnViewController', ['Layouts', function (Layouts) {
     this.layoutModel = {
         // Array of view ids
-        views: ['gmn-history', 'gmn-game']
+        views: ['gmn-history', 'gmn-game'],
+        viewSettings: {
+            'gmn-history': { isClosable: false },
+            'gmn-game': { isClosable: false },
+        },
+        layoutSettings: {
+            hasHeaders: true,
+            showMaximiseIcon: false,
+            showCloseIcon: false
+        }
     };
 }]);

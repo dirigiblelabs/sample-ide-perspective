@@ -12,7 +12,7 @@
 gmnGameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($scope, $messageHub) {
     let selectedNumberColor = "";
     $scope.isVisible = true;
-    $scope.colors = ["blue", "red", "green", "orange", "black", "purple"]
+    $scope.colors = ["blue", "red", "green", "orange", "black", "purple"];
 
     $scope.numberGroups = {
         first: [
@@ -21,7 +21,7 @@ gmnGameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($sco
             [14, $scope.colors[0]],
             [4, $scope.colors[1]],
             [33, $scope.colors[4]],
-            [28, $scope.colors[5]],
+            [28, $scope.colors[5]]
         ],
         second: [
             [81, $scope.colors[5]],

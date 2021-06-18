@@ -30,7 +30,7 @@ historyView.controller('HistoryViewController', ['$scope', '$messageHub', functi
     $messageHub.on('gmn.controller.history', function (msg) {
         if ("addNumber" in msg.data) {
             $scope.$apply(function () {
-                $scope.history.push(msg.data.addNumber)
+                $scope.history.push(msg.data.addNumber);
             });
         }
     }.bind(this));

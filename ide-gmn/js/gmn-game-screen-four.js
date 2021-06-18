@@ -58,7 +58,7 @@ gmnGameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($sc
         if ("selectedColor" in msg.data) {
             $scope.numbers.forEach(element => {
                 if (element[1] == msg.data.selectedColor) {
-                    $scope.number = element[0]
+                    $scope.number = element[0];
                 }
             });
         }

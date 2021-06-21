@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-gmnGameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($scope, $messageHub) {
     let selectedNumberColor = "";
     $scope.isVisible = true;
     $scope.colors = ["blue", "red", "green", "orange", "black", "purple"];
@@ -68,10 +68,10 @@ gmnGameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($sco
     $scope.setColor = function (color) {
         selectedNumberColor = color;
         $scope.isVisible = false;
-        $messageHub.message('gmn.controller.second', { isVisible: true });
+        $messageHub.message('example.game.screeen.two', { isVisible: true });
     };
 
-    $messageHub.on('gmn.controller.first', function (msg) {
+    $messageHub.on('example.game.screeen.one', function (msg) {
         if ("isVisible" in msg.data) {
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;

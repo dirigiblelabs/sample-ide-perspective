@@ -1,5 +1,0 @@
-{
-    "module": "ide-gmn/services/gmn-history-view.js",
-    "extensionPoint": "ide-view",
-    "description": "Guess my number history"
-}

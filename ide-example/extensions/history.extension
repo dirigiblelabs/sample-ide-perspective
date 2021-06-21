@@ -1,0 +1,5 @@
+{
+    "module": "ide-example/services/history-view.js",
+    "extensionPoint": "ide-view",
+    "description": "Game history"
+}

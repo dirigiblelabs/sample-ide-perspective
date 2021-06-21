@@ -9,12 +9,14 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-exports.getPerspective = function () {
-	var perspective = {
-		"name": "Guess my number",
-		"link": "../ide-gmn/gmn-perspective.html", // Link to the section
-		"order": "1000", // Used to sort the tabs in the sidebar
-		"image": "gamepad" // Font awesome icon name
+exports.getView = function () {
+	var view = {
+		"id": "example-history",
+		"name": "Game history",
+		"factory": "frame",
+		"region": "left",
+		"label": "Game history",
+		"link": "../ide-example/history.html"
 	};
-	return perspective;
+	return view;
 }

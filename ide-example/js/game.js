@@ -9,14 +9,10 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var gmnPerspective = angular.module('gmn', ['ngResource', 'ideUiCore']);
-
-gmnPerspective.config(["messageHubProvider", function (messageHubProvider) {
-    messageHubProvider.evtNamePrefix = 'gmn';
-}]);
+var gameView = angular.module('game', []);
 
 // Initialize messageHub
-gmnPerspective.factory('$messageHub', [function () {
+gameView.factory('$messageHub', [function () {
     var messageHub = new FramesMessageHub();
     var message = function (evtName, data) {
         messageHub.post({ data: data }, evtName);
@@ -31,18 +27,5 @@ gmnPerspective.factory('$messageHub', [function () {
 }]);
 
 // Initialize controller
-gmnPerspective.controller('GmnViewController', ['Layouts', function (Layouts) {
-    this.layoutModel = {
-        // Array of view ids
-        views: ['gmn-history', 'gmn-game'],
-        viewSettings: {
-            'gmn-history': { isClosable: false },
-            'gmn-game': { isClosable: false },
-        },
-        layoutSettings: {
-            hasHeaders: true,
-            showMaximiseIcon: false,
-            showCloseIcon: false
-        }
-    };
+gameView.controller('GameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
 }]);

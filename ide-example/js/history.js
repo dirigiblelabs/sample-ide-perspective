@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var historyView = angular.module('gmn-history', []);
+var historyView = angular.module('history', []);
 
 historyView.factory('$messageHub', [function () {
     var messageHub = new FramesMessageHub();
@@ -27,7 +27,7 @@ historyView.factory('$messageHub', [function () {
 
 historyView.controller('HistoryViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
     $scope.history = []
-    $messageHub.on('gmn.controller.history', function (msg) {
+    $messageHub.on('example.history', function (msg) {
         if ("addNumber" in msg.data) {
             $scope.$apply(function () {
                 $scope.history.push(msg.data.addNumber);

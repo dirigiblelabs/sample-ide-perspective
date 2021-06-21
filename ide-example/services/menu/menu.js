@@ -13,7 +13,7 @@ let extensions = require('core/v4/extensions');
 let response = require('http/v4/response');
 
 let mainmenu = [];
-let menuExtensions = extensions.getExtensions('ide-gmn-menu');
+let menuExtensions = extensions.getExtensions('ide-example-menu');
 for (let i = 0; i < menuExtensions.length; i++) {
     let module = menuExtensions[i];
     let menuExtension = require(module);

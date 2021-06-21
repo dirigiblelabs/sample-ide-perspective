@@ -11,12 +11,12 @@
  */
 exports.getView = function () {
 	var view = {
-		"id": "gmn-history",
-		"name": "Game history",
+		"id": "example-game",
+		"name": "Guess my number",
 		"factory": "frame",
-		"region": "left",
-		"label": "Game history",
-		"link": "../ide-gmn/gmn-history.html"
+		"region": "main",
+		"label": "Guess my number",
+		"link": "../ide-example/game.html"
 	};
 	return view;
 }

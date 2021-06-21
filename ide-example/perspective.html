@@ -8,7 +8,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" ng-app="gmn" ng-controller="GmnViewController as gvc" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="example" ng-controller="ExampleViewController as evc" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta charset="utf-8" />
@@ -52,14 +52,14 @@
 	<link type="text/css" rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/ide.css" />
 
 	<!-- Project-specific stuff -->
-	<script src="js/gmn-perspective.js"></script>
+	<script src="js/perspective.js"></script>
 
 </head>
 
-<body class="view gmn-body">
+<body class="view example-body">
 
 	<!-- Top IDE panel and it's contents -->
-	<div menu menu-data-url="../../js/ide-gmn/services/menu/menu.js"></div>
+	<div menu menu-data-url="../../js/ide-example/services/menu/menu.js"></div>
 
 	<!-- The shell which holds the sidebar and main plane view -->
 	<div class="shell">
@@ -68,7 +68,7 @@
 		<div class="sidebar list-group" sidebar active="Guess my number"></div>
 
 		<!-- Main 'plane' view which holds the layout and will show our subviews -->
-		<div id="gmn" class="plane" views-layout views-layout-model="gvc.layoutModel">
+		<div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
 
 		</div>
 	</div>

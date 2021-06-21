@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-gmnGameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($scope, $messageHub) {
     $scope.finishedGame = false;
     $scope.btnFirstText = "??";
     $scope.btnSecondText = "??";
@@ -33,15 +33,15 @@ gmnGameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($sc
                 console.log("Should not be here...");
         }
         $scope.finishedGame = true;
-        $messageHub.message('gmn.controller.history', { addNumber: $scope.number });
+        $messageHub.message('example.history', { addNumber: $scope.number });
     };
 
     $scope.playAgain = function () {
         $scope.isVisible = false;
-        $messageHub.message('gmn.controller.first', { isVisible: true });
+        $messageHub.message('example.game.screeen.one', { isVisible: true });
     };
 
-    $messageHub.on('gmn.controller.fourth', function (msg) {
+    $messageHub.on('example.game.screeen.four', function (msg) {
         if ("isVisible" in msg.data) {
             $scope.$apply(function () {
                 $scope.finishedGame = false;
@@ -53,7 +53,7 @@ gmnGameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($sc
         }
         if ("numbers" in msg.data) {
             $scope.numbers = msg.data.numbers;
-            $messageHub.message('gmn.controller.first', { controller: "gmn.controller.fourth", get: "selectedColor" });
+            $messageHub.message('example.game.screeen.one', { controller: "example.game.screeen.four", get: "selectedColor" });
         }
         if ("selectedColor" in msg.data) {
             $scope.numbers.forEach(element => {

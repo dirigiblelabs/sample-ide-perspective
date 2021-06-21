@@ -1,6 +1,6 @@
-# Guess my number example project
+# Example project
 
-Example project showcasing how to write Eclipse Dirigible modules.
+Example project, showing how to write Dirigible perspectives and views.
 
 ## Components
 
@@ -8,35 +8,35 @@ Example project showcasing how to write Eclipse Dirigible modules.
 
 The main perspective contains the main IDE view, top menu, sidebar, bottom status bar and the main plane view where all the subviews will be placed.
 
-- ide-gmn/gmn-perspective.html
-- ide-gmn/extensions/gmn-perspective.extension
-- ide-gmn/extensions/menu/*
-- ide-gmn/js/gmn-perspective.js
-- ide-gmn/services/menu/*
+- ide-example/perspective.html
+- ide-example/extensions/perspective.extension
+- ide-example/extensions/menu/*
+- ide-example/js/perspective.js
+- ide-example/services/menu/*
 
 ### Game subview
 
 This subview contains the game itself.
 
-- ide-gmn/gmn-game.html
-- ide-gmn/partials/gmn-game-screen-one.html
-- ide-gmn/partials/gmn-game-screen-two.html
-- ide-gmn/partials/gmn-game-screen-three.html
-- ide-gmn/partials/gmn-game-screen-four.html
-- ide-gmn/extensions/gmn-game.extension
-- ide-gmn/js/gmn-game.js
-- ide-gmn/js/gmn-game-screen-one.js
-- ide-gmn/js/gmn-game-screen-two.js
-- ide-gmn/js/gmn-game-screen-three.js
-- ide-gmn/js/gmn-game-screen-four.js
-- ide-gmn/services/gmn-game-view.js
+- ide-example/game.html
+- ide-example/partials/game-screen-one.html
+- ide-example/partials/game-screen-two.html
+- ide-example/partials/game-screen-three.html
+- ide-example/partials/game-screen-four.html
+- ide-example/extensions/game.extension
+- ide-example/js/game.js
+- ide-example/js/game-screen-one.js
+- ide-example/js/game-screen-two.js
+- ide-example/js/game-screen-three.js
+- ide-example/js/game-screen-four.js
+- ide-example/services/game-view.js
 
 ### History subview
 
-- ide-gmn/gmn-history.html
-- ide-gmn/extensions/gmn-history.extension
-- ide-gmn/js/gmn-history.js
-- ide-gmn/services/gmn-history-view.js
+- ide-example/history.html
+- ide-example/extensions/history.extension
+- ide-example/js/history.js
+- ide-example/services/history-view.js
 
 ## Creating Extensions
 
@@ -45,10 +45,10 @@ The extension files are used by Dirigible to know that this project contains Dir
 1. Perspective extension
 
 ```
-// ide-gmn/extensions/gmn-perspective.extension
+// ide-example/extensions/perspective.extension
 
 {
-    "module": "ide-gmn/services/gmn-perspective-view.js",
+    "module": "ide-example/services/perspective-view.js",
     "extensionPoint": "ide-perspective",
     "description": "Guess my number perspective"
 }
@@ -67,12 +67,12 @@ The extension files are used by Dirigible to know that this project contains Dir
 The JavaScript service file should look like this:
 
 ```
-// ide-gmn/services/gmn-perspective-view.js
+// ide-example/services/perspective-view.js
 
 exports.getPerspective = function () {
 	var perspective = {
 		"name": "Guess my number",
-		"link": "../ide-gmn/gmn-perspective.html",
+		"link": "../ide-example/perspective.html",
 		"order": "1000",
 		"image": "gamepad"
 	};
@@ -88,10 +88,10 @@ exports.getPerspective = function () {
 2. View/Subview extension
 
 ```
-// ide-gmn/extensions/gmn-game.extension
+// ide-example/extensions/game.extension
 
 {
-    "module": "ide-gmn/services/gmn-game-view.js",
+    "module": "ide-example/services/game-view.js",
     "extensionPoint": "ide-view",
     "description": "Guess my number view"
 }
@@ -101,22 +101,22 @@ Same as the perspective extension.
 The JavaScript service file should look like this:
 
 ```
-// ide-gmn/services/gmn-game-view.js
+// ide-example/services/game-view.js
 
 exports.getView = function () {
 	var view = {
-		"id": "gmn-game",
+		"id": "example-game",
 		"name": "Guess my number",
 		"factory": "frame",
 		"region": "main",
 		"label": "Guess my number",
-		"link": "../ide-gmn/gmn-game.html"
+		"link": "../ide-example/game.html"
 	};
 	return view;
 }
 ```
 
-- `id`: The id of the view.
+- `id`: The unique id of the view.
 - `name`: The name of the view.
 - `factory`: N/A
 - `region`: If this is a subview, this tells GoldenLayout where the view should be opened. Possible options are:
@@ -141,11 +141,11 @@ exports.getView = function () {
 3. Menu extension
 
 ```
-// ide-gmn/extensions/menu/gmn-menu.extension
+// ide-example/extensions/menu/menu.extension
 
 {
-    "module": "ide-gmn/services/menu/gmn-menu.js",
-    "extensionPoint": "ide-gmn-menu",
+    "module": "ide-example/services/menu/menu.js",
+    "extensionPoint": "ide-example-menu",
     "description": "Guess my number first menu"
 }
 ```
@@ -153,10 +153,10 @@ exports.getView = function () {
 Same as the perspective extension, except here we specify our own 'extensionPoint', specific to the perspective to which the menu belongs to. In order to create an extension point, we create a '.extensionpoint' file, which looks like this:
 
 ```
-// ide-gmn/extensions/menu/menu.extensionpoint
+// ide-example/extensions/menu/menu.extensionpoint
 
 {
-    "name": "ide-gmn-menu",
+    "name": "ide-example-menu",
     "description": "Extension Point for the Guess my number Menu"
 }
 ```
@@ -164,13 +164,13 @@ Same as the perspective extension, except here we specify our own 'extensionPoin
 The JavaScript that will initialize the menu and its extension point should look like this:
 
 ```
-// ide-gmn/services/menu/menu.js
+// ide-example/services/menu/menu.js
 
 let extensions = require('core/v4/extensions');
 let response = require('http/v4/response');
 
 let mainmenu = [];
-let menuExtensions = extensions.getExtensions('ide-gmn-menu');
+let menuExtensions = extensions.getExtensions('ide-example-menu');
 for (let i = 0; i < menuExtensions.length; i++) {
     let module = menuExtensions[i];
     let menuExtension = require(module);
@@ -186,17 +186,17 @@ response.println(JSON.stringify(mainmenu));
 The JavaScript menu file should look like this:
 
 ```
-// ide-gmn/services/menu/gmn-menu.js
+// ide-example/services/menu/example-menu.js
 
 exports.getMenu = function () {
 	var menu = {
-		"name": "GMN",
+		"name": "Example",
 		"link": "#",
 		"order": "100",
 		"items": [
 			{
 				"name": "GitHub page",
-				"link": "https://github.com/StanZGenchev/ide-gmn.git",
+				"link": "https://github.com/dirigiblelabs/ide-example",
 				"order": "110"
 			}
 		]
@@ -230,7 +230,7 @@ You will also need some components, developed in-house, specifically for Dirigib
 - IDE Core UI
 - IDE Styles
 
-You can see a full example in `ide-gmn/gmn-game.html` and `ide-gmn/js/gmn-game.js`
+You can see a full example in `ide-example/game.html` and `ide-example/js/game.js`
 All components must be included in the project itself or in Dirigible. Views should *NOT* rely on CDN resources.
 
 2. Perspective View
@@ -243,25 +243,25 @@ This alias will later be used to initialize the layout.
 Example:
 
 ```
-<html ng-app="gmn" ng-controller="GmnViewController as gvc">
+<html ng-app="example" ng-controller="ExampleViewController as evc">
 ...
-<div id="gmn" class="plane" views-layout views-layout-model="gvc.layoutModel">
+<div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
 ```
 
 ```
-var gnmPerspective = angular.module('gmn', ['ngResource', 'ideUiCore']);
+var gnmPerspective = angular.module('example', ['ngResource', 'ideUiCore']);
 
-gnmPerspective.controller('GmnViewController', ['Layouts', function (Layouts) {
+gnmPerspective.controller('ExampleViewController', ['Layouts', function (Layouts) {
     this.layoutModel = {
         // Array of view ids
-        views: ['gmn-history', 'gmn-game']
+        views: ['example-history', 'example-game']
     };
 }]);
 ```
 
 You can add more options to the layout model like events, per view settings, and main layout settings. For more information, see [Layout settings](#layout-settings).
 
-You can look at `ide-gmn/gmn-perspective.html` and `ide-gmn/js/gmn-perspective.js` files, to see a full example.
+You can look at `ide-example/perspective.html` and `ide-example/js/perspective.js` files, to see a full example.
 
 ## Layout settings
 
@@ -277,7 +277,7 @@ Example of a layout with tabs enabled and close and maximize buttons disabled:
 
 ```
 this.layoutModel = {
-    views: ['gmn-history', 'gmn-game'],
+    views: ['example-history', 'example-game'],
     layoutSettings: {
         hasHeaders: true,
         showMaximiseIcon: false,
@@ -295,10 +295,10 @@ Example of two tabs/views, whose close buttons are disabled:
 
 ```
 this.layoutModel = {
-    views: ['gmn-history', 'gmn-game'],
+    views: ['example-history', 'example-game'],
     viewSettings: {
-        'gmn-history': { isClosable: false },
-        'gmn-game': { isClosable: false },
+        'example-history': { isClosable: false },
+        'example-game': { isClosable: false },
     }
 };
 ```
@@ -336,7 +336,7 @@ someView.factory('$messageHub', [function () {
 - Include it along with the scope of the controller
 
 ```
-gmnGameView.controller('GmnGameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gameView.controller('GameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
 }]);
 ```
 
@@ -364,4 +364,4 @@ $messageHub.on('dot.separated.event.name', function (msg) {
 }.bind(this));
 ```
 
-For a full example, look at the `ide-gmn/js/gmn-game.js` and `ide-gmn/js/gmn-game-screen-*.js` files.
+For a full example, look at the `ide-example/js/game.js` and `ide-example/js/game-screen-*.js` files.

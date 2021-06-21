@@ -14,7 +14,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>History</title>
+	<title>Guess my number!</title>
 
 	<!-- AngularJS -->
 	<script src="../../../../services/v4/web/resources/angular/1.4.7/angular.min.js"></script>
@@ -34,23 +34,22 @@
 	<link type="text/css" rel="stylesheet" href="../../../../services/v4/js/theme/resources.js/ide.css" />
 
 	<!-- Project-specific stuff -->
-	<script src="js/gmn-history.js"></script>
+	<script src="js/game.js"></script>
+	<script src="js/game-screen-one.js"></script>
+	<script src="js/game-screen-two.js"></script>
+	<script src="js/game-screen-three.js"></script>
+	<script src="js/game-screen-four.js"></script>
 
 </head>
 
-<body ng-app="gmn-history" ng-controller="HistoryViewController" class="view gmn-history-body">
-	<div class="panel panel-default">
-		<table class="table">
-			<tr>
-				<th>Game</th>
-				<th>Your number</th>
-			</tr>
-			<tr ng-repeat="number in history">
-				<td>{{$index + 1}}</td>
-				<td>{{number}}</td>
-			</tr>
-		</table>
-	</div>
+<body ng-app="game" ng-controller="GameViewController as gvc" class="view game-body">
+
+	<!-- Including our controller views -->
+	<div ng-include="'partials/game-screen-one.html'"></div>
+	<div ng-include="'partials/game-screen-two.html'"></div>
+	<div ng-include="'partials/game-screen-three.html'"></div>
+	<div ng-include="'partials/game-screen-four.html'"></div>
+
 </body>
 
 </html>

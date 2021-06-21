@@ -11,12 +11,12 @@
  */
 exports.getMenu = function () {
 	var menu = {
-		"name": "GMN",
+		"name": "Example",
 		"order": "100",
 		"items": [
 			{
 				"name": "GitHub page",
-				"link": "https://github.com/StanZGenchev/ide-gmn.git",
+				"link": "https://github.com/dirigiblelabs/ide-example",
 				"order": "110"
 			},
 			{

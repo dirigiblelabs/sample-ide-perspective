@@ -44,7 +44,7 @@ The extension files are used by Dirigible to know that this project contains Dir
 
 1. Perspective extension
 
-```
+```json
 // ide-example/extensions/perspective.extension
 
 {
@@ -66,7 +66,7 @@ The extension files are used by Dirigible to know that this project contains Dir
 
 The JavaScript service file should look like this:
 
-```
+```javascript
 // ide-example/services/perspective-view.js
 
 exports.getPerspective = function () {
@@ -87,7 +87,7 @@ exports.getPerspective = function () {
 
 2. View/Subview extension
 
-```
+```json
 // ide-example/extensions/game.extension
 
 {
@@ -100,7 +100,7 @@ exports.getPerspective = function () {
 Same as the perspective extension.
 The JavaScript service file should look like this:
 
-```
+```javascript
 // ide-example/services/game-view.js
 
 exports.getView = function () {
@@ -118,7 +118,7 @@ exports.getView = function () {
 
 - `id`: The unique id of the view.
 - `name`: The name of the view.
-- `factory`: N/A
+- `factory`: The type of the factory used during instantiating the view.
 - `region`: If this is a subview, this tells GoldenLayout where the view should be opened. Possible options are:
 
     - main
@@ -140,7 +140,7 @@ exports.getView = function () {
 
 3. Menu extension
 
-```
+```json
 // ide-example/extensions/menu/menu.extension
 
 {
@@ -152,7 +152,7 @@ exports.getView = function () {
 
 Same as the perspective extension, except here we specify our own 'extensionPoint', specific to the perspective to which the menu belongs to. In order to create an extension point, we create a '.extensionpoint' file, which looks like this:
 
-```
+```javascript
 // ide-example/extensions/menu/menu.extensionpoint
 
 {
@@ -163,7 +163,7 @@ Same as the perspective extension, except here we specify our own 'extensionPoin
 
 The JavaScript that will initialize the menu and its extension point should look like this:
 
-```
+```javascript
 // ide-example/services/menu/menu.js
 
 let extensions = require('core/v4/extensions');
@@ -185,7 +185,7 @@ response.println(JSON.stringify(mainmenu));
 
 The JavaScript menu file should look like this:
 
-```
+```javascript
 // ide-example/services/menu/example-menu.js
 
 exports.getMenu = function () {
@@ -196,7 +196,7 @@ exports.getMenu = function () {
 		"items": [
 			{
 				"name": "GitHub page",
-				"link": "https://github.com/dirigiblelabs/ide-example",
+				"link": "https://github.com/dirigiblelabs/sample-ide-perspective",
 				"order": "110"
 			}
 		]
@@ -242,13 +242,13 @@ This alias will later be used to initialize the layout.
 
 Example:
 
-```
+```html
 <html ng-app="example" ng-controller="ExampleViewController as evc">
 ...
 <div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
 ```
 
-```
+```javascript
 var gnmPerspective = angular.module('example', ['ngResource', 'ideUiCore']);
 
 gnmPerspective.controller('ExampleViewController', ['Layouts', function (Layouts) {
@@ -275,7 +275,7 @@ For more information, see the [official documentation](http://golden-layout.com/
 
 Example of a layout with tabs enabled and close and maximize buttons disabled:
 
-```
+```javascript
 this.layoutModel = {
     views: ['example-history', 'example-game'],
     layoutSettings: {
@@ -293,7 +293,7 @@ For more information, see the [official documentation](http://golden-layout.com/
 
 Example of two tabs/views, whose close buttons are disabled:
 
-```
+```javascript
 this.layoutModel = {
     views: ['example-history', 'example-game'],
     viewSettings: {
@@ -311,13 +311,13 @@ Example:
 
 - Include MessageHub
 
-```
+```html
 <script src="../../../../services/v4/web/ide-core/ui/message-hub.js"></script>
 ```
 
 - Initialize MessageHub
 
-```
+```javascript
 someView.factory('$messageHub', [function () {
     var messageHub = new FramesMessageHub();
     var message = function (evtName, data) {
@@ -335,26 +335,26 @@ someView.factory('$messageHub', [function () {
 
 - Include it along with the scope of the controller
 
-```
+```javascript
 gameView.controller('GameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
 }]);
 ```
 
 - Trigger an event
 
-```
+```javascript
 $messageHub.message('dot.separated.event.name');
 ```
 
 - Trigger an event with data
 
-```
+```javascript
 $messageHub.message('dot.separated.event.name', { hasData: "yes" });
 ```
 
 - Subscribe and handle events
 
-```
+```javascript
 $messageHub.on('dot.separated.event.name', function (msg) {
     if ("hasData" in msg.data) {
         $scope.$apply(function () {

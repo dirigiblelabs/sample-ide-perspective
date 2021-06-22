@@ -16,7 +16,7 @@ exports.getMenu = function () {
 		"items": [
 			{
 				"name": "GitHub page",
-				"link": "https://github.com/dirigiblelabs/ide-example",
+				"link": "https://github.com/dirigiblelabs/sample-ide-perspective",
 				"order": "110"
 			},
 			{

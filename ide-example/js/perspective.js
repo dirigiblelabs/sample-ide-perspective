@@ -17,11 +17,11 @@ examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
 
 // Initialize messageHub
 examplePerspective.factory('$messageHub', [function () {
-    var messageHub = new FramesMessageHub();
-    var message = function (evtName, data) {
+    let messageHub = new FramesMessageHub();
+    let message = function (evtName, data) {
         messageHub.post({ data: data }, evtName);
     };
-    var on = function (topic, callback) {
+    let on = function (topic, callback) {
         messageHub.subscribe(callback, topic);
     };
     return {
@@ -34,15 +34,20 @@ examplePerspective.factory('$messageHub', [function () {
 examplePerspective.controller('ExampleViewController', ['Layouts', function (Layouts) {
     this.layoutModel = {
         // Array of view ids
-        views: ['example-history', 'example-game'],
+        views: ['example-game', 'example-history'],
         viewSettings: {
-            'example-history': { isClosable: false },
             'example-game': { isClosable: false },
+            'example-history': { isClosable: false }
         },
         layoutSettings: {
             hasHeaders: true,
             showMaximiseIcon: false,
             showCloseIcon: false
+        },
+        events: {
+            'example.alert.info': function (msg) {
+                console.info(msg.data.message);
+            }
         }
     };
 }]);

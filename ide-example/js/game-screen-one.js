@@ -11,6 +11,7 @@
  */
 gameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($scope, $messageHub) {
     let selectedNumberColor = "";
+    let controllerTopicId = 'example.game.screeen.one';
     $scope.isVisible = true;
     $scope.colors = ["blue", "red", "green", "orange", "black", "purple"];
 
@@ -71,8 +72,11 @@ gameView.controller('GameScreenOne', ['$scope', '$messageHub', function ($scope,
         $messageHub.message('example.game.screeen.two', { isVisible: true });
     };
 
-    $messageHub.on('example.game.screeen.one', function (msg) {
+    $messageHub.on(controllerTopicId, function (msg) {
         if ("isVisible" in msg.data) {
+            if (msg.data.isVisible) {
+                $scope.$parent.setStep(controllerTopicId);
+            }
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;
             });

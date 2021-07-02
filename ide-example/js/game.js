@@ -27,5 +27,30 @@ gameView.factory('$messageHub', [function () {
 }]);
 
 // Initialize controller
-gameView.controller('GameViewController', ['$scope', '$messageHub', function ($scope, $messageHub) {
+gameView.controller('GameViewController', ['$scope', function ($scope) {
+    $scope.steps = [
+        { id: 1, name: "Choose a number", topicId: "example.game.screeen.one" },
+        { id: 2, name: "Enter random numbers", topicId: "example.game.screeen.two" },
+        { id: 3, name: "Select magic box", topicId: "example.game.screeen.three" },
+        { id: 4, name: "Finish game", topicId: "example.game.screeen.four" },
+    ];
+    $scope.currentStep = $scope.steps[0];
+
+    $scope.setStep = function (topicId) {
+        for (let i = 0; i < $scope.steps.length; i++) {
+            if ($scope.steps[i].topicId === topicId) {
+                $scope.currentStep = $scope.steps[i];
+                break;
+            }
+        };
+    }
+
+    $scope.isStepActive = function (stepId) {
+        if (stepId == $scope.currentStep.id)
+            return "active";
+        else if (stepId < $scope.currentStep.id)
+            return "done";
+        else
+            return "inactive";
+    }
 }]);

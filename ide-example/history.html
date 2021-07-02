@@ -35,22 +35,21 @@
 
 	<!-- Project-specific stuff -->
 	<script src="js/history.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/history.css" />
 
 </head>
 
 <body ng-app="history" ng-controller="HistoryViewController" class="view history-body">
-	<div class="panel panel-default">
-		<table class="table">
-			<tr>
-				<th>Game</th>
-				<th>Your number</th>
-			</tr>
-			<tr ng-repeat="number in history">
-				<td>{{$index + 1}}</td>
-				<td>{{number}}</td>
-			</tr>
-		</table>
-	</div>
+	<table class="table">
+		<tr>
+			<th class="big-header">Game</th>
+			<th>Your number</th>
+		</tr>
+		<tr ng-repeat="number in history track by $index">
+			<td>{{$index + 1}}</td>
+			<td>{{number}}</td>
+		</tr>
+	</table>
 </body>
 
 </html>

@@ -10,6 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 gameView.controller('GameScreenThree', ['$scope', '$messageHub', function ($scope, $messageHub) {
+    let controllerTopicId = 'example.game.screeen.three';
     $scope.isVisible = false;
     $scope.numberGroups;
 
@@ -18,9 +19,12 @@ gameView.controller('GameScreenThree', ['$scope', '$messageHub', function ($scop
         $messageHub.message('example.game.screeen.four', { isVisible: true, numbers: group });
     };
 
-    $messageHub.on('example.game.screeen.three', function (msg) {
+    $messageHub.on(controllerTopicId, function (msg) {
         if ("isVisible" in msg.data) {
-            $messageHub.message('example.game.screeen.one', { controller: "example.game.screeen.three", get: "numberGroups" });
+            if (msg.data.isVisible) {
+                $messageHub.message('example.game.screeen.one', { controller: "example.game.screeen.three", get: "numberGroups" });
+                $scope.$parent.setStep(controllerTopicId);
+            }
             $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;
             });

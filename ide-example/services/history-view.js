@@ -14,7 +14,7 @@ exports.getView = function () {
 		"id": "example-history",
 		"name": "Game history",
 		"factory": "frame",
-		"region": "left",
+		"region": "right",
 		"label": "Game history",
 		"link": "../ide-example/history.html"
 	};

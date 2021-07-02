@@ -7,20 +7,20 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<div class="container text-center" ng-controller="GameScreenFour" ng-show="isVisible">
-	<h1>Your number is in one of the buttons below.</h1>
-	<h3>Click on your favorite button.</h3>
-	<br>
-	<div class="btn-group btn-group-lg" role="group">
-		<button type="button" class="btn btn-default btn-lg" ng-disabled="finishedGame"
-			ng-click="revealNumber('btnFirst')">{{ btnFirstText }}</button>
-		<button type="button" class="btn btn-default btn-lg" ng-disabled="finishedGame"
-			ng-click="revealNumber('btnSecond')">{{ btnSecondText }}</button>
-		<button type="button" class="btn btn-default btn-lg" ng-disabled="finishedGame"
-			ng-click="revealNumber('btnThird')">{{ btnThirdText }}</button>
+<div ng-controller="GameScreenFour" ng-show="isVisible">
+	<h1 class="section-title">Your number is in one of the buttons below.</h1>
+	<p class="margin-top-bottom-nl">Click on your favorite button.</p>
+	<div class="full-width text-center">
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default btn-big" ng-disabled="finishedGame"
+				ng-click="revealNumber('btnFirst')">{{ btnFirstText }}</button>
+			<button type="button" class="btn btn-default btn-big" ng-disabled="finishedGame"
+				ng-click="revealNumber('btnSecond')">{{ btnSecondText }}</button>
+			<button type="button" class="btn btn-default btn-big" ng-disabled="finishedGame"
+				ng-click="revealNumber('btnThird')">{{ btnThirdText }}</button>
+		</div>
+		<h3 class="margin-top-bottom-nl" ng-show="finishedGame">Did I guess correctly?</h3>
+		<button type="button" class="btn btn-default btn-big" ng-show="finishedGame" ng-click="playAgain()">Play
+			again</button>
 	</div>
-	<br>
-	<h3 ng-show="finishedGame">Did I guess correctly?</h3>
-	<button type="button" class="btn btn-default btn-lg" ng-show="finishedGame" ng-click="playAgain()">Play
-		again</button>
 </div>

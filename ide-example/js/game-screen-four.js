@@ -10,6 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 gameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($scope, $messageHub) {
+    let controllerTopicId = 'example.game.screeen.four';
     $scope.finishedGame = false;
     $scope.btnFirstText = "??";
     $scope.btnSecondText = "??";
@@ -41,13 +42,16 @@ gameView.controller('GameScreenFour', ['$scope', '$messageHub', function ($scope
         $messageHub.message('example.game.screeen.one', { isVisible: true });
     };
 
-    $messageHub.on('example.game.screeen.four', function (msg) {
+    $messageHub.on(controllerTopicId, function (msg) {
         if ("isVisible" in msg.data) {
-            $scope.$apply(function () {
+            if (msg.data.isVisible) {
                 $scope.finishedGame = false;
                 $scope.btnFirstText = "??";
                 $scope.btnSecondText = "??";
                 $scope.btnThirdText = "??";
+                $scope.$parent.setStep(controllerTopicId);
+            }
+            $scope.$apply(function () {
                 $scope.isVisible = msg.data.isVisible;
             });
         }

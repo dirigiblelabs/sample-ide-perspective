@@ -1,0 +1,21 @@
+.table th:first-of-type,
+.table td:first-of-type {
+  border-right: 1px solid #e7e7e7;
+}
+.table tr {
+  border-bottom: 1px solid #e7e7e7;
+}
+.table th {
+  font-size: 20px;
+  font-weight: normal;
+  color: #555;
+  padding: 15px !important;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+  border-top: none !important;
+}
+.table td {
+  font-size: 16px;
+  padding: 10px 15px !important;
+  border-top: none !important;
+}

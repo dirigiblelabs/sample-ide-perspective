@@ -10,7 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 exports.getView = function () {
-	var view = {
+	return {
 		"id": "example-history",
 		"name": "Game history",
 		"factory": "frame",
@@ -18,5 +18,4 @@ exports.getView = function () {
 		"label": "Game history",
 		"link": "../ide-example/history.html"
 	};
-	return view;
 }

@@ -10,71 +10,72 @@
   -->
 <html lang="en" ng-app="example" ng-controller="ExampleViewController as evc" xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title brandtitle perspective-name="Guess my number!">Guess my number!</title>
+		<title brandtitle perspective-name="Guess my number!">Guess my number!</title>
 
-	<link brandicon />
+		<!-- 'brandicon' is an AngularJS directive to set the proper favicon. Do this only for perspective and not regular views -->
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=" brandicon />
 
-	<!-- FontAwesome icon set -->
-	<link type="text/css" href="/webjars/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- FontAwesome icon set -->
+		<link type="text/css" href="/webjars/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<!-- jQuery -->
-	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+		<!-- jQuery -->
+		<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
-	<!-- AngularJS -->
-	<script src="/webjars/angularjs/1.8.2/angular.min.js"></script>
-	<script src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
+		<!-- AngularJS -->
+		<script src="/webjars/angularjs/1.8.2/angular.min.js"></script>
+		<script src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
 
-	<!-- Bootstrap with Theme Support -->
-	<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
-	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Bootstrap with Theme Support -->
+		<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
+		<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- GoldenLayout with Theme Support -->
-	<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
-	<link type="text/css" rel="stylesheet"
-		href="/services/v4/js/theme/resources.js/goldenlayout-theme.css" />
-	<script type="text/javascript" src="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout.min.js"></script>
-	</script>
+		<!-- GoldenLayout with Theme Support -->
+		<link type="text/css" rel="stylesheet"
+			href="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
+		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/goldenlayout-theme.css" />
+		<script type="text/javascript" src="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout.min.js"></script>
+		</script>
 
-	<!-- MessageHub -->
-	<script src="/services/v4/web/ide-core/ui/message-hub.js"></script>
+		<!-- MessageHub -->
+		<script src="/services/v4/web/ide-core/ui/message-hub.js"></script>
 
-	<!-- IDE Core UI -->
-	<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-layout.js"></script>
-	<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-core-ng-modules.js"></script>
+		<!-- IDE Core UI -->
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-layout.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-core-ng-modules.js"></script>
 
-	<!-- Custom IDE Styles -->
-	<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
+		<!-- Custom IDE Styles -->
+		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
 
-	<!-- Project-specific stuff -->
-	<script src="js/perspective.js"></script>
+		<!-- Project-specific stuff -->
+		<script src="js/perspective.js"></script>
 
-</head>
+	</head>
 
-<body class="view example-body">
+	<body class="view example-body">
 
-	<!-- Top IDE panel and it's contents -->
-	<div menu menu-data-url="/services/v4/js/ide-core/services/menu.js"></div>
+		<!-- Top IDE panel and it's contents -->
+		<div menu menu-data-url="/services/v4/js/ide-example/services/menu/menu.js"></div>
 
-	<!-- The shell which holds the sidebar and main plane view -->
-	<div class="shell">
+		<!-- The shell which holds the sidebar and main plane view -->
+		<div class="shell">
 
-		<!-- IDE sidebar, holding the shortcuts for all Dirigible perspectives -->
-		<div class="sidebar list-group" sidebar active="Guess my number"></div>
+			<!-- IDE sidebar, holding the shortcuts for all Dirigible perspectives -->
+			<div class="sidebar list-group" sidebar active="Guess my number"></div>
 
-		<!-- Main 'plane' view which holds the layout and will show our subviews -->
-		<div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
+			<!-- Main 'plane' view which holds the layout and will show our subviews -->
+			<div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
 
+			</div>
 		</div>
-	</div>
-	<!-- Alert dialog overlay -->
-	<div alert></div>
-	<!-- Bottom IDE status bar -->
-	<div class="statusbar" status-bar>{{message}}</div>
+		<!-- Alert dialog overlay -->
+		<div alert></div>
+		<!-- Bottom IDE status bar -->
+		<div class="statusbar" status-bar>{{message}}</div>
 
-</body>
+	</body>
 
 </html>

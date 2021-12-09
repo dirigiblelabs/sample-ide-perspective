@@ -9,10 +9,10 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var historyView = angular.module('history', []);
+let historyView = angular.module('history', []);
 
 historyView.factory('$messageHub', [function () {
-    var messageHub = new FramesMessageHub();
+    let messageHub = new FramesMessageHub();
     let announceAlert = function (title, message, type) {
         messageHub.post({
             data: {
@@ -34,10 +34,10 @@ historyView.factory('$messageHub', [function () {
     let announceAlertError = function (title, message) {
         announceAlert(title, message, "error");
     };
-    var message = function (evtName, data) {
+    let message = function (evtName, data) {
         messageHub.post({ data: data }, evtName);
     };
-    var on = function (topic, callback) {
+    let on = function (topic, callback) {
         messageHub.subscribe(callback, topic);
     };
     return {

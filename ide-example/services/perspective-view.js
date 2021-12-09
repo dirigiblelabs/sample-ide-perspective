@@ -10,11 +10,10 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 exports.getPerspective = function () {
-	var perspective = {
+	return {
 		"name": "Guess my number",
 		"link": "../ide-example/perspective.html", // Link to the section
 		"order": "1000", // Used to sort the tabs in the sidebar
 		"image": "gamepad" // Font awesome icon name
 	};
-	return perspective;
 }

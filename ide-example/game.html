@@ -10,63 +10,66 @@
   -->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Guess my number!</title>
+		<!-- Fake favicon to silent console errors and not waste a get request -->
+		<link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
 
-	<!-- jQuery -->
-    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-	<!-- AngularJS -->
-	<script src="/webjars/angularjs/1.8.2/angular.min.js"></script>
-    <script src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
+		<title>Guess my number!</title>
 
-	<!-- Twitter Bootstrap with Theme Support -->
-	<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
-    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- jQuery -->
+		<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+		<!-- AngularJS -->
+		<script src="/webjars/angularjs/1.8.2/angular.min.js"></script>
+		<script src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
 
-	<!-- MessageHub -->
-	<script src="/services/v4/web/ide-core/ui/message-hub.js"></script>
+		<!-- Twitter Bootstrap with Theme Support -->
+		<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
+		<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- Custom IDE Styles -->
-	<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
+		<!-- MessageHub -->
+		<script src="/services/v4/web/ide-core/ui/message-hub.js"></script>
 
-	<!-- Project-specific stuff -->
-	<script src="js/game.js"></script>
-	<script src="js/game-screen-one.js"></script>
-	<script src="js/game-screen-two.js"></script>
-	<script src="js/game-screen-three.js"></script>
-	<script src="js/game-screen-four.js"></script>
-	<link type="text/css" rel="stylesheet" href="css/game.css" />
+		<!-- Custom IDE Styles -->
+		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
 
-</head>
+		<!-- Project-specific stuff -->
+		<script src="js/game.js"></script>
+		<script src="js/game-screen-one.js"></script>
+		<script src="js/game-screen-two.js"></script>
+		<script src="js/game-screen-three.js"></script>
+		<script src="js/game-screen-four.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/game.css" />
 
-<body ng-app="game" ng-controller="GameViewController as gvc" class="view game-body">
+	</head>
 
-	<div class="page-title"><span>Guess my number!</span></div>
-	<div class="flex-container">
-		<div class="example-nav">
-			<div class="nav-progress">
-				<div class="nav-progress-line">
+	<body ng-app="game" ng-controller="GameViewController as gvc" class="view game-body">
+
+		<div class="page-title"><span>Guess my number!</span></div>
+		<div class="flex-container">
+			<div class="example-nav">
+				<div class="nav-progress">
+					<div class="nav-progress-line">
+					</div>
+					<div class="nav-item" ng-repeat="step in steps" ng-class="isStepActive(step.id)">
+						<div class="nav-item-indicator"></div>
+						<div class="nav-item-label">{{step.name}}</div>
+					</div>
 				</div>
-				<div class="nav-item" ng-repeat="step in steps" ng-class="isStepActive(step.id)">
-					<div class="nav-item-indicator"></div>
-					<div class="nav-item-label">{{step.name}}</div>
+			</div>
+			<div class="example-main">
+				<div class="steps-container">
+					<!-- Including our controller views -->
+					<div ng-include="'partials/game-screen-one.html'"></div>
+					<div ng-include="'partials/game-screen-two.html'"></div>
+					<div ng-include="'partials/game-screen-three.html'"></div>
+					<div ng-include="'partials/game-screen-four.html'"></div>
 				</div>
 			</div>
 		</div>
-		<div class="example-main">
-			<div class="steps-container">
-				<!-- Including our controller views -->
-				<div ng-include="'partials/game-screen-one.html'"></div>
-				<div ng-include="'partials/game-screen-two.html'"></div>
-				<div ng-include="'partials/game-screen-three.html'"></div>
-				<div ng-include="'partials/game-screen-four.html'"></div>
-			</div>
-		</div>
-	</div>
 
-</body>
+	</body>
 
 </html>

@@ -10,7 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 exports.getView = function () {
-	var view = {
+	return {
 		"id": "example-game",
 		"name": "Guess my number",
 		"factory": "frame",
@@ -18,5 +18,4 @@ exports.getView = function () {
 		"label": "Guess my number",
 		"link": "../ide-example/game.html"
 	};
-	return view;
 }

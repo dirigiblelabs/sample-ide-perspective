@@ -10,7 +10,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 exports.getMenu = function () {
-	var menu = {
+	return {
 		"name": "Example",
 		"order": "100",
 		"items": [
@@ -26,5 +26,4 @@ exports.getMenu = function () {
 			}
 		]
 	};
-	return menu;
 }

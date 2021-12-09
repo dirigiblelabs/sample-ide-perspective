@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-var examplePerspective = angular.module('example', ['ngResource', 'ideUiCore']);
+let examplePerspective = angular.module('example', ['ngResource', 'ideUiCore']);
 
 examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
     messageHubProvider.evtNamePrefix = 'example';

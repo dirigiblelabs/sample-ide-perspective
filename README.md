@@ -70,13 +70,12 @@ The JavaScript service file should look like this:
 // ide-example/services/perspective-view.js
 
 exports.getPerspective = function () {
-  var perspective = {
+  return {
     name: "Guess my number",
     link: "../ide-example/perspective.html",
     order: "1000",
     image: "gamepad",
   };
-  return perspective;
 };
 ```
 
@@ -104,7 +103,7 @@ The JavaScript service file should look like this:
 // ide-example/services/game-view.js
 
 exports.getView = function () {
-  var view = {
+  return {
     id: "example-game",
     name: "Guess my number",
     factory: "frame",
@@ -112,7 +111,6 @@ exports.getView = function () {
     label: "Guess my number",
     link: "../ide-example/game.html",
   };
-  return view;
 };
 ```
 
@@ -189,7 +187,7 @@ The JavaScript menu file should look like this:
 // ide-example/services/menu/example-menu.js
 
 exports.getMenu = function () {
-  var menu = {
+  return {
     name: "Example",
     link: "#",
     order: "100",
@@ -201,7 +199,6 @@ exports.getMenu = function () {
       },
     ],
   };
-  return menu;
 };
 ```
 
@@ -245,17 +242,12 @@ Example:
 ```html
 <html ng-app="example" ng-controller="ExampleViewController as evc">
   ...
-  <div
-    id="example"
-    class="plane"
-    views-layout
-    views-layout-model="evc.layoutModel"
-  ></div>
+  <div id="example" class="plane" views-layout views-layout-model="evc.layoutModel"></div>
 </html>
 ```
 
 ```javascript
-var examplePerspective = angular.module("example", ["ngResource", "ideUiCore"]);
+let examplePerspective = angular.module("example", ["ngResource", "ideUiCore"]);
 
 examplePerspective.controller("ExampleViewController", [
   "Layouts",
@@ -339,11 +331,11 @@ We can create event-specific functions that use the `post` and `subscribe` funct
 ```javascript
 someView.factory("$messageHub", [
   function () {
-    var messageHub = new FramesMessageHub();
-    var message = function (evtName, data) {
+    let messageHub = new FramesMessageHub();
+    let message = function (evtName, data) {
       messageHub.post({ data: data }, evtName);
     };
-    var on = function (topic, callback) {
+    let on = function (topic, callback) {
       messageHub.subscribe(callback, topic);
     };
     return {
@@ -357,11 +349,7 @@ someView.factory("$messageHub", [
 - Include it along with the scope of the controller
 
 ```javascript
-gameView.controller("GameViewController", [
-  "$scope",
-  "$messageHub",
-  function ($scope, $messageHub) {},
-]);
+gameView.controller("GameViewController", ["$scope", "$messageHub", function ($scope, $messageHub) {}]);
 ```
 
 - Trigger an event

@@ -15,9 +15,27 @@ exports.getMenu = function () {
 		"order": "100",
 		"items": [
 			{
-				"name": "GitHub page",
-				"link": "https://github.com/dirigiblelabs/sample-ide-perspective",
-				"order": "110"
+				"name": "Submenu",
+				"order": "110",
+				"items": [
+					{
+						"name": "GitHub page",
+						"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
+						"event": "open",
+						"order": "110"
+					},
+					{
+						"name": "Empty item with divider",
+						"link": "#",
+						"divider": true,
+						"order": "120"
+					},
+					{
+						"name": "Empty item",
+						"link": "#",
+						"order": "130"
+					}
+				]
 			},
 			{
 				"name": "About",

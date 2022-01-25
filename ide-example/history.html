@@ -25,24 +25,28 @@
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
 
-		<!-- Twitter Bootstrap with Theme Support -->
-		<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
-		<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Fundamental-styles -->
+		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.20.3/dist/fundamental-styles.css">
+		<theme></theme>
+
+		<!-- Dirigible styles -->
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/core.css" />
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/view.css" />
 
 		<!-- MessageHub -->
-		<script type="text/javascript" src="/services/v4/web/ide-core/ui/message-hub.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/core/message-hub.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/core/ide-message-hub.js"></script>
 
-		<!-- Custom IDE Styles -->
-		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
+		<!-- IDE Core UI -->
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/views.js"></script>
 
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/history.js"></script>
-		<link type="text/css" rel="stylesheet" href="css/history.css" />
 
 	</head>
 
 	<body ng-app="history" ng-controller="HistoryViewController" class="view history-body">
-		<table class="table">
+		<!-- <table class="table">
 			<tr>
 				<th class="big-header">Game</th>
 				<th>Your number</th>
@@ -51,7 +55,7 @@
 				<td>{{$index + 1}}</td>
 				<td>{{number}}</td>
 			</tr>
-		</table>
+		</table> -->
 	</body>
 
 </html>

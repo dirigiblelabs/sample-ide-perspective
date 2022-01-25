@@ -9,40 +9,59 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let examplePerspective = angular.module('example', ['ngResource', 'ideUiCore']);
+let examplePerspective = angular.module('example', ['ngResource', 'idePerspective', 'ideUI']);
 
 examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
-    messageHubProvider.evtNamePrefix = 'example';
-}]);
-
-// Initialize messageHub
-examplePerspective.factory('$messageHub', [function () {
-    let messageHub = new FramesMessageHub();
-    let message = function (evtName, data) {
-        messageHub.post({ data: data }, evtName);
-    };
-    let on = function (topic, callback) {
-        messageHub.subscribe(callback, topic);
-    };
-    return {
-        message: message,
-        on: on
-    };
+    messageHubProvider.eventIdPrefix = 'example';
 }]);
 
 // Initialize controller
-examplePerspective.controller('ExampleViewController', ['Layouts', function (Layouts) {
+examplePerspective.controller('ExampleViewController', ['$scope', 'messageHub', 'Layouts', function ($scope, messageHub) {
+    $scope.message = "Some message";
+    $scope.error = "Some error";
+    $scope.caret = "Line 79 : Column 80";
+    setTimeout(function () {
+        messageHub.postMessage(
+            "ide.statusMessage",
+            "This is good!",
+            true
+        );
+    }, 2000);
+    setTimeout(function () {
+        messageHub.announceAlertSuccess(
+            "Success",
+            "This is good!"
+        );
+    }, 4000);
+    // setTimeout(function () {
+    //     messageHub.announceAlertInfo(
+    //         "Information",
+    //         "Some inforamtion."
+    //     );
+    // }, 5000);
+    // setTimeout(function () {
+    //     messageHub.announceAlertWarning(
+    //         "Warning",
+    //         "You be careful!"
+    //     );
+    // }, 6000);
+    setTimeout(function () {
+        messageHub.announceAlertError(
+            "Error",
+            "Something goodn't happened."
+        );
+    }, 5000);
     this.layoutModel = {
         // Array of view ids
         views: ['example-game', 'example-history'],
         viewSettings: {
             'example-game': { isClosable: false },
-            'example-history': { isClosable: false }
+            'example-history': { isClosable: true },
         },
         layoutSettings: {
             hasHeaders: true,
-            showMaximiseIcon: false,
-            showCloseIcon: false
+            showMaximiseIcon: true,
+            showCloseIcon: true
         },
         events: {
             'example.alert.info': function (msg) {

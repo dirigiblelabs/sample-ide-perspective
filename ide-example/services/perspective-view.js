@@ -11,9 +11,10 @@
  */
 exports.getPerspective = function () {
 	return {
-		"name": "Guess my number",
-		"link": "../ide-example/perspective.html", // Link to the section
+		"id": "guess-my-number", // ID used for sidebar indication and layout settings
+		"name": "Guess my number", // User-facing name
+		"link": "../ide-example/perspective.html", // Link to the main perspective view
 		"order": "1000", // Used to sort the tabs in the sidebar
-		"image": "gamepad" // Font awesome icon name
+		"icon": "../ide-example/images/sample.svg", // The svg icon shown in the sidebar
 	};
 }

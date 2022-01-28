@@ -9,54 +9,73 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let examplePerspective = angular.module('example', ['ngResource', 'idePerspective', 'ideUI']);
+let examplePerspective = angular.module("example", ["ngResource", "idePerspective", "ideUI"]);
 
 examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
     messageHubProvider.eventIdPrefix = 'example';
 }]);
 
 // Initialize controller
-examplePerspective.controller('ExampleViewController', ['$scope', 'messageHub', 'Layouts', function ($scope, messageHub) {
-    $scope.message = "Some message";
-    $scope.error = "Some error";
-    $scope.caret = "Line 79 : Column 80";
+examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", "Layouts", function ($scope, messageHub) {
+    // setTimeout(function () {
+    //     messageHub.announceAlertSuccess(
+    //         "Success",
+    //         "This is good!"
+    //     );
+    // }, 2000);
+
+    // setTimeout(function () {
+    //     messageHub.showDialog(
+    //         "Dialog example",
+    //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
+    //         "Ok",
+    //         "Cancel",
+    //         "example.dialog.test"
+    //     );
+    // }, 2000);
+
     setTimeout(function () {
-        messageHub.postMessage(
-            "ide.statusMessage",
-            "This is good!",
-            true
+        messageHub.showSelectDialog(
+            "Select dialog example",
+            [{ id: "opt1", text: "Option 1" }, { id: "opt2", text: "Option 2" }, { id: "opt3", text: "Option 3" }],
+            "example.selectDialog.test"
         );
     }, 2000);
-    setTimeout(function () {
-        messageHub.announceAlertSuccess(
-            "Success",
-            "This is good!"
-        );
-    }, 4000);
-    // setTimeout(function () {
-    //     messageHub.announceAlertInfo(
-    //         "Information",
-    //         "Some inforamtion."
-    //     );
-    // }, 5000);
-    // setTimeout(function () {
-    //     messageHub.announceAlertWarning(
-    //         "Warning",
-    //         "You be careful!"
-    //     );
-    // }, 6000);
-    setTimeout(function () {
-        messageHub.announceAlertError(
-            "Error",
-            "Something goodn't happened."
-        );
-    }, 5000);
+
+    messageHub.onDidReceiveMessage(
+        "example.dialog.test",
+        function (data) {
+            if (data.data === "main") {
+                messageHub.setStatusMessage('User clicked on the "Ok" dialog button.');
+            } else {
+                messageHub.setStatusError('User clicked on the "Cancel" dialog button.');
+            }
+        },
+        true
+    );
+
+    messageHub.onDidReceiveMessage(
+        "example.selectDialog.test",
+        function (data) {
+            if (data.data.selected.length > 0)
+                messageHub.announceAlertInfo(
+                    "You have selected the following items",
+                    data.data.selected.join(', ')
+                );
+            else messageHub.announceAlertWarning(
+                "Nothing is selected",
+                "If you don't select anything, you are not going to get anything."
+            );
+        },
+        true
+    );
+
     this.layoutModel = {
         // Array of view ids
-        views: ['example-game', 'example-history'],
+        views: ["example-game", "example-history"],
         viewSettings: {
-            'example-game': { isClosable: false },
-            'example-history': { isClosable: true },
+            "example-game": { isClosable: false },
+            "example-history": { isClosable: true },
         },
         layoutSettings: {
             hasHeaders: true,
@@ -64,7 +83,7 @@ examplePerspective.controller('ExampleViewController', ['$scope', 'messageHub', 
             showCloseIcon: true
         },
         events: {
-            'example.alert.info': function (msg) {
+            "example.alert.info": function (msg) {
                 console.info(msg.data.message);
             }
         }

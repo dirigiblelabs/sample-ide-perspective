@@ -9,22 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let gameView = angular.module('game', []);
-
-// Initialize messageHub
-gameView.factory('$messageHub', [function () {
-    let messageHub = new FramesMessageHub();
-    let message = function (evtName, data) {
-        messageHub.post({ data: data }, evtName);
-    };
-    let on = function (topic, callback) {
-        messageHub.subscribe(callback, topic);
-    };
-    return {
-        message: message,
-        on: on
-    };
-}]);
+let gameView = angular.module('game', ['ideUI']);
 
 // Initialize controller
 gameView.controller('GameViewController', ['$scope', function ($scope) {

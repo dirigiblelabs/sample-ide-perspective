@@ -38,9 +38,73 @@ exports.getMenu = function () {
 				]
 			},
 			{
+				"name": "Submenu",
+				"order": "120",
+				"items": [
+					{
+						"name": "GitHub page",
+						"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
+						"event": "open",
+						"order": "110"
+					},
+					{
+						"name": "Empty item with divider",
+						"link": "#",
+						"divider": true,
+						"order": "120"
+					},
+					{
+						"name": "Empty item",
+						"order": "130",
+						"items": [
+							{
+								"name": "GitHub page",
+								"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
+								"event": "open",
+								"order": "110"
+							},
+							{
+								"name": "Empty item with divider",
+								"link": "#",
+								"divider": true,
+								"order": "120"
+							},
+							{
+								"name": "Empty item",
+								"link": "#",
+								"order": "130"
+							}
+						]
+					},
+					{
+						"name": "Empty item 2",
+						"order": "140",
+						"items": [
+							{
+								"name": "GitHub page",
+								"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
+								"event": "open",
+								"order": "110"
+							},
+							{
+								"name": "Empty item with divider",
+								"link": "#",
+								"divider": true,
+								"order": "120"
+							},
+							{
+								"name": "Empty item",
+								"link": "#",
+								"order": "130"
+							}
+						]
+					}
+				]
+			},
+			{
 				"name": "About",
 				"link": "#",
-				"order": "120"
+				"order": "130"
 			}
 		]
 	};

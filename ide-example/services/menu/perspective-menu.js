@@ -103,7 +103,8 @@ exports.getMenu = function () {
 			},
 			{
 				"name": "About",
-				"link": "#",
+				"event": "openDialogWindow",
+				"dialogId": "about",
 				"order": "130"
 			}
 		]

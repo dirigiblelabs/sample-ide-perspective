@@ -16,7 +16,7 @@ examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
 }]);
 
 // Initialize controller
-examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", "Layouts", function ($scope, messageHub) {
+examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", "Layouts", function ($scope, messageHub, Layouts) {
     // setTimeout(function () {
     //     messageHub.announceAlertSuccess(
     //         "Success",
@@ -28,27 +28,69 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     messageHub.showDialog(
     //         "Dialog example",
     //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
-    //         "Ok",
-    //         "Cancel",
+    //         [{
+    //             id: "b1",
+    //             type: "emphasized",
+    //             label: "Ok",
+    //         },
+    //         {
+    //             id: "b2",
+    //             type: "transparent",
+    //             label: "Cancel",
+    //         },
+    //         {
+    //             id: "b3",
+    //             type: "normal",
+    //             label: "Undecided",
+    //         }],
     //         "example.dialog.test"
     //     );
     // }, 2000);
 
-    setTimeout(function () {
-        messageHub.showSelectDialog(
-            "Select dialog example",
-            [{ id: "opt1", text: "Option 1" }, { id: "opt2", text: "Option 2" }, { id: "opt3", text: "Option 3" }],
-            "example.selectDialog.test"
-        );
-    }, 2000);
+    // setTimeout(function () {
+    //     messageHub.showDialog(
+    //         "Dialog example",
+    //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
+    //         [{
+    //             id: "b1",
+    //             type: "normal",
+    //             label: "Ok",
+    //         }],
+    //         "example.dialog.test"
+    //     );
+    // }, 2000);
+
+    // setTimeout(function () {
+    //     messageHub.showSelectDialog(
+    //         "Select dialog example",
+    //         [
+    //             { id: "opt1", text: "Option 1" },
+    //             { id: "opt2", text: "Option 2" },
+    //             { id: "opt3", text: "Option 3" }
+    //         ],
+    //         "example.selectDialog.test",
+    //         true,
+    //         false
+    //     );
+    // }, 2000);
+
+    // setTimeout(function () {
+    //     messageHub.showDialogWindow(
+    //         "about",
+    //         '{"test": "testing"}'
+    //     );
+    // }, 1000);
 
     messageHub.onDidReceiveMessage(
         "example.dialog.test",
         function (data) {
-            if (data.data === "main") {
+            if (data.data === "b1") {
                 messageHub.setStatusMessage('User clicked on the "Ok" dialog button.');
-            } else {
+            } else if (data.data === "b2") {
                 messageHub.setStatusError('User clicked on the "Cancel" dialog button.');
+            } else {
+                messageHub.setStatusMessage('You get a message here.');
+                messageHub.setStatusError('And an error here.');
             }
         },
         true
@@ -57,7 +99,13 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     messageHub.onDidReceiveMessage(
         "example.selectDialog.test",
         function (data) {
-            if (data.data.selected.length > 0)
+            if (!Array.isArray(data.data.selected)) {
+                messageHub.announceAlertInfo(
+                    "Item selected",
+                    "Item ID: " + data.data.selected
+                );
+            }
+            else if (data.data.selected.length > 0)
                 messageHub.announceAlertInfo(
                     "You have selected the following items",
                     data.data.selected.join(', ')

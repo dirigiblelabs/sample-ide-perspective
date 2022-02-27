@@ -14,7 +14,7 @@ exports.getView = function () {
 		"id": "example-game",
 		"name": "Guess my number",
 		"factory": "frame",
-		"region": "center",
+		"region": "center-bottom",
 		"label": "Guess my number",
 		"link": "../ide-example/game.html"
 	};

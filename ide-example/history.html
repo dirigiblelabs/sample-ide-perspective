@@ -17,16 +17,14 @@
 		<!-- Fake favicon to silent console errors and not waste a get request -->
 		<link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
 
-		<title>History</title>
-
 		<!-- jQuery -->
-		<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 		<!-- AngularJS -->
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
 
 		<!-- Fundamental-styles -->
-		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.20.3/dist/fundamental-styles.css">
+		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.21.1/dist/fundamental-styles.css">
 		<theme></theme>
 
 		<!-- Dirigible styles -->
@@ -40,22 +38,284 @@
 		<!-- IDE Core UI -->
 		<script type="text/javascript" src="/services/v4/web/ide-core/ui/views.js"></script>
 
+		<!-- JSTree -->
+		<script type="text/javascript" src="/webjars/jstree/3.3.12/jstree.min.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/widgets/indicator.plugin.js"></script>
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/jstree.css" />
+
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/history.js"></script>
 
 	</head>
 
 	<body ng-app="history" ng-controller="HistoryViewController" class="view history-body">
-		<!-- <table class="table">
-			<tr>
-				<th class="big-header">Game</th>
-				<th>Your number</th>
-			</tr>
-			<tr ng-repeat="number in history track by $index">
-				<td>{{$index + 1}}</td>
-				<td>{{number}}</td>
-			</tr>
-		</table> -->
+		<div style="display: flex;flex-direction: column;height:100%">
+			<!-- <button class="fd-button fd-button--emphasized" onClick="window.location.reload();"
+				style="margin: 6px;">Reload view</button> -->
+			<button class="fd-button fd-button--emphasized" onClick="addNode()" style="margin: 6px;">Add node</button>
+			<input class="fd-input" type="text" id="treeSearch" onkeyup="search()" placeholder="Search tree">
+			<br>
+			<div id="jstree_demo" class="jstree-fiori--fill jstree-fiori--context-menu"></div>
+		</div>
+		<script>
+			let data = [
+				{
+					text: "Project 2",
+					type: "gitProject",
+					children: [
+						{
+							text: "File 4",
+							type: "file"
+						},
+						{
+							text: "Folder 2",
+							type: "folder",
+							children: [
+								{
+									text: "Folder 10",
+									type: "folder",
+									children: [
+										{
+											text: "File 6",
+											type: "file",
+										},
+										{
+											text: "File 50",
+											type: "file",
+										},
+									]
+								},
+								{
+									text: "File 6",
+									type: "file",
+								},
+								{
+									text: "File 5",
+									type: "file",
+								},
+								{
+									text: "Folder 3",
+									type: "folder",
+									children: [
+										{
+											text: "File",
+											type: "file",
+										},
+										{
+											text: "Another File",
+											type: "file",
+										},
+										{
+											text: "Yet Another File",
+											type: "file",
+										},
+									]
+								}
+							],
+						},
+					],
+				},
+			];
+
+			function addNode() {
+				$('#jstree_demo').jstree(true).create_node(
+					'j1_4',
+					{
+						text: "New File",
+						state: { added: true },
+						type: "file"
+					},
+					"last"
+				);
+			}
+
+			let to = false;
+			function search() {
+				if (to) { clearTimeout(to); }
+				to = setTimeout(function () {
+					$('#jstree_demo').jstree(true).search($('#treeSearch').val());
+				}, 250);
+			}
+			$('#jstree_demo').jstree({
+				core: {
+					check_callback: true,
+					themes: {
+						name: "fiori",
+						variant: "compact",
+					},
+					// data: setParentStatus(data),
+					data: data,
+				},
+				plugins: ["contextmenu", "wholerow", "dnd", "search", "state", "types", "indicator"],
+				// plugins: ["contextmenu", "wholerow", "dnd", "search", "state", "indicator", "checkbox"],
+				state: { "dgNext": "demo2" },
+				types: {
+					"default": {
+						icon: "sap-icon--question-mark"
+					},
+					file: {
+						icon: "jstree-file"
+					},
+					folder: {
+						icon: "jstree-folder"
+					},
+					project: {
+						icon: "sap-icon--folder"
+					},
+					gitProject: {
+						icon: "jstree-git"
+					}
+				},
+				contextmenu: {
+                	items: {
+						"create": {
+							"separator_before": false,
+							"separator_after": true,
+							"_disabled": false,
+							"label": "New",
+							"icon": "sap-icon--write-new-document",
+							"submenu": {
+								"create_folder": {
+									"label": "Folder",
+									"icon" : "sap-icon--folder-blank",
+								},
+								"create_file": {
+									"separator_after": true,
+									"label": "File",
+									"icon" : "sap-icon--file"
+								},
+								"javascript": {
+									"separator_after": false,
+									"label": "Javascript CJS Service",
+									"icon" : "sap-icon--source-code"
+								},
+								"javascript-esm": {
+									"separator_after": false,
+									"label": "Javascript ESM Service",
+									"icon" : "sap-icon--source-code"
+								},
+								"edm": {
+									"separator_after": false,
+									"label": "Entity Data Model"
+								},
+								"bpmn": {
+									"separator_after": true,
+									"label": "Business Process Model"
+								},
+								"access": {
+									"label": "Access Constraints"
+								},
+								"cvsim": {
+									"label": "CSVIM file"
+								},
+								"schema": {
+									"label": "Database Schema Model"
+								},
+								"database-table": {
+									"label": "Database Table"
+								},
+								"database-view": {
+									"label": "Database View"
+								},
+								"extension": {
+									"label": "Extension"
+								},
+								"extensionpoint": {
+									"label": "Extension Point"
+								},
+								"form": {
+									"label": "Form Definition"
+								},
+								"html": {
+									"label": "HTML5 Page"
+								},
+								"listener": {
+									"label": "Message Listener"
+								},
+								"roles": {
+									"label": "Roles Definitions"
+								},
+								"job": {
+									"label": "Scheduled Job"
+								},
+								"websocket": {
+									"label": "Websocket"
+								}
+							}
+						},
+						"copy": {
+							"separator_before": true,
+							"label": "Copy",
+							"icon" : "sap-icon--copy"
+						},
+						"paste": {
+							"_disabled": true,
+							"separator_before": false,
+							"label": "Paste",
+							"icon" : "sap-icon--paste"
+						},
+						"rename": {
+							"separator_before": true,
+							"separator_after": false,
+							"_disabled": false,
+							"label": "Rename",
+							"shortcut": 113,
+							"shortcut_label": "F2",
+							"icon" : "sap-icon--edit"
+						},
+						"remove": {
+							"separator_before": false,
+							"icon": false,
+							"separator_after": false,
+							"_disabled": false,
+							"label": "Delete",
+							"shortcut": 46,
+							"shortcut_label": "Del",
+							"icon" : "sap-icon--delete"
+						},
+						"publish": {
+							"separator_before": true,
+							"label": "Publish",
+							"icon" : "sap-icon--arrow-top"
+						},
+						"unpublish": {
+							"separator_before": false,
+							"label": "Unpublish",
+							"icon" : "sap-icon--arrow-bottom"
+						},
+						"generate": {
+							"separator_before": true,
+							"label": "Generate",
+							"icon" : "sap-icon--generate-shortcut"
+						},
+						"upload": {
+							"separator_before": true,
+							"label": "Upload",
+							"icon" : "sap-icon--upload-to-cloud"
+						},
+						"exportProject": {
+							"separator_before": true,
+							"label": "Export",
+							"icon" : "sap-icon--download-from-cloud"
+						}
+					}
+				}
+			}).on('contextmenu', function (evt) {
+				if (evt.target === evt.delegateTarget) {
+					let inst = $.jstree.reference(evt.target);
+					if (inst) {
+						evt.preventDefault();
+						$.vakata.context.show(evt.target, { 'x': evt.pageX, 'y': evt.pageY }, {
+							"paste": {
+								"label": "Paste",
+								"icon" : "sap-icon--paste"
+							}
+						});
+						return false;
+					}
+				}
+			}.bind(this));
+		</script>
 	</body>
 
 </html>

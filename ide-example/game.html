@@ -17,16 +17,14 @@
 		<!-- Fake favicon to silent console errors and not waste a get request -->
 		<link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
 
-		<title>Guess my number!</title>
-
 		<!-- jQuery -->
-		<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 		<!-- AngularJS -->
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
 
 		<!-- Fundamental-styles -->
-		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.20.3/dist/fundamental-styles.css">
+		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.21.1/dist/fundamental-styles.css">
 		<theme></theme>
 
 		<!-- Dirigible styles -->
@@ -50,7 +48,12 @@
 	</head>
 
 	<body ng-app="game" ng-controller="GameViewController as gvc" class="view game-body">
-
+		<div class="fddocs-container">
+			<span class="fd-info-label fd-info-label--accent-color-1 fd-info-label--icon">
+				<i role="presentation" class="fd-info-label__icon sap-icon--status-in-progress"></i>
+				<span class="fd-info-label__text">Nothing to see here yet</span>
+			</span>
+		</div>
 	</body>
 
 </html>

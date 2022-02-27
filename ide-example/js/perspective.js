@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let examplePerspective = angular.module("example", ["ngResource", "idePerspective", "ideUI"]);
+let examplePerspective = angular.module("example", ["ngResource", "layout", "ideUI"]);
 
 examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
     messageHubProvider.eventIdPrefix = 'example';
@@ -69,54 +69,60 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //             { id: "opt3", text: "Option 3" }
     //         ],
     //         "example.selectDialog.test",
-    //         true,
-    //         false
+    //         false,
+    //         true
     //     );
     // }, 2000);
 
     // setTimeout(function () {
     //     messageHub.showDialogWindow(
     //         "about",
-    //         '{"test": "testing"}'
+    //         JSON.stringify(
+    //             {
+    //                 file: "&/workspace/ide-about/project.json",
+    //                 contentType: "application/json",
+    //                 gitName: "ide-about"
+    //             }
+    //         )
     //     );
     // }, 1000);
 
-    messageHub.onDidReceiveMessage(
-        "example.dialog.test",
-        function (data) {
-            if (data.data === "b1") {
-                messageHub.setStatusMessage('User clicked on the "Ok" dialog button.');
-            } else if (data.data === "b2") {
-                messageHub.setStatusError('User clicked on the "Cancel" dialog button.');
-            } else {
-                messageHub.setStatusMessage('You get a message here.');
-                messageHub.setStatusError('And an error here.');
-            }
-        },
-        true
-    );
+    // messageHub.onDidReceiveMessage(
+    //     "example.dialog.test",
+    //     function (data) {
+    //         if (data.data === "b1") {
+    //             messageHub.setStatusMessage('User clicked on the "Ok" dialog button.');
+    //         } else if (data.data === "b2") {
+    //             messageHub.setStatusError('User clicked on the "Cancel" dialog button.');
+    //         } else {
+    //             messageHub.setStatusMessage('You get a message here.');
+    //             messageHub.setStatusError('And an error here.');
+    //         }
+    //     },
+    //     true
+    // );
 
-    messageHub.onDidReceiveMessage(
-        "example.selectDialog.test",
-        function (data) {
-            if (!Array.isArray(data.data.selected)) {
-                messageHub.announceAlertInfo(
-                    "Item selected",
-                    "Item ID: " + data.data.selected
-                );
-            }
-            else if (data.data.selected.length > 0)
-                messageHub.announceAlertInfo(
-                    "You have selected the following items",
-                    data.data.selected.join(', ')
-                );
-            else messageHub.announceAlertWarning(
-                "Nothing is selected",
-                "If you don't select anything, you are not going to get anything."
-            );
-        },
-        true
-    );
+    // messageHub.onDidReceiveMessage(
+    //     "example.selectDialog.test",
+    //     function (data) {
+    //         if (!Array.isArray(data.data.selected)) {
+    //             messageHub.announceAlertInfo(
+    //                 "Item selected",
+    //                 "Item ID: " + data.data.selected
+    //             );
+    //         }
+    //         else if (data.data.selected.length > 0)
+    //             messageHub.announceAlertInfo(
+    //                 "You have selected the following items",
+    //                 data.data.selected.join(', ')
+    //             );
+    //         else messageHub.announceAlertWarning(
+    //             "Nothing is selected",
+    //             "If you don't select anything, you are not going to get anything."
+    //         );
+    //     },
+    //     true
+    // );
 
     this.layoutModel = {
         // Array of view ids
@@ -126,9 +132,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             "example-history": { isClosable: true },
         },
         layoutSettings: {
-            hasHeaders: true,
-            showMaximiseIcon: true,
-            showCloseIcon: true
+            hideEditorsPane: false
         },
         events: {
             "example.alert.info": function (msg) {

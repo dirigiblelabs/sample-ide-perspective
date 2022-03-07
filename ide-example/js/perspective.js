@@ -124,6 +124,31 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     true
     // );
 
+    $scope.contextMenuContent = function (element) {
+        return {
+            topic: "example.game.contextmenu",
+            items: [
+                {
+                    id: "new",
+                    label: "New",
+                    icon: "sap-icon--create",
+                    items: [
+                        {
+                            id: "tab",
+                            label: "Tab"
+                        },
+                    ]
+                },
+                {
+                    id: "other",
+                    label: "Other",
+                    divider: true,
+                    icon: "sap-icon--question-mark"
+                }
+            ]
+        }
+    };
+
     this.layoutModel = {
         // Array of view ids
         views: ["example-game", "example-history"],

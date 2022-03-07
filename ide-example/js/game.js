@@ -13,6 +13,63 @@ let gameView = angular.module('game', ['ideUI']);
 
 // Initialize controller
 gameView.controller('GameViewController', ['$scope', function ($scope) {
+
+    $scope.contextMenuContent = function (element) {
+        return {
+            topic: "example.game.contextmenu",
+            items: [
+                {
+                    id: "new",
+                    label: "New",
+                    icon: "sap-icon--create",
+                    items: [
+                        {
+                            id: "file",
+                            label: "File",
+                            icon: "sap-icon--document"
+                        },
+                        {
+                            id: "folder",
+                            label: "Folder",
+                            icon: "sap-icon--folder-blank",
+                            items: [
+                                {
+                                    id: "file1",
+                                    label: "File",
+                                    icon: "sap-icon--document"
+                                },
+                                {
+                                    id: "folder1",
+                                    label: "Folder",
+                                    icon: "sap-icon--folder-blank"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "copy",
+                    label: "Copy",
+                    shortcut: "Ctrl+C",
+                    divider: true,
+                    icon: "sap-icon--copy"
+                },
+                {
+                    id: "paste",
+                    label: "Paste",
+                    shortcut: "Ctrl+V",
+                    icon: "sap-icon--paste"
+                },
+                {
+                    id: "other",
+                    label: "Other",
+                    divider: true,
+                    icon: "sap-icon--question-mark"
+                }
+            ]
+        }
+    };
+
     $scope.steps = [
         { id: 1, name: "Choose a number", topicId: "example.game.screeen.one" },
         { id: 2, name: "Enter random numbers", topicId: "example.game.screeen.two" },

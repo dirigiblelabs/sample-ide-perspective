@@ -126,7 +126,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
 
     $scope.contextMenuContent = function (element) {
         return {
-            topic: "example.game.contextmenu",
+            callbackTopic: "example.contextmenu",
             items: [
                 {
                     id: "new",
@@ -148,6 +148,23 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             ]
         }
     };
+
+    messageHub.onDidReceiveMessage(
+        "contextmenu",
+        function (msg) {
+            if (msg.data == "other") {
+                messageHub.announceAlertSuccess(
+                    "Success",
+                    "You have selected the other option!"
+                );
+            } else {
+                messageHub.announceAlertInfo(
+                    "Nothing will happen",
+                    "This is just a demo after all."
+                );
+            }
+        }
+    );
 
     this.layoutModel = {
         // Array of view ids

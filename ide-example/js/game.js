@@ -11,12 +11,16 @@
  */
 let gameView = angular.module('game', ['ideUI']);
 
+gameView.config(["messageHubProvider", function (messageHubProvider) {
+    messageHubProvider.eventIdPrefix = 'example';
+}]);
+
 // Initialize controller
-gameView.controller('GameViewController', ['$scope', function ($scope) {
+gameView.controller('GameViewController', ['$scope', 'messageHub', function ($scope, messageHub) {
 
     $scope.contextMenuContent = function (element) {
         return {
-            topic: "example.game.contextmenu",
+            callbackTopic: "example.game.contextmenu",
             items: [
                 {
                     id: "new",
@@ -77,6 +81,16 @@ gameView.controller('GameViewController', ['$scope', function ($scope) {
         { id: 4, name: "Finish game", topicId: "example.game.screeen.four" },
     ];
     $scope.currentStep = $scope.steps[0];
+
+    messageHub.onDidReceiveMessage(
+        "game.contextmenu",
+        function (msg) {
+            messageHub.announceAlertInfo(
+                "Context menu item selected",
+                `You have selected a menu item with the following id - ${msg.data}`
+            );
+        }
+    );
 
     $scope.setStep = function (topicId) {
         for (let i = 0; i < $scope.steps.length; i++) {

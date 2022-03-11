@@ -52,6 +52,35 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
                     ]
                 },
                 {
+                    id: "new1",
+                    label: "New",
+                    icon: "sap-icon--create",
+                    items: [
+                        {
+                            id: "file1",
+                            label: "File",
+                            icon: "sap-icon--document"
+                        },
+                        {
+                            id: "folder1",
+                            label: "Folder",
+                            icon: "sap-icon--folder-blank",
+                            items: [
+                                {
+                                    id: "file2",
+                                    label: "File",
+                                    icon: "sap-icon--document"
+                                },
+                                {
+                                    id: "folder2",
+                                    label: "Folder",
+                                    icon: "sap-icon--folder-blank"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     id: "copy",
                     label: "Copy",
                     shortcut: "Ctrl+C",

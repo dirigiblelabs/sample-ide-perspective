@@ -22,9 +22,10 @@
 		<!-- AngularJS -->
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
+		<script type="text/javascript" src="/webjars/angular-aria/1.8.2/angular-aria.min.js"></script>
 
 		<!-- Fundamental-styles -->
-		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.22.0/dist/fundamental-styles.css">
+		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.23.0/dist/fundamental-styles.css">
 		<theme></theme>
 
 		<!-- Dirigible styles -->
@@ -48,12 +49,116 @@
 	</head>
 
 	<body class="view game-body" dg-contextmenu="contextMenuContent">
-		<div class="fddocs-container">
-			<span class="fd-info-label fd-info-label--accent-color-1 fd-info-label--icon">
-				<i role="presentation" class="fd-info-label__icon sap-icon--status-in-progress"></i>
-				<span class="fd-info-label__text">Nothing to see here yet</span>
-			</span>
-		</div>
+		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
+			view</button>
+		<fd-button fd-label="Change state" ng-click="state()"></fd-button>
+
+		<fd-button fd-label="{{ btnText }}" badge="121" compact="true" glyph="sap-icon--folder" state="{{ btnState }}"
+			fd-aria-desc="Just testing stuff" fd-type="{{ btnType }}" ng-click="test()">
+		</fd-button>
+
+		<fd-button fd-label="Selection menu" is-menu="true" fd-aria-desc="An ordinary description of a button.">
+		</fd-button>
+
+		<fd-button glyph="sap-icon--folder" aria-label="Folder" ng-click="setTristate()">
+		</fd-button>
+
+		<fd-segmented-button aria-label="Test group">
+			<fd-button fd-label="Left" state="{{ segmentedModel == 'left' ? 'selected' : '' }}"
+				ng-click="segmentedClick('left')">
+			</fd-button>
+			<fd-button fd-label="Middle" state="{{ segmentedModel == 'middle' ? 'selected' : '' }}"
+				ng-click="segmentedClick('middle')">
+			</fd-button>
+			<fd-button fd-label="Right" state="{{ segmentedModel == 'right' ? 'selected' : '' }}"
+				ng-click="segmentedClick('right')">
+			</fd-button>
+		</fd-segmented-button>
+
+		<fd-split-button main-action="{{ splitButtonAction }}" fd-type="emphasized" aria-label="button-split"
+			callback="splitButtonClick">
+			<fd-menu>
+				<fd-menu-item title="Split item" ng-click="splitItemClick('Split item')"></fd-menu-item>
+				<fd-menu-item title="Split item 2" ng-click="splitItemClick('Split item 2')"></fd-menu-item>
+				<fd-menu-item title="Split item 3" ng-click="splitItemClick('Split item 3')"></fd-menu-item>
+			</fd-menu>
+		</fd-split-button>
+
+		<fd-popover compact="true" fd-align="right">
+			<fd-popover-control>
+				<fd-button fd-label="test">
+				</fd-button>
+			</fd-popover-control>
+			<fd-popover-body fd-align="right">
+				<fd-menu>
+					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-separator></fd-menu-separator>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+				</fd-menu>
+			</fd-popover-body>
+		</fd-popover>
+
+		<fd-avatar glyph="sap-icon--account" fd-placeholder="true" circle="true" fd-border="true" aria-label="avatar"
+			zoom-icon="sap-icon--edit" zoom-label="edit">
+		</fd-avatar>
+
+		<fd-avatar image="http://picsum.photos/id/1018/400" fd-size="s" fd-placeholder="true" circle="true"
+			fd-border="true" aria-label="avatar" zoom-icon="sap-icon--edit" zoom-label="edit">
+		</fd-avatar>
+
+		<fd-busy-indicator fd-size="l"></fd-busy-indicator>
+
+		<fd-fieldset>
+			<fd-form-group fd-header="Input group header">
+				<fd-form-item>
+					<fd-checkbox id="cbid" compact="false" fd-checked="true" state="warning" fd-required="true"
+						ng-model="fdCheckboxModel">
+					</fd-checkbox>
+					<fd-checkbox-label for="cbid" fd-required="true">Checkbox</fd-checkbox-label>
+				</fd-form-item>
+				<fd-form-item horizontal="true">
+					<fd-form-label for="iid" fd-required="true" fd-colon="true">Plain text</fd-form-label>
+					<fd-input id="iid" type="text" placeholder="Enter text here"></fd-input>
+				</fd-form-item>
+				<fd-form-item>
+					<fd-form-label for="iid2">Date</fd-form-label>
+					<fd-input id="iid2" type="date"></fd-input>
+				</fd-form-item>
+				<fd-form-item>
+					<fd-radio id="rid" ng-model="fdRadioModel"></fd-radio>
+					<fd-radio-label for="rid">Radio</fd-radio-label>
+				</fd-form-item>
+				<fd-form-item>
+					<fd-form-label for="taid">Textarea</fd-form-label>
+					<fd-textarea id="taid" state="warning">Some text</fd-textarea>
+				</fd-form-item>
+				<fd-form-item>
+					<fd-form-label for="igid">Input group with buttons and icons</fd-form-label>
+					<fd-input-group>
+						<fd-input-group-addon has-button="true">
+							<fd-button fd-label="Action" in-group="true"></fd-button>
+						</fd-input-group-addon>
+						<fd-input id="igid" type="text" in-group="true" placeholder="Text here"></fd-input>
+						<fd-input-group-addon>
+							<span class="sap-icon--hide" role="presentation"></span>
+						</fd-input-group-addon>
+					</fd-input-group>
+				</fd-form-item>
+				<fd-form-item>
+					<fd-form-label for="fimg">input error with message</fd-form-label>
+					<fd-form-input-message-group>
+						<fd-input id="fimg" type="text" state="error" value="some wrong value"></fd-input>
+						<fd-form-message fd-type="error">Something is very wrong here.</fd-form-message>
+					</fd-form-input-message-group>
+				</fd-form-item>
+			</fd-form-group>
+		</fd-fieldset>
+
 	</body>
 
 </html>

@@ -18,6 +18,42 @@ gameView.config(["messageHubProvider", function (messageHubProvider) {
 // Initialize controller
 gameView.controller('GameViewController', ['$scope', 'messageHub', function ($scope, messageHub) {
 
+    $scope.btnText = "State button";
+    $scope.btnType = "positive";
+    $scope.btnState = "disabled-focusable";
+
+    $scope.splitButtonAction = "Default";
+    $scope.segmentedModel = "middle";
+    $scope.fdCheckboxModel = true;
+    $scope.fdRadioModel = false;
+    $scope.tristate = false;
+
+    $scope.setTristate = function () {
+        $scope.tristate = true;
+    };
+
+    $scope.splitItemClick = function (selected) {
+        $scope.splitButtonAction = selected;
+    };
+
+    $scope.splitButtonClick = function () {
+        messageHub.announceAlertInfo(
+            "Split button clicked",
+            'You have clicked on the main action button.'
+        );
+    };
+
+    $scope.popoverItemClick = function () {
+        messageHub.announceAlertInfo(
+            "Popover item selected",
+            'You have selected a popover item.'
+        );
+    }
+
+    $scope.segmentedClick = function (item) {
+        $scope.segmentedModel = item;
+    };
+
     $scope.contextMenuContent = function (element) {
         return {
             callbackTopic: "example.game.contextmenu",
@@ -101,6 +137,19 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
                 }
             ]
         }
+    };
+
+    $scope.test = function () {
+        $scope.btnText = "test";
+        $scope.btnType = "attention";
+    };
+
+    $scope.state = function () {
+        if ($scope.btnState === "disabled-focusable")
+            $scope.btnState = 'selected';
+        else if ($scope.btnState === "selected")
+            $scope.btnState = '';
+        else $scope.btnState = "disabled-focusable";
     };
 
     $scope.steps = [

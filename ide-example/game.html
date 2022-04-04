@@ -30,14 +30,14 @@
 
 		<!-- Dirigible styles -->
 		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/core.css" />
-		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/view.css" />
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/widgets.css" />
 
 		<!-- MessageHub -->
 		<script type="text/javascript" src="/services/v4/web/ide-core/core/message-hub.js"></script>
 		<script type="text/javascript" src="/services/v4/web/ide-core/core/ide-message-hub.js"></script>
 
 		<!-- IDE Core UI -->
-		<script type="text/javascript" src="/services/v4/web/ide-core/ui/views.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/widgets.js"></script>
 
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/game.js"></script>
@@ -159,6 +159,201 @@
 			</fd-form-group>
 		</fd-fieldset>
 
+		<table fd-table display-mode="compact" style="margin-top: 20px">
+			<caption fd-table-caption>
+				Inventory Status. Use arrow keys to navigate between cells.
+			</caption>
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell content-type="checkbox">
+						<fd-checkbox compact="true" id="cbid0"></fd-checkbox>
+						<fd-checkbox-label empty="true" compact="true" for="cbid0"></fd-checkbox-label>
+					</th>
+					<th fd-table-header-cell>Column Header</th>
+					<th fd-table-header-cell>Column Header</th>
+					<th fd-table-header-cell hoverable="true" activable="true">Column Header</th>
+					<th fd-table-header-cell>Column Header</th>
+					<th fd-table-header-cell></th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row hoverable="true">
+					<td fd-table-cell content-type="checkbox">
+						<fd-checkbox compact="true" id="cbid1"></fd-checkbox>
+						<fd-checkbox-label empty="true" compact="true" for="cbid1"></fd-checkbox-label>
+					</td>
+					<td fd-table-cell activable="true"><a class="fd-link">user.name@email.com</a></td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+					<td fd-table-cell fit-content="false">
+						<fd-popover>
+							<fd-popover-control>
+								<fd-button compact="true" glyph="sap-icon--overflow" fd-type="transparent"
+									aria-label="Context Menu" ng-click="setTristate()">
+								</fd-button>
+							</fd-popover-control>
+							<fd-popover-body fd-align="right">
+								<fd-menu>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+								</fd-menu>
+							</fd-popover-body>
+						</fd-popover>
+					</td>
+
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-cell content-type="checkbox">
+						<fd-checkbox compact="true" id="cbid2"></fd-checkbox>
+						<fd-checkbox-label empty="true" compact="true" for="cbid2"></fd-checkbox-label>
+					</td>
+					<td fd-table-cell><a class="fd-link">user.name@email.com</a></td>
+					<td fd-table-cell hoverable="true">First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+					<td fd-table-cell fit-content="true">
+						<fd-popover>
+							<fd-popover-control>
+								<fd-button compact="true" glyph="sap-icon--overflow" fd-type="transparent"
+									aria-label="Context Menu" ng-click="setTristate()">
+								</fd-button>
+							</fd-popover-control>
+							<fd-popover-body fd-align="right">
+								<fd-menu>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+								</fd-menu>
+							</fd-popover-body>
+						</fd-popover>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot fd-table-footer>
+				<tr fd-table-row>
+					<td fd-table-cell></td>
+					<td fd-table-cell></td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell></td>
+					<td fd-table-cell></td>
+				</tr>
+			</tfoot>
+		</table>
+
+		<table fd-table inner-borders="horizontal" style="margin-top: 20px">
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell content-type="statusIndicator"></th>
+					<th fd-table-header-cell>Header 1</th>
+					<th fd-table-header-cell>Header 2</th>
+					<th fd-table-header-cell>Header 3</th>
+					<th fd-table-header-cell></th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row hoverable="true" activable="true">
+					<td fd-table-cell content-type="statusIndicator" status-indicator="warning"></td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+					<td fd-table-cell fit-content="true">
+						<i class="fd-table__icon fd-table__icon--navigation sap-icon--slim-arrow-right"
+							role="presentation"></i>
+					</td>
+				</tr>
+				<tr fd-table-row hoverable="true" selected="false">
+					<td fd-table-cell content-type="statusIndicator" status-indicator="valid"></td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+					<td fd-table-cell fit-content="true" activable="true" navigated="true">
+						<i class="fd-table__icon fd-table__icon--navigation sap-icon--slim-arrow-right"
+							role="presentation"></i>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table fd-table outer-borders="none" style="margin-top: 20px">
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell>Header 1</th>
+					<th fd-table-header-cell>Header 2</th>
+					<th fd-table-header-cell>Header 3</th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row>
+					<td fd-table-cell no-data="true">No Items available.</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table fd-table outer-borders="horizontal" style="margin: 20px 0">
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell>Name</th>
+					<th fd-table-header-cell>Value</th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row hoverable="true">
+					<td fd-table-cell>Option 1</td>
+					<td fd-table-cell>Value 1</td>
+				</tr>
+				<tr fd-table-row hoverable="true">
+					<td fd-table-cell>Option 2</td>
+					<td fd-table-cell>Value 2</td>
+				</tr>
+				<tr fd-table-row hoverable="true">
+					<td fd-table-cell>Option 3</td>
+					<td fd-table-cell>Value 3</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table fd-table fd-table-group style="margin-top: 20px">
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell>Type</th>
+					<th fd-table-header-cell>Firs Name</th>
+					<th fd-table-header-cell>Last Name</th>
+					<th fd-table-header-cell>Date</th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row>
+					<td fd-table-group-cell nesting-level="1" expanded="true">Group row (collapsed), level 1</td>
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-cell nesting-level="2">Regular row, level 2</td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-group-cell nesting-level="1" expanded="true">Group row (collapsed), level 1</td>
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-cell nesting-level="2">Regular row, level 2</td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-group-cell nesting-level="2" expanded="true">Group row (expanded), level 2</td>
+				</tr>
+				<tr fd-table-row>
+					<td fd-table-cell nesting-level="3">Regular row, level 3</td>
+					<td fd-table-cell>First Name</td>
+					<td fd-table-cell>Last Name</td>
+					<td fd-table-cell>01/26/17</td>
+				</tr>
+			</tbody>
+		</table>
 	</body>
 
 </html>

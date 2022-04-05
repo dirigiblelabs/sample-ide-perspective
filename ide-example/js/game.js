@@ -27,6 +27,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.fdCheckboxModel = true;
     $scope.fdRadioModel = false;
     $scope.tristate = false;
+    $scope.fdListItemCheckboxModel = true;
 
     $scope.setTristate = function () {
         $scope.tristate = true;

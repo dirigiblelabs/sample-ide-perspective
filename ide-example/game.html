@@ -573,6 +573,86 @@
 			</fd-list-item>
 		</fd-list>
 
+		<h4>Byline List</h4>
+		<fd-list byline="true">
+			<fd-list-item>
+				<fd-list-thumbnail glyph="sap-icon--activate"></fd-list-thumbnail>
+				<fd-list-content item-title="List Item Title">Byline (description)</fd-list-content>
+			</fd-list-item>
+			<fd-list-item>
+				<fd-list-thumbnail glyph="sap-icon--employee"></fd-list-thumbnail>
+				<fd-list-content item-title="List item with no byline"></fd-list-content>
+				<fd-button fd-list-button fd-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+			</fd-list-item>
+			<fd-list-item>
+				<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg">
+				</fd-list-thumbnail>
+				<fd-list-content item-title="List item with 2-column byline">
+					<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
+					<fd-list-byline align="right" semantic-status="positive">Second text item in byline (can be
+						semantic)</fd-list-byline>
+				</fd-list-content>
+			</fd-list-item>
+		</fd-list>
+
+		<h4>Byline Navigation List</h4>
+		<fd-list list-type="navigation-indication" byline="true">
+			<fd-list-item>
+				<fd-list-thumbnail glyph="sap-icon--activate"></fd-list-thumbnail>
+				<fd-list-content item-title="Title">Byline (description)</fd-list-content>
+			</fd-list-item>
+			<fd-list-item>
+				<fd-list-link navigation-indicator="true" selected="true">
+					<fd-list-thumbnail glyph="sap-icon--employee"></fd-list-thumbnail>
+					<fd-list-content item-title="List item with no byline"></fd-list-content>
+				</fd-list-link>
+			</fd-list-item>
+			<fd-list-item>
+				<fd-list-link navigation-indicator="true" navigated="true">
+					<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg">
+					</fd-list-thumbnail>
+					<fd-list-content item-title="List item with 2-column byline">
+						<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
+						<fd-list-byline align="right" semantic-status="positive">Second text item in byline (can be
+							semantic)</fd-list-byline>
+					</fd-list-content>
+				</fd-list-link>
+			</fd-list-item>
+		</fd-list>
+
+		<h4>Byline Selection List</h4>
+		<fd-list list-type="selection" byline="true">
+			<fd-list-item>
+				<fd-list-form-item>
+					<fd-checkbox id="cbid9" aria-labelledby="XezW12"></fd-checkbox>
+					<fd-checkbox-label empty="true" for="cbid9"></fd-checkbox-label>
+				</fd-list-form-item>
+				<fd-list-thumbnail glyph="sap-icon--activate"></fd-list-thumbnail>
+				<fd-list-content item-title-id="XezW12" item-title="Title">Byline (description)</fd-list-content>
+			</fd-list-item>
+			<fd-list-item selected="true">
+				<fd-list-form-item>
+					<fd-checkbox id="cbid10" ng-model="fdListItemCheckboxModel" aria-labelledby="Az0bg1">
+					</fd-checkbox>
+					<fd-checkbox-label empty="true" for="cbid10"></fd-checkbox-label>
+				</fd-list-form-item>
+				<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg"></fd-list-thumbnail>
+				<fd-list-content item-title-id="Az0bg1" item-title="List item with 2-column byline">
+					<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
+					<fd-list-byline align="right">Second text item in byline (can besemantic) </fd-list-byline>
+				</fd-list-content>
+			</fd-list-item>
+			<fd-list-item>
+				<fd-list-form-item>
+					<fd-checkbox id="cbid11" aria-labelledby="Az0bg6"></fd-checkbox>
+					<fd-checkbox-label empty="true" for="cbid11"></fd-checkbox-label>
+				</fd-list-form-item>
+				<fd-list-content item-title-id="Az0bg6" item-title="Text-only list item">Byline (description)
+				</fd-list-content>
+			</fd-list-item>
+		</fd-list>
+
+
 		<br /><br /><br /><br />
 	</body>
 

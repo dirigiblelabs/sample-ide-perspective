@@ -18,6 +18,11 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
         classes: ["fd-input"],
         types: ["INPUT"]
     };
+    $scope.includedElements = {
+        ids: ["rbt"],
+        classes: ["fd-button"],
+        types: ["BUTTON"]
+    };
     $scope.data = [
         {
             text: "Project 2",

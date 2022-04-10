@@ -48,6 +48,90 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     // }, 2000);
 
     // setTimeout(function () {
+    //     messageHub.showFormDialog(
+    //         "Form dialog example",
+    //         [
+    //             {
+    //                 id: "fdti1",
+    //                 type: "input",
+    //                 label: "Test input 1",
+    //                 required: true,
+    //                 placeholder: "test placeholder",
+    //                 value: ''
+    //             },
+    //             {
+    //                 id: "fdti2",
+    //                 type: "input",
+    //                 label: "Test input 2",
+    //                 placeholder: "test placeholder",
+    //                 value: 'example'
+    //             },
+    //             {
+    //                 id: "fdtc1",
+    //                 type: "checkbox",
+    //                 label: "Test checkbox 1",
+    //                 value: false
+    //             },
+    //             {
+    //                 id: "fdtd1",
+    //                 type: "dropdown",
+    //                 label: "Test dropdown",
+    //                 value: '',
+    //                 items: [
+    //                     {
+    //                         label: "First item",
+    //                         value: "firstItem",
+    //                     },
+    //                     {
+    //                         label: "Second item",
+    //                         value: "secondItem",
+    //                     },
+    //                     {
+    //                         label: "Third item",
+    //                         value: "thirdItem",
+    //                     }
+    //                 ]
+    //             },
+    //             {
+    //                 id: "fdtr1",
+    //                 type: "radio",
+    //                 required: true,
+    //                 value: '',
+    //                 items: [
+    //                     {
+    //                         id: "rsi1",
+    //                         label: "First radio",
+    //                         value: "firstRadio",
+    //                     },
+    //                     {
+    //                         id: "rsi2",
+    //                         label: "Second radio",
+    //                         value: "secondRadio",
+    //                     },
+    //                     {
+    //                         id: "rsi3",
+    //                         label: "Third radio",
+    //                         value: "thirdRadio",
+    //                     }
+    //                 ]
+    //             },
+    //         ],
+    //         [{
+    //             id: "b1",
+    //             type: "emphasized",
+    //             label: "Ok",
+    //             whenValid: true
+    //         },
+    //         {
+    //             id: "b2",
+    //             type: "transparent",
+    //             label: "Cancel",
+    //         }],
+    //         "example.formDialog.test"
+    //     );
+    // }, 2000);
+
+    // setTimeout(function () {
     //     messageHub.showDialog(
     //         "Dialog example",
     //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
@@ -66,7 +150,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //         [
     //             { id: "opt1", text: "Option 1" },
     //             { id: "opt2", text: "Option 2" },
-    //             { id: "opt3", text: "Option 3" }
+    //             { id: "opt3", text: "Option 3" },
     //         ],
     //         "example.selectDialog.test",
     //         false,
@@ -120,6 +204,14 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //             "Nothing is selected",
     //             "If you don't select anything, you are not going to get anything."
     //         );
+    //     },
+    //     true
+    // );
+
+    // messageHub.onDidReceiveMessage(
+    //     "example.formDialog.test",
+    //     function (msg) {
+    //         console.log(msg.data);
     //     },
     //     true
     // );

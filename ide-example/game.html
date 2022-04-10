@@ -48,7 +48,7 @@
 
 	</head>
 
-	<body class="view game-body" dg-contextmenu="contextMenuContent">
+	<body class="fd-scrollbar" dg-contextmenu="contextMenuContent">
 		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
 			view</button>
 		<fd-button fd-label="Change state" ng-click="state()"></fd-button>
@@ -356,7 +356,7 @@
 		</table>
 
 		<div style="margin: 20px 0; height: 250px;">
-			<div style="height: 100%; overflow: auto">
+			<fd-scrollbar style="height: 100%">
 				<table fd-table>
 					<thead fd-table-header sticky="true">
 						<tr fd-table-row>
@@ -419,7 +419,7 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</fd-scrollbar>
 		</div>
 
 		<fd-toolbar has-title="true">

@@ -17,6 +17,76 @@ examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
 
 // Initialize controller
 examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", "Layouts", function ($scope, messageHub, Layouts) {
+
+    $scope.formItems = [
+        {
+            id: "fdti1",
+            type: "input",
+            label: "Test input 1",
+            required: true,
+            placeholder: "test placeholder",
+            minlength: 3,
+            maxlength: 6,
+            pattern: '[a-z0-9_\-]+',
+            value: ''
+        },
+        {
+            id: "fdti2",
+            type: "input",
+            label: "Test input 2",
+            placeholder: "test placeholder",
+            value: 'example'
+        },
+        {
+            id: "fdtc1",
+            type: "checkbox",
+            label: "Test checkbox 1",
+            value: false
+        },
+        {
+            id: "fdtd1",
+            type: "dropdown",
+            label: "Test dropdown",
+            value: '',
+            items: [
+                {
+                    label: "First item",
+                    value: "firstItem",
+                },
+                {
+                    label: "Second item",
+                    value: "secondItem",
+                },
+                {
+                    label: "Third item",
+                    value: "thirdItem",
+                }
+            ]
+        },
+        {
+            id: "fdtr1",
+            type: "radio",
+            required: true,
+            value: '',
+            items: [
+                {
+                    id: "rsi1",
+                    label: "First radio",
+                    value: "firstRadio",
+                },
+                {
+                    id: "rsi2",
+                    label: "Second radio",
+                    value: "secondRadio",
+                },
+                {
+                    id: "rsi3",
+                    label: "Third radio",
+                    value: "thirdRadio",
+                }
+            ]
+        },
+    ];
     // setTimeout(function () {
     //     messageHub.announceAlertSuccess(
     //         "Success",
@@ -49,73 +119,9 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
 
     // setTimeout(function () {
     //     messageHub.showFormDialog(
+    //         "testForm1",
     //         "Form dialog example",
-    //         [
-    //             {
-    //                 id: "fdti1",
-    //                 type: "input",
-    //                 label: "Test input 1",
-    //                 required: true,
-    //                 placeholder: "test placeholder",
-    //                 value: ''
-    //             },
-    //             {
-    //                 id: "fdti2",
-    //                 type: "input",
-    //                 label: "Test input 2",
-    //                 placeholder: "test placeholder",
-    //                 value: 'example'
-    //             },
-    //             {
-    //                 id: "fdtc1",
-    //                 type: "checkbox",
-    //                 label: "Test checkbox 1",
-    //                 value: false
-    //             },
-    //             {
-    //                 id: "fdtd1",
-    //                 type: "dropdown",
-    //                 label: "Test dropdown",
-    //                 value: '',
-    //                 items: [
-    //                     {
-    //                         label: "First item",
-    //                         value: "firstItem",
-    //                     },
-    //                     {
-    //                         label: "Second item",
-    //                         value: "secondItem",
-    //                     },
-    //                     {
-    //                         label: "Third item",
-    //                         value: "thirdItem",
-    //                     }
-    //                 ]
-    //             },
-    //             {
-    //                 id: "fdtr1",
-    //                 type: "radio",
-    //                 required: true,
-    //                 value: '',
-    //                 items: [
-    //                     {
-    //                         id: "rsi1",
-    //                         label: "First radio",
-    //                         value: "firstRadio",
-    //                     },
-    //                     {
-    //                         id: "rsi2",
-    //                         label: "Second radio",
-    //                         value: "secondRadio",
-    //                     },
-    //                     {
-    //                         id: "rsi3",
-    //                         label: "Third radio",
-    //                         value: "thirdRadio",
-    //                     }
-    //                 ]
-    //             },
-    //         ],
+    //         $scope.formItems,
     //         [{
     //             id: "b1",
     //             type: "emphasized",
@@ -127,22 +133,36 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //             type: "transparent",
     //             label: "Cancel",
     //         }],
-    //         "example.formDialog.test"
+    //         "example.formDialog.test",
+    //         "Sending information..."
     //     );
     // }, 2000);
 
-    // setTimeout(function () {
-    //     messageHub.showDialog(
-    //         "Dialog example",
-    //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
-    //         [{
-    //             id: "b1",
-    //             type: "normal",
-    //             label: "Ok",
-    //         }],
-    //         "example.dialog.test"
-    //     );
-    // }, 2000);
+    setTimeout(function () {
+        messageHub.showLoadingDialog(
+            "epeld",
+            "Loading examples",
+            'Loading perspective...',
+        );
+    }, 1000);
+
+    setTimeout(function () {
+        messageHub.updateLoadingDialog(
+            "epeld",
+            'Now loading layout...',
+        );
+    }, 3000);
+
+    setTimeout(function () {
+        messageHub.updateLoadingDialog(
+            "epeld",
+            'Finally loading views...',
+        );
+    }, 5000);
+
+    setTimeout(function () {
+        messageHub.hideLoadingDialog("epeld");
+    }, 7000);
 
     // setTimeout(function () {
     //     messageHub.showSelectDialog(
@@ -212,6 +232,33 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     "example.formDialog.test",
     //     function (msg) {
     //         console.log(msg.data);
+    //         if (msg.data.buttonId === "b1") {
+    //             if (msg.data.formData[0].value !== "wrong") {
+    //                 setTimeout(function () {
+    //                     messageHub.hideFormDialog("testForm1");
+    //                 }, 2000);
+    //             } else {
+    //                 msg.data.formData[0].error = true;
+    //                 msg.data.formData[0].errorMsg = "This is an example error.";
+    //                 for (let i = 0; i < msg.data.formData[4].items.length; i++) {
+    //                     if (msg.data.formData[4].items[i].value === msg.data.formData[4].value) {
+    //                         msg.data.formData[4].items[i].error = true;
+    //                         console.log(msg.data.formData[4].items);
+    //                         break;
+    //                     }
+    //                 }
+    //                 setTimeout(function () {
+    //                     messageHub.updateFormDialog(
+    //                         "testForm1",
+    //                         msg.data.formData,
+    //                         "Sending a second time....",
+    //                         "There was an error"
+    //                     );
+    //                 }, 4000);
+    //             }
+    //         } else {
+    //             messageHub.hideFormDialog("testForm1");
+    //         }
     //     },
     //     true
     // );

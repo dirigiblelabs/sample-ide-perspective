@@ -652,6 +652,94 @@
 			</fd-list-item>
 		</fd-list>
 
+		<h4>Object Status Text and Icon</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" text="Negative"></span>
+			<span fd-object-status status="critical" glyph="sap-icon--message-warning" text="Critical"></span>
+			<span fd-object-status status="positive" glyph="sap-icon--message-success" text="Positive"></span>
+			<span fd-object-status status="informative" glyph="sap-icon--message-information" text="Info"></span>
+		</div>
+
+		<h4>Object Status Text Only</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" text="Negative"></span>
+			<span fd-object-status status="critical" text="Critical"></span>
+			<span fd-object-status status="positive" text="Positive"></span>
+			<span fd-object-status status="informative" text="Info"></span>
+		</div>
+
+		<h4>Object Status Icon Only</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" glyph="sap-icon--message-error"></span>
+			<span fd-object-status status="critical" glyph="sap-icon--message-warning"></span>
+			<span fd-object-status status="positive" glyph="sap-icon--message-success"></span>
+			<span fd-object-status status="informative" glyph="sap-icon--message-information"></span>
+		</div>
+
+		<h4>Object Status Clickable</h4>
+		<div style="display:flex; justify-content: space-around">
+			<a href="#" fd-object-status status="negative" glyph="sap-icon--message-error" text="Negative"></a>
+			<a href="#" fd-object-status status="critical" glyph="sap-icon--message-warning" text="Critical"></a>
+			<a href="#" fd-object-status status="positive" glyph="sap-icon--message-success" text="Positive"></a>
+			<a href="#" fd-object-status status="informative" glyph="sap-icon--message-information" text="Info"></a>
+			<a href="#" fd-object-status text="Neutral"></a>
+			<a href="#" fd-object-status indication="1" text="Dark Red"></a>
+			<a href="#" fd-object-status indication="2" text="Red"></a>
+			<a href="#" fd-object-status indication="3" text="Yellow"></a>
+			<a href="#" fd-object-status indication="4" text="Green"></a>
+			<a href="#" fd-object-status indication="5" text="Blue"></a>
+			<span fd-object-status clickable="true" indication="6" text="Teal"></span>
+			<span fd-object-status clickable="true" indication="7" text="Purple"></span>
+			<span fd-object-status clickable="true" indication="objectStatusIndicator" text="Pink"
+				ng-click="objectStatusIndicator = (objectStatusIndicator % 8) + 1"></span>
+		</div>
+
+		<h4>Large Object Status</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" text="Negative"
+				large="true"></span>
+			<span fd-object-status status="critical" glyph="sap-icon--message-warning" text="Critical"
+				large="true"></span>
+			<span fd-object-status status="positive" glyph="sap-icon--message-success" text="Positive"
+				large="true"></span>
+			<span fd-object-status status="informative" glyph="sap-icon--message-information" text="Info"
+				large="true"></span>
+			<span fd-object-status text="Neutral" large="true"></span>
+		</div>
+
+		<h4>Object Status Inverted</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" text="Inverted Negative" inverted="true"></span>
+			<span fd-object-status status="critical" text="Inverted Critical" inverted="true"></span>
+			<span fd-object-status status="positive" text="Inverted Positive" inverted="true"></span>
+			<span fd-object-status status="informative" text="Inverted Info" inverted="true"></span>
+			<span fd-object-status text="Neutral" inverted="true"></span>
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" inverted="true"></span>
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" text="Negative"
+				inverted="true"></span>
+			<span fd-object-status status="critical" glyph="sap-icon--message-warning" text="Critical"
+				inverted="true"></span>
+			<span fd-object-status status="positive" glyph="sap-icon--message-success" text="Positive"
+				inverted="true"></span>
+			<span fd-object-status status="informative" glyph="sap-icon--message-information" text="Info"
+				inverted="true"></span>
+		</div>
+
+		<h4>Object Status Inverted Clickable</h4>
+		<div style="display:flex; justify-content: space-around">
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" inverted="true"
+				clickable="true"></span>
+			<span fd-object-status status="negative" glyph="sap-icon--message-error" text="Negative" inverted="true"
+				clickable="true"></span>
+			<span fd-object-status status="critical" glyph="sap-icon--message-warning" text="Critical" inverted="true"
+				clickable="true"></span>
+			<span fd-object-status status="positive" glyph="sap-icon--message-success" text="Positive" inverted="true"
+				clickable="true"></span>
+			<span fd-object-status status="informative" glyph="sap-icon--message-information" text="Info"
+				inverted="true" clickable="true"></span>
+			<span fd-object-status glyph="sap-icon--message-information" text="Neutral" inverted="true"
+				clickable="true"></span>
+		</div>
 
 		<br /><br /><br /><br />
 	</body>

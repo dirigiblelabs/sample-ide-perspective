@@ -30,6 +30,8 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.fdListItemCheckboxModel = true;
     $scope.objectStatusIndicator = 8;
 
+    $scope.selectSelectedValue = "2";
+
     $scope.setTristate = function () {
         $scope.tristate = true;
     };

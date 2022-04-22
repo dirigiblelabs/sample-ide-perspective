@@ -9,14 +9,14 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let examplePerspective = angular.module("example", ["ngResource", "layout", "ideUI"]);
+let examplePerspective = angular.module("example", ["ngResource", "ideLayout", "ideUI"]);
 
 examplePerspective.config(["messageHubProvider", function (messageHubProvider) {
     messageHubProvider.eventIdPrefix = 'example';
 }]);
 
 // Initialize controller
-examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", "Layouts", function ($scope, messageHub, Layouts) {
+examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", function ($scope, messageHub) {
 
     $scope.formItems = [
         {
@@ -138,31 +138,31 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     );
     // }, 2000);
 
-    setTimeout(function () {
-        messageHub.showLoadingDialog(
-            "epeld",
-            "Loading examples",
-            'Loading perspective...',
-        );
-    }, 1000);
+    // setTimeout(function () {
+    //     messageHub.showLoadingDialog(
+    //         "epeld",
+    //         "Loading examples",
+    //         'Loading perspective...',
+    //     );
+    // }, 1000);
 
-    setTimeout(function () {
-        messageHub.updateLoadingDialog(
-            "epeld",
-            'Now loading layout...',
-        );
-    }, 3000);
+    // setTimeout(function () {
+    //     messageHub.updateLoadingDialog(
+    //         "epeld",
+    //         'Now loading layout...',
+    //     );
+    // }, 3000);
 
-    setTimeout(function () {
-        messageHub.updateLoadingDialog(
-            "epeld",
-            'Finally loading views...',
-        );
-    }, 5000);
+    // setTimeout(function () {
+    //     messageHub.updateLoadingDialog(
+    //         "epeld",
+    //         'Finally loading views...',
+    //     );
+    // }, 5000);
 
-    setTimeout(function () {
-        messageHub.hideLoadingDialog("epeld");
-    }, 7000);
+    // setTimeout(function () {
+    //     messageHub.hideLoadingDialog("epeld");
+    // }, 7000);
 
     // setTimeout(function () {
     //     messageHub.showSelectDialog(

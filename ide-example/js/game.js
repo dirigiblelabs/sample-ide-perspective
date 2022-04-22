@@ -9,7 +9,7 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-let gameView = angular.module('game', ['ideUI']);
+let gameView = angular.module('game', ['ideUI', 'ideView']);
 
 gameView.config(["messageHubProvider", function (messageHubProvider) {
     messageHubProvider.eventIdPrefix = 'example';

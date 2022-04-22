@@ -11,108 +11,99 @@
  */
 exports.getMenu = function () {
 	return {
-		"name": "Example",
-		"order": "100",
-		"items": [
+		label: "Example",
+		order: 1,
+		items: [
 			{
-				"name": "Submenu",
-				"order": "110",
-				"items": [
+				label: "Submenu",
+				order: 1,
+				items: [
 					{
-						"name": "GitHub page",
-						"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
-						"event": "open",
-						"order": "110"
+						label: "GitHub page",
+						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+						event: "open",
+						order: 1
 					},
 					{
-						"name": "Empty item with divider",
-						"link": "#",
-						"divider": true,
-						"order": "120"
+						label: "Empty item with divider",
+						divider: true,
+						order: 2
 					},
 					{
-						"name": "Empty item",
-						"link": "#",
-						"order": "130"
+						label: "Empty item",
+						order: 3
 					}
 				]
 			},
 			{
-				"name": "Submenu",
-				"order": "120",
-				"items": [
+				label: "Submenu",
+				order: 2,
+				items: [
 					{
-						"name": "GitHub page",
-						"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
-						"event": "open",
-						"order": "110"
+						label: "GitHub page",
+						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+						event: "open",
+						order: 1
 					},
 					{
-						"name": "Empty item with divider",
-						"link": "#",
-						"divider": true,
-						"order": "120"
+						label: "Empty item with divider",
+						divider: true,
+						order: 2
 					},
 					{
-						"name": "Empty item",
-						"order": "130",
-						"items": [
+						label: "Empty item",
+						order: 3,
+						items: [
 							{
-								"name": "GitHub page",
-								"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
-								"event": "open",
-								"order": "110"
+								label: "GitHub page",
+								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+								event: "open",
+								order: 1
 							},
 							{
-								"name": "Empty item with divider",
-								"link": "#",
-								"divider": true,
-								"order": "120"
+								label: "Empty item with divider",
+								divider: true,
+								order: 2
 							},
 							{
-								"name": "Empty item",
-								"link": "#",
-								"order": "130"
+								label: "Empty item",
+								order: 3
 							}
 						]
 					},
 					{
-						"name": "Empty item 2",
-						"order": "140",
-						"items": [
+						label: "Empty item 2",
+						order: 2,
+						items: [
 							{
-								"name": "GitHub page",
-								"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
-								"event": "open",
-								"order": "110"
+								label: "GitHub page",
+								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+								event: "open",
+								order: 1
 							},
 							{
-								"name": "Empty item with divider",
-								"link": "#",
-								"divider": true,
-								"order": "120"
+								label: "Empty item with divider",
+								divider: true,
+								order: 2
 							},
 							{
-								"name": "Empty item",
-								"link": "#",
-								"order": "130",
-								"items": [
+								label: "Empty item",
+								order: 3,
+								items: [
 									{
-										"name": "GitHub page",
-										"data": "https://github.com/dirigiblelabs/sample-ide-perspective",
-										"event": "open",
-										"order": "110"
+										label: "GitHub page",
+										data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+										event: "open",
+										order: 1
 									},
 									{
-										"name": "Empty item with divider",
-										"link": "#",
-										"divider": true,
-										"order": "120"
+										label: "Empty item with divider",
+										divider: true,
+										order: 2
 									},
 									{
-										"name": "Empty item",
-										"link": "#",
-										"order": "130"
+										label: "Empty item",
+										order: 3
 									}
 								]
 							}
@@ -121,10 +112,10 @@ exports.getMenu = function () {
 				]
 			},
 			{
-				"name": "About",
-				"event": "openDialogWindow",
-				"dialogId": "about",
-				"order": "130"
+				label: "About",
+				action: "openDialogWindow",
+				dialogId: "about",
+				order: 3
 			}
 		]
 	};

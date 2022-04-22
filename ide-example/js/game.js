@@ -30,7 +30,19 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.fdListItemCheckboxModel = true;
     $scope.objectStatusIndicator = 8;
 
-    $scope.selectSelectedValue = "2";
+    $scope.selectSelectedValue = 2;
+
+    $scope.currentPage = 1;
+    $scope.pageSize = 10;
+    $scope.totalItems = 100;
+    $scope.tableWithPaginationItems = [];
+    for (let i = 0; i < $scope.totalItems; i++) {
+        $scope.tableWithPaginationItems.push({
+            product: `Item ${i + 1}`,
+            price: '$' + (Math.random() * 100).toFixed(2),
+            amount: Math.floor(Math.random() * 1000)
+        });
+    }
 
     $scope.setTristate = function () {
         $scope.tristate = true;
@@ -192,3 +204,10 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
             return "inactive";
     }
 }]);
+
+gameView.filter('startFrom', function () {
+    return function (input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});

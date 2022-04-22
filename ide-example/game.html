@@ -788,6 +788,8 @@
 				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
+			<br />
+			<span>Selected value: <strong>{{ selectSelectedValue }}</strong></span>
 		</div>
 
 		<h4>Select With Grouping</h4>
@@ -796,19 +798,47 @@
 				<fd-list-group-header>
 					<fd-list-title>Fruits</fd-list-title>
 				</fd-list-group-header>
-				<fd-option text="Apple" value="1_1"></fd-option>
-				<fd-option text="Orange" value="1_2"></fd-option>
-				<fd-option text="Banana" value="1_3"></fd-option>
-				<fd-option text="Kiwi" value="1_4"></fd-option>
+				<fd-option text="Apple" value="'1_1'"></fd-option>
+				<fd-option text="Orange" value="'1_2'"></fd-option>
+				<fd-option text="Banana" value="'1_3'"></fd-option>
+				<fd-option text="Kiwi" value="'1_4'"></fd-option>
 				<fd-list-group-header>
 					<fd-list-title>Vegetables</fd-list-title>
 				</fd-list-group-header>
-				<fd-option text="Tomato" value="2_1"></fd-option>
-				<fd-option text="Onion" value="2_2"></fd-option>
-				<fd-option text="Spinach" value="2_3"></fd-option>
-				<fd-option text="Potato" value="2_4"></fd-option>
+				<fd-option text="Tomato" value="'2_1'"></fd-option>
+				<fd-option text="Onion" value="'2_2'"></fd-option>
+				<fd-option text="Spinach" value="'2_3'"></fd-option>
+				<fd-option text="Potato" value="'2_4'"></fd-option>
 			</fd-select>
 		</div>
+
+		<h4>Pagination</h4>
+		<fd-pagination total-items="1200" items-per-page="10"></fd-pagination>
+
+		<h4>Pagination compact</h4>
+		<fd-pagination total-items="80" items-per-page="20" items-per-page-options="[10, 20, 50]" compact="true"
+			display-total-items="true"></fd-pagination>
+
+		<h4>Table with pagination</h4>
+		<table fd-table>
+			<thead fd-table-header>
+				<tr fd-table-row>
+					<th fd-table-header-cell>Product</th>
+					<th fd-table-header-cell>Price</th>
+					<th fd-table-header-cell>Amount</th>
+				</tr>
+			</thead>
+			<tbody fd-table-body>
+				<tr fd-table-row
+					ng-repeat="item in tableWithPaginationItems | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
+					<td fd-table-cell>{{ item.product }}</td>
+					<td fd-table-cell>{{ item.price }}</td>
+					<td fd-table-cell>{{ item.amount }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<fd-pagination current-page="currentPage" total-items="totalItems" items-per-page="pageSize"
+			items-per-page-options="[10, 20, 50]" display-total-items="true"></fd-pagination>
 
 		<br /><br /><br /><br />
 

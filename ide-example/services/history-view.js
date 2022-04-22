@@ -9,13 +9,15 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-exports.getView = function () {
-	return {
-		"id": "example-history",
-		"name": "Game history",
-		"factory": "frame",
-		"region": "left-top",
-		"label": "Game history",
-		"link": "../ide-example/history.html"
-	};
+const viewData = {
+	id: "example-history",
+	label: "Game history",
+	factory: "frame",
+	region: "left",
+	link: "../ide-example/history.html",
+};
+if (typeof exports !== 'undefined') {
+	exports.getView = function () {
+		return viewData;
+	}
 }

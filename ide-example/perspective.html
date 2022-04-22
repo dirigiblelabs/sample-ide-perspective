@@ -14,10 +14,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title brandtitle perspective-name="Guess my number!">Guess my number!</title>
+		<title dg-brand-title></title>
 
 		<!-- 'brandicon' is an AngularJS directive to set the proper favicon. Do this only for perspective and not regular views -->
-		<link rel="icon" href="data:;base64,iVBORw0KGgo=" brandicon />
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
+
+		<!-- Perspective data -->
+		<script type="text/javascript" src="/services/v4/web/ide-example/services/perspective.js"></script>
 
 		<!-- jQuery -->
 		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
@@ -42,7 +45,9 @@
 		<script type="text/javascript" src="/services/v4/web/ide-core/core/ide-message-hub.js"></script>
 
 		<!-- IDE Core UI -->
+		<script type="text/javascript" src="/services/v4/web/ide-branding/branding.js"></script>
 		<script type="text/javascript" src="/webjars/split.js/1.6.5/dist/split.min.js"></script>
+		<script type="text/javascript" src="/services/v4/web/ide-core/ui/theming.js"></script>
 		<script type="text/javascript" src="/services/v4/web/ide-core/ui/core-modules.js"></script>
 		<script type="text/javascript" src="/services/v4/web/ide-core/ui/layout.js"></script>
 		<script type="text/javascript" src="/services/v4/web/ide-core/ui/widgets.js"></script>
@@ -60,14 +65,14 @@
 		<ide-contextmenu></ide-contextmenu>
 
 		<!-- The container which holds the sidebar and this perspective -->
-		<ide-container active-id="guess-my-number">
-			<ide-layout id="example" name="Example" views-layout-model="evc.layoutModel"></ide-layout>
+		<ide-container>
+			<ide-layout views-layout-model="evc.layoutModel"></ide-layout>
 		</ide-container>
 
 		<!-- Alert dialog Overlay for alerts, notifications, dialogs -->
 		<ide-dialogs></ide-dialogs>
 		<!-- Bottom IDE status bar -->
-		<ide-status-bar class="statusbar"></ide-status-bar>
+		<ide-status-bar></ide-status-bar>
 
 	</body>
 

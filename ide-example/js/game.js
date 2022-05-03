@@ -44,6 +44,21 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         });
     }
 
+    $scope.comboboxItems = [
+        { value: 1, text: 'Apple' },
+        { value: 2, text: 'Pineapple' },
+        { value: 3, text: 'Banana' },
+        { value: 4, text: 'Kiwi' },
+        { value: 5, text: 'Strawberry' }
+    ];
+
+    $scope.comboboxItems2 = [
+        { value: 1, text: 'Product 1', secondaryText: '1000 EUR' },
+        { value: 2, text: 'Product 2', secondaryText: '750 EUR' },
+        { value: 3, text: 'Product 3', secondaryText: '780 EUR' },
+        { value: 4, text: 'Product 4', secondaryText: '40 EUR' }
+    ];
+
     $scope.setTristate = function () {
         $scope.tristate = true;
     };

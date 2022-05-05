@@ -59,31 +59,31 @@
 	<body class="fd-scrollbar" dg-contextmenu="contextMenuContent">
 		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
 			view</button>
-		<fd-button fd-label="Change state" ng-click="state()"></fd-button>
+		<fd-button dg-label="Change state" ng-click="state()"></fd-button>
 
-		<fd-button fd-label="{{ btnText }}" badge="121" compact="true" glyph="sap-icon--folder" state="{{ btnState }}"
-			fd-aria-desc="Just testing stuff" fd-type="{{ btnType }}" ng-click="test()">
+		<fd-button dg-label="{{ btnText }}" badge="121" compact="true" glyph="sap-icon--folder" state="{{ btnState }}"
+			dg-aria-desc="Just testing stuff" dg-type="{{ btnType }}" ng-click="test()">
 		</fd-button>
 
-		<fd-button fd-label="Selection menu" is-menu="true" fd-aria-desc="An ordinary description of a button.">
+		<fd-button dg-label="Selection menu" is-menu="true" dg-aria-desc="An ordinary description of a button.">
 		</fd-button>
 
 		<fd-button glyph="sap-icon--folder" aria-label="Folder" ng-click="setTristate()">
 		</fd-button>
 
 		<fd-segmented-button aria-label="Test group">
-			<fd-button fd-label="Left" state="{{ segmentedModel == 'left' ? 'selected' : '' }}"
+			<fd-button dg-label="Left" state="{{ segmentedModel == 'left' ? 'selected' : '' }}"
 				ng-click="segmentedClick('left')">
 			</fd-button>
-			<fd-button fd-label="Middle" state="{{ segmentedModel == 'middle' ? 'selected' : '' }}"
+			<fd-button dg-label="Middle" state="{{ segmentedModel == 'middle' ? 'selected' : '' }}"
 				ng-click="segmentedClick('middle')">
 			</fd-button>
-			<fd-button fd-label="Right" state="{{ segmentedModel == 'right' ? 'selected' : '' }}"
+			<fd-button dg-label="Right" state="{{ segmentedModel == 'right' ? 'selected' : '' }}"
 				ng-click="segmentedClick('right')">
 			</fd-button>
 		</fd-segmented-button>
 
-		<fd-split-button main-action="{{ splitButtonAction }}" fd-type="emphasized" aria-label="button-split"
+		<fd-split-button main-action="{{ splitButtonAction }}" dg-type="emphasized" aria-label="button-split"
 			callback="splitButtonClick">
 			<fd-menu>
 				<fd-menu-item title="Split item" ng-click="splitItemClick('Split item')"></fd-menu-item>
@@ -92,12 +92,12 @@
 			</fd-menu>
 		</fd-split-button>
 
-		<fd-popover compact="true" fd-align="right">
+		<fd-popover compact="true" dg-align="right">
 			<fd-popover-control>
-				<fd-button fd-label="test">
+				<fd-button dg-label="test">
 				</fd-button>
 			</fd-popover-control>
-			<fd-popover-body fd-align="right">
+			<fd-popover-body dg-align="right">
 				<fd-menu>
 					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-separator></fd-menu-separator>
@@ -111,26 +111,26 @@
 			</fd-popover-body>
 		</fd-popover>
 
-		<fd-avatar glyph="sap-icon--account" fd-placeholder="true" circle="true" fd-border="true" aria-label="avatar"
+		<fd-avatar glyph="sap-icon--account" dg-placeholder="true" circle="true" dg-border="true" aria-label="avatar"
 			zoom-icon="sap-icon--edit" zoom-label="edit">
 		</fd-avatar>
 
-		<fd-avatar image="http://picsum.photos/id/1018/400" fd-size="s" fd-placeholder="true" circle="true"
-			fd-border="true" aria-label="avatar" zoom-icon="sap-icon--edit" zoom-label="edit">
+		<fd-avatar image="http://picsum.photos/id/1018/400" dg-size="s" dg-placeholder="true" circle="true"
+			dg-border="true" aria-label="avatar" zoom-icon="sap-icon--edit" zoom-label="edit">
 		</fd-avatar>
 
-		<fd-busy-indicator fd-size="l"></fd-busy-indicator>
+		<fd-busy-indicator dg-size="l"></fd-busy-indicator>
 
 		<fd-fieldset>
-			<fd-form-group fd-header="Input group header">
+			<fd-form-group dg-header="Input group header">
 				<fd-form-item>
-					<fd-checkbox id="cbid" compact="false" fd-checked="true" state="warning" fd-required="true"
+					<fd-checkbox id="cbid" compact="false" fd-checked="true" state="warning" dg-required="true"
 						ng-model="fdCheckboxModel">
 					</fd-checkbox>
-					<fd-checkbox-label for="cbid" fd-required="true">Checkbox</fd-checkbox-label>
+					<fd-checkbox-label for="cbid" dg-required="true">Checkbox</fd-checkbox-label>
 				</fd-form-item>
 				<fd-form-item horizontal="true">
-					<fd-form-label for="iid" fd-required="true" fd-colon="true">Plain text</fd-form-label>
+					<fd-form-label for="iid" dg-required="true" dg-colon="true">Plain text</fd-form-label>
 					<fd-input id="iid" type="text" placeholder="Enter text here"></fd-input>
 				</fd-form-item>
 				<fd-form-item>
@@ -149,7 +149,7 @@
 					<fd-form-label for="igid">Input group with buttons and icons</fd-form-label>
 					<fd-input-group>
 						<fd-input-group-addon has-button="true">
-							<fd-button fd-label="Action" in-group="true"></fd-button>
+							<fd-button dg-label="Action" in-group="true"></fd-button>
 						</fd-input-group-addon>
 						<fd-input id="igid" type="text" in-group="true" placeholder="Text here"></fd-input>
 						<fd-input-group-addon>
@@ -161,7 +161,7 @@
 					<fd-form-label for="fimg">input error with message</fd-form-label>
 					<fd-form-input-message-group>
 						<fd-input id="fimg" type="text" state="error" value="some wrong value"></fd-input>
-						<fd-form-message fd-type="error">Something is very wrong here.</fd-form-message>
+						<fd-form-message dg-type="error">Something is very wrong here.</fd-form-message>
 					</fd-form-input-message-group>
 				</fd-form-item>
 			</fd-form-group>
@@ -197,11 +197,11 @@
 					<td fd-table-cell fit-content="false">
 						<fd-popover>
 							<fd-popover-control>
-								<fd-button compact="true" glyph="sap-icon--overflow" fd-type="transparent"
+								<fd-button compact="true" glyph="sap-icon--overflow" dg-type="transparent"
 									aria-label="Context Menu" ng-click="setTristate()">
 								</fd-button>
 							</fd-popover-control>
-							<fd-popover-body fd-align="right">
+							<fd-popover-body dg-align="right">
 								<fd-menu>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -224,11 +224,11 @@
 					<td fd-table-cell fit-content="true">
 						<fd-popover>
 							<fd-popover-control>
-								<fd-button compact="true" glyph="sap-icon--overflow" fd-type="transparent"
+								<fd-button compact="true" glyph="sap-icon--overflow" dg-type="transparent"
 									aria-label="Context Menu" ng-click="setTristate()">
 								</fd-button>
 							</fd-popover-control>
-							<fd-popover-body fd-align="right">
+							<fd-popover-body dg-align="right">
 								<fd-menu>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -268,18 +268,16 @@
 					<td fd-table-cell>Last Name</td>
 					<td fd-table-cell>01/26/17</td>
 					<td fd-table-cell fit-content="true">
-						<i class="fd-table__icon fd-table__icon--navigation sap-icon--slim-arrow-right"
-							role="presentation"></i>
+						<i fd-table-icon navigation="true" glyph="sap-icon--slim-arrow-right"></i>
 					</td>
 				</tr>
-				<tr fd-table-row hoverable="true" selected="false">
+				<tr fd-table-row hoverable="true" dg-selected="false">
 					<td fd-table-cell content-type="statusIndicator" status-indicator="valid"></td>
 					<td fd-table-cell>First Name</td>
 					<td fd-table-cell>Last Name</td>
 					<td fd-table-cell>01/26/17</td>
 					<td fd-table-cell fit-content="true" activable="true" navigated="true">
-						<i class="fd-table__icon fd-table__icon--navigation sap-icon--slim-arrow-right"
-							role="presentation"></i>
+						<i fd-table-icon navigation="true" glyph="sap-icon--slim-arrow-right">></i>
 					</td>
 				</tr>
 			</tbody>
@@ -433,25 +431,25 @@
 		<fd-toolbar has-title="true">
 			<h4>Producs (104)</h4>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
-			<fd-button compact="true" fd-type="transparent" fd-label="Save"></fd-button>
+			<fd-button compact="true" dg-type="transparent" dg-label="Save"></fd-button>
 			<fd-toolbar-separator></fd-toolbar-separator>
-			<fd-button compact="true" fd-type="transparent" fd-label="Delete"></fd-button>
+			<fd-button compact="true" dg-type="transparent" dg-label="Delete"></fd-button>
 		</fd-toolbar>
 
 		<fd-toolbar has-title="true">
 			<h4>Producs (35)</h4>
-			<fd-button compact="true" fd-type="transparent" fd-label="Create"></fd-button>
+			<fd-button compact="true" dg-type="transparent" dg-label="Create"></fd-button>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
-			<fd-button compact="true" fd-type="transparent" fd-label="Save"></fd-button>
-			<fd-button compact="true" fd-type="transparent" fd-label="Copy"></fd-button>
+			<fd-button compact="true" dg-type="transparent" dg-label="Save"></fd-button>
+			<fd-button compact="true" dg-type="transparent" dg-label="Copy"></fd-button>
 			<fd-toolbar-separator></fd-toolbar-separator>
 			<fd-toolbar-overflow>
 				<fd-toolbar-overflow-label>Label</fd-toolbar-overflow-label>
-				<fd-toolbar-overflow-button fd-label="Edit"></fd-toolbar-overflow-button>
-				<fd-toolbar-overflow-button fd-label="Delete"></fd-toolbar-overflow-button>
-				<fd-toolbar-overflow-button fd-label="Assign"></fd-toolbar-overflow-button>
+				<fd-toolbar-overflow-button dg-label="Edit"></fd-toolbar-overflow-button>
+				<fd-toolbar-overflow-button dg-label="Delete"></fd-toolbar-overflow-button>
+				<fd-toolbar-overflow-button dg-label="Assign"></fd-toolbar-overflow-button>
 				<fd-toolbar-separator></fd-toolbar-separator>
-				<fd-toolbar-overflow-button fd-label="Exit"></fd-toolbar-overflow-button>
+				<fd-toolbar-overflow-button dg-label="Exit"></fd-toolbar-overflow-button>
 			</fd-toolbar-overflow>
 		</fd-toolbar>
 
@@ -474,12 +472,12 @@
 			<fd-list-item>
 				<fd-list-icon glyph="sap-icon--cart"></fd-list-icon>
 				<fd-list-title>List Item 1</fd-list-title>
-				<fd-button fd-list-button fd-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-icon glyph="sap-icon--cart"></fd-list-icon>
 				<fd-list-title>List Item 2</fd-list-title>
-				<fd-button fd-list-button fd-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-title>List Item 3</fd-list-title>
@@ -495,7 +493,7 @@
 			<fd-list-item interactive="true">
 				<fd-list-title>List Item 2</fd-list-title>
 			</fd-list-item>
-			<fd-list-item interactive="true" selected="true">
+			<fd-list-item interactive="true" dg-selected="true">
 				<fd-list-title>List Item 3</fd-list-title>
 			</fd-list-item>
 		</fd-list>
@@ -511,7 +509,7 @@
 				<fd-list-title>List Item 1</fd-list-title>
 			</fd-list-item>
 			<fd-list-item>
-				<fd-list-link navigation-indicator="true" selected="true">
+				<fd-list-link navigation-indicator="true" dg-selected="true">
 					<fd-list-icon glyph="sap-icon--history"></fd-list-icon>
 					<fd-list-title>List Item 2</fd-list-title>
 				</fd-list-link>
@@ -564,7 +562,7 @@
 				</fd-list-form-item>
 				<fd-list-title id="XezW12">List Item 1</fd-list-title>
 			</fd-list-item>
-			<fd-list-item selected="true">
+			<fd-list-item dg-selected="true">
 				<fd-list-form-item>
 					<fd-checkbox id="cbid7" compact="true" ng-model="fdListItemCheckboxModel" aria-labelledby="Az0bg1">
 					</fd-checkbox>
@@ -590,14 +588,14 @@
 			<fd-list-item>
 				<fd-list-thumbnail glyph="sap-icon--employee"></fd-list-thumbnail>
 				<fd-list-content item-title="List item with no byline"></fd-list-content>
-				<fd-button fd-list-button fd-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg">
 				</fd-list-thumbnail>
 				<fd-list-content item-title="List item with 2-column byline">
-					<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
-					<fd-list-byline align="right" semantic-status="positive">Second text item in byline (can be
+					<fd-list-byline dg-align="left">First text item in byline (standard text)</fd-list-byline>
+					<fd-list-byline dg-align="right" semantic-status="positive">Second text item in byline (can be
 						semantic)</fd-list-byline>
 				</fd-list-content>
 			</fd-list-item>
@@ -610,7 +608,7 @@
 				<fd-list-content item-title="Title">Byline (description)</fd-list-content>
 			</fd-list-item>
 			<fd-list-item>
-				<fd-list-link navigation-indicator="true" selected="true">
+				<fd-list-link navigation-indicator="true" dg-selected="true">
 					<fd-list-thumbnail glyph="sap-icon--employee"></fd-list-thumbnail>
 					<fd-list-content item-title="List item with no byline"></fd-list-content>
 				</fd-list-link>
@@ -620,8 +618,8 @@
 					<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg">
 					</fd-list-thumbnail>
 					<fd-list-content item-title="List item with 2-column byline">
-						<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
-						<fd-list-byline align="right" semantic-status="positive">Second text item in byline (can be
+						<fd-list-byline dg-align="left">First text item in byline (standard text)</fd-list-byline>
+						<fd-list-byline dg-align="right" semantic-status="positive">Second text item in byline (can be
 							semantic)</fd-list-byline>
 					</fd-list-content>
 				</fd-list-link>
@@ -638,7 +636,7 @@
 				<fd-list-thumbnail glyph="sap-icon--activate"></fd-list-thumbnail>
 				<fd-list-content item-title-id="XezW12" item-title="Title">Byline (description)</fd-list-content>
 			</fd-list-item>
-			<fd-list-item selected="true">
+			<fd-list-item dg-selected="true">
 				<fd-list-form-item>
 					<fd-checkbox id="cbid10" ng-model="fdListItemCheckboxModel" aria-labelledby="Az0bg1">
 					</fd-checkbox>
@@ -646,8 +644,8 @@
 				</fd-list-form-item>
 				<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg"></fd-list-thumbnail>
 				<fd-list-content item-title-id="Az0bg1" item-title="List item with 2-column byline">
-					<fd-list-byline align="left">First text item in byline (standard text)</fd-list-byline>
-					<fd-list-byline align="right">Second text item in byline (can besemantic) </fd-list-byline>
+					<fd-list-byline dg-align="left">First text item in byline (standard text)</fd-list-byline>
+					<fd-list-byline dg-align="right">Second text item in byline (can besemantic) </fd-list-byline>
 				</fd-list-content>
 			</fd-list-item>
 			<fd-list-item>
@@ -751,25 +749,26 @@
 
 		<h4>Compact Select With States</h4>
 		<div style="display:flex; justify-content: space-around">
-			<fd-select placeholder="Select an option" size="compact" state="success" message="Success message">
+			<fd-select dg-placeholder="Select an option" dg-size="compact" state="success" message="Success message">
 				<fd-option text="Option 1" value="1"></fd-option>
 				<fd-option text="Option 2" value="2"></fd-option>
 				<fd-option text="Option 3" value="3"></fd-option>
 				<fd-option text="Option 4" value="4"></fd-option>
 			</fd-select>
-			<fd-select placeholder="Select an option" size="compact" state="information" message="Information message">
+			<fd-select dg-placeholder="Select an option" dg-size="compact" state="information"
+				message="Information message">
 				<fd-option text="Option 1" value="1"></fd-option>
 				<fd-option text="Option 2" value="2"></fd-option>
 				<fd-option text="Option 3" value="3"></fd-option>
 				<fd-option text="Option 4" value="4"></fd-option>
 			</fd-select>
-			<fd-select placeholder="Select an option" size="compact" state="warning" message="Warning message">
+			<fd-select dg-placeholder="Select an option" dg-size="compact" state="warning" message="Warning message">
 				<fd-option text="Option 1" value="1"></fd-option>
 				<fd-option text="Option 2" value="2"></fd-option>
 				<fd-option text="Option 3" value="3"></fd-option>
 				<fd-option text="Option 4" value="4"></fd-option>
 			</fd-select>
-			<fd-select placeholder="Select an option" size="compact" state="error" message="Error message">
+			<fd-select dg-placeholder="Select an option" dg-size="compact" state="error" message="Error message">
 				<fd-option text="Option 1" value="1"></fd-option>
 				<fd-option text="Option 2" value="2"></fd-option>
 				<fd-option text="Option 3" value="3"></fd-option>
@@ -794,7 +793,7 @@
 
 		<h4>Select With Grouping</h4>
 		<div>
-			<fd-select placeholder="Select Ingredient" dropdown-fill="true">
+			<fd-select dg-placeholder="Select Ingredient" dropdown-fill="true">
 				<fd-list-group-header>
 					<fd-list-title>Fruits</fd-list-title>
 				</fd-list-group-header>
@@ -844,14 +843,14 @@
 		<fd-bar cozy="true">
 			<fd-bar-left>
 				<fd-bar-element>
-					<fd-button glyph="sap-icon--navigation-left-arrow" aria-label="button" fd-type="transparent">
+					<fd-button glyph="sap-icon--navigation-left-arrow" aria-label="button" dg-type="transparent">
 					</fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
-					<fd-button glyph="sap-icon--home" aria-label="button" fd-type="transparent"></fd-button>
+					<fd-button glyph="sap-icon--home" aria-label="button" dg-type="transparent"></fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
-					<fd-button glyph="sap-icon--account" aria-label="button" fd-type="transparent"></fd-button>
+					<fd-button glyph="sap-icon--account" aria-label="button" dg-type="transparent"></fd-button>
 				</fd-bar-element>
 			</fd-bar-left>
 			<fd-bar-middle>
@@ -865,7 +864,7 @@
 			</fd-bar-middle>
 			<fd-bar-right>
 				<fd-bar-element>
-					<fd-button glyph="sap-icon--grid" aria-label="button" fd-type="transparent">
+					<fd-button glyph="sap-icon--grid" aria-label="button" dg-type="transparent">
 					</fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
@@ -875,7 +874,7 @@
 		<fd-bar bar-design="header-with-subheader">
 			<fd-bar-left>
 				<fd-bar-element is-title="true">
-					<h6 fd-title wrap="true" aria-label="title">TEXT</h6>
+					<h6 fd-title dg-wrap="true" aria-label="title">TEXT</h6>
 				</fd-bar-element>
 			</fd-bar-left>
 			<fd-bar-middle>
@@ -890,7 +889,7 @@
 			</fd-bar-middle>
 			<fd-bar-right>
 				<fd-bar-element>
-					<fd-button glyph="sap-icon--grid" aria-label="button" fd-type="transparent" compact="true">
+					<fd-button glyph="sap-icon--grid" aria-label="button" dg-type="transparent" compact="true">
 					</fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
@@ -908,27 +907,132 @@
 		<fd-bar bar-design="footer">
 			<fd-bar-right>
 				<fd-bar-element>
-					<fd-button fd-label="Save" fd-type="emphasized" compact="true"></fd-button>
+					<fd-button dg-label="Save" dg-type="emphasized" compact="true"></fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
-					<fd-button fd-label="Cancel" fd-type="transparent" compact="true"></fd-button>
+					<fd-button dg-label="Cancel" dg-type="transparent" compact="true"></fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
 		</fd-bar>
 
 		<h4>ComboBox Input</h4>
 		<div style="display:flex; justify-content: space-around">
-			<fd-combobox-input dropdown-items="comboboxItems" placeholder="Search fruit ..."></fd-combobox-input>
-
-			<fd-combobox-input dropdown-items="comboboxItems" disabled="true" selected-value="1"
-				placeholder="Search fruit ...">
+			<fd-combobox-input dropdown-items="comboboxItems" dg-placeholder="Search fruit ..." dg-aria-label="fruits">
 			</fd-combobox-input>
 
-			<fd-combobox-input dropdown-items="comboboxItems2" selected-value="2" placeholder="Search product ...">
+			<fd-combobox-input dropdown-items="comboboxItems" dg-disabled="true" selected-value="1"
+				dg-placeholder="Search fruit ..." dg-aria-label="fruits">
 			</fd-combobox-input>
 
-			<fd-combobox-input input-id="test" dropdown-items="comboboxItems" placeholder="Search fruit ..."
-				state="success" message="Success message"></fd-combobox-input>
+			<fd-combobox-input dropdown-items="comboboxItems2" selected-value="2" dg-placeholder="Search product ..."
+				dg-aria-label="products">
+			</fd-combobox-input>
+
+			<fd-combobox-input input-id="test" dropdown-items="comboboxItems" dg-placeholder="Search fruit ..."
+				state="success" message="Success message" dg-aria-label="fruits"></fd-combobox-input>
+		</div>
+
+		<h4>Card</h4>
+
+		<div style="padding: 10px;">
+			<fd-card card-type="list">
+				<fd-badge>New</fd-badge>
+				<fd-card-header>
+					<fd-avatar image="http://picsum.photos/id/1018/400" dg-size="s" circle="true" aria-label="avatar">
+					</fd-avatar>
+					<fd-card-title>Card Title</fd-card-title>
+					<fd-card-subtitle>Card Subtitle</fd-card-subtitle>
+					<fd-card-counter status="positive"> 1 of 10</fd-card-counter>
+				</fd-card-header>
+				<fd-card-content>
+					<fd-list>
+						<fd-list-item>
+							<fd-list-title>Item 1</fd-list-title>
+						</fd-list-item>
+						<fd-list-item>
+							<fd-list-title>Item 2</fd-list-title>
+						</fd-list-item>
+						<fd-list-item>
+							<fd-list-title>Item 3</fd-list-title>
+						</fd-list-item>
+					</fd-list>
+				</fd-card-content>
+			</fd-card>
+
+			<br />
+
+			<fd-card card-type="table">
+				<fd-badge>New</fd-badge>
+				<fd-card-header>
+					<fd-avatar image="http://picsum.photos/id/1018/400" dg-size="s" circle="true" aria-label="avatar">
+					</fd-avatar>
+					<fd-card-title>Table Card</fd-card-title>
+					<fd-card-subtitle>Compact mode</fd-card-subtitle>
+					<fd-card-counter status="positive"> 4 of 10</fd-card-counter>
+				</fd-card-header>
+				<fd-card-content>
+					<table fd-table inner-borders="none">
+						<thead fd-table-header>
+							<tr fd-table-row>
+								<td fd-table-cell content-type="checkbox">
+									<fd-checkbox id="cbid12"></fd-checkbox>
+									<fd-checkbox-label empty="true" for="cbid12"></fd-checkbox-label>
+								</td>
+								<th fd-table-header-cell>Name</th>
+								<th fd-table-header-cell>Status</th>
+								<th fd-table-header-cell>Price</th>
+								<th fd-table-header-cell>Country</th>
+								<th fd-table-header-cell></th>
+							</tr>
+						</thead>
+						<tbody fd-table-body>
+							<tr fd-table-row hoverable="true" activable="true">
+								<td fd-table-cell content-type="checkbox">
+									<fd-checkbox id="cbid12_1"></fd-checkbox>
+									<fd-checkbox-label empty="true" for="cbid12_1"></fd-checkbox-label>
+								</td>
+								<td fd-table-cell>Banana</td>
+								<td fd-table-cell><span fd-object-status status="positive" text="Available"></span></td>
+								<td fd-table-cell>5 EUR</td>
+								<td fd-table-cell>India</td>
+								<td fd-table-cell fit-content="true">
+									<i fd-table-icon navigation="true" glyph="sap-icon--slim-arrow-right"></i>
+								</td>
+							</tr>
+							<tr fd-table-row hoverable="true" activable="true">
+								<td fd-table-cell content-type="checkbox">
+									<fd-checkbox id="cbid12_2"></fd-checkbox>
+									<fd-checkbox-label empty="true" for="cbid12_2"></fd-checkbox-label>
+								</td>
+								<td fd-table-cell>Pineapple</td>
+								<td fd-table-cell><span fd-object-status status="negative" text="Out of stock"></span>
+								</td>
+								<td fd-table-cell>2 EUR</td>
+								<td fd-table-cell>Mexico</td>
+								<td fd-table-cell fit-content="true">
+									<i fd-table-icon navigation="true" glyph="sap-icon--slim-arrow-right"></i>
+								</td>
+							</tr>
+							<tr fd-table-row hoverable="true" activable="true">
+								<td fd-table-cell content-type="checkbox">
+									<fd-checkbox id="cbid12_3"></fd-checkbox>
+									<fd-checkbox-label empty="true" for="cbid12_3"></fd-checkbox-label>
+								</td>
+								<td fd-table-cell>Orange</td>
+								<td fd-table-cell><span fd-object-status status="informative"
+										text="Temporary unavailable"></span>
+								</td>
+								<td fd-table-cell>6 EUR</td>
+								<td fd-table-cell>Spain</td>
+								<td fd-table-cell fit-content="true">
+									<i fd-table-icon navigation="true" glyph="sap-icon--slim-arrow-right"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</fd-card-content>
+			</fd-card>
+
 		</div>
 
 		<br /><br /><br /><br />

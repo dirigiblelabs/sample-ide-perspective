@@ -26,7 +26,8 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
     $scope.data = [
         {
             text: "Project 2",
-            type: "gitProject",
+            type: "project",
+            li_attr: { git: true },
             children: [
                 {
                     text: "File 4",
@@ -114,7 +115,7 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
         },
         plugins: ["wholerow", "dnd", "search", "state", "types", "indicator"],
         // plugins: ["wholerow", "dnd", "search", "state", "types", "indicator", "checkbox"],
-        state: { "dgNext": "demo2" },
+        state: { "key": "dg-next" },
         types: {
             "default": {
                 icon: "sap-icon--question-mark"
@@ -126,11 +127,8 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
                 icon: "jstree-folder"
             },
             project: {
-                icon: "sap-icon--folder"
+                icon: "jstree-project"
             },
-            gitProject: {
-                icon: "jstree-git"
-            }
         },
     });
 

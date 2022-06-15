@@ -1,5 +1,5 @@
 {
     "module": "ide-example/services/menu/perspective-menu.js",
     "extensionPoint": "ide-example-menu",
-    "description": "Guess my number menu"
+    "description": "Example Menu"
 }

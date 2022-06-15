@@ -14,12 +14,19 @@ let response = require('http/v4/response');
 
 let mainmenu = [];
 let menuExtensions = extensions.getExtensions('ide-example-menu');
+
 for (let i = 0; i < menuExtensions.length; i++) {
     let module = menuExtensions[i];
-    let menuExtension = require(module);
-    let menu = menuExtension.getMenu();
-    mainmenu.push(menu);
+    try {
+        menuExtension = require(module);
+        let menu = menuExtension.getMenu();
+        mainmenu.push(menu);
+    } catch (error) {
+        console.error('Error occured while loading metadata for the menu: ' + module);
+        console.error(error);
+    }
 }
+
 mainmenu.sort(function (p, n) {
     return (parseInt(p.order) - parseInt(n.order));
 });

@@ -120,6 +120,7 @@
 		</fd-avatar>
 
 		<fd-busy-indicator dg-size="l"></fd-busy-indicator>
+		<fd-busy-indicator-extended dg-size="m">Some text</fd-busy-indicator-extended>
 
 		<fd-fieldset>
 			<fd-form-group dg-header="Input group header">
@@ -472,12 +473,16 @@
 			<fd-list-item>
 				<fd-list-icon glyph="sap-icon--cart"></fd-list-icon>
 				<fd-list-title>List Item 1</fd-list-title>
-				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit">
+				</fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit">
+				</fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-icon glyph="sap-icon--cart"></fd-list-icon>
 				<fd-list-title>List Item 2</fd-list-title>
-				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit">
+				</fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-title>List Item 3</fd-list-title>
@@ -588,7 +593,8 @@
 			<fd-list-item>
 				<fd-list-thumbnail glyph="sap-icon--employee"></fd-list-thumbnail>
 				<fd-list-content item-title="List item with no byline"></fd-list-content>
-				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit"></fd-button>
+				<fd-button fd-list-button dg-type="transparent" glyph="sap-icon--edit" aria-label="edit">
+				</fd-button>
 			</fd-list-item>
 			<fd-list-item>
 				<fd-list-thumbnail image-url="/services/v4/web/resources/images/dirigible.svg">
@@ -619,7 +625,8 @@
 					</fd-list-thumbnail>
 					<fd-list-content item-title="List item with 2-column byline">
 						<fd-list-byline dg-align="left">First text item in byline (standard text)</fd-list-byline>
-						<fd-list-byline dg-align="right" semantic-status="positive">Second text item in byline (can be
+						<fd-list-byline dg-align="right" semantic-status="positive">Second text item in byline (can
+							be
 							semantic)</fd-list-byline>
 					</fd-list-content>
 				</fd-list-link>
@@ -783,7 +790,8 @@
 			<fd-select selected-value="selectSelectedValue">
 				<fd-option text="Option 1" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
-				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2">
+				</fd-option>
 				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
@@ -811,12 +819,63 @@
 			</fd-select>
 		</div>
 
+		<h4>Select dropdown position</h4>
+		<div class="dg-center">
+			<fd-select selected-value="1">
+				<fd-option text="Default (Bottom)" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+			<br style="width: 1rem">
+			<fd-select placement="bottom-end" selected-value="1">
+				<fd-option text="Bottom-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+			<br style="width: 1rem">
+			<fd-select placement="top" selected-value="1">
+				<fd-option text="Top" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+			<br style="width: 1rem">
+			<fd-select placement="top-end" selected-value="1">
+				<fd-option text="Top-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+			<br style="width: 1rem">
+			<fd-select placement="right" selected-value="1">
+				<fd-option text="Right" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+			<br style="width: 1rem">
+			<fd-select placement="right-end" selected-value="1">
+				<fd-option text="Right-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
+				</fd-option>
+				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
+				<fd-option text="Option 3" secondary-text="A3" glyph="sap-icon--headset" value="3"></fd-option>
+				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
+			</fd-select>
+		</div>
+
 		<h4>Pagination</h4>
 		<fd-pagination total-items="1200" items-per-page="10"></fd-pagination>
 
 		<h4>Pagination compact</h4>
-		<fd-pagination total-items="80" items-per-page="20" items-per-page-options="[10, 20, 50]" compact="true"
-			display-total-items="true"></fd-pagination>
+		<fd-pagination total-items="80" items-per-page="20" items-per-page-options="[10, 20, 50]"
+			items-per-page-placement="top-start" compact="true" display-total-items="true"></fd-pagination>
 
 		<h4>Table with pagination</h4>
 		<table fd-table>
@@ -992,7 +1051,8 @@
 									<fd-checkbox-label empty="true" for="cbid12_1"></fd-checkbox-label>
 								</td>
 								<td fd-table-cell>Banana</td>
-								<td fd-table-cell><span fd-object-status status="positive" text="Available"></span></td>
+								<td fd-table-cell><span fd-object-status status="positive" text="Available"></span>
+								</td>
 								<td fd-table-cell>5 EUR</td>
 								<td fd-table-cell>India</td>
 								<td fd-table-cell fit-content="true">

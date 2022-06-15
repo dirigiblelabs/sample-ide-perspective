@@ -28,25 +28,36 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             minlength: 3,
             maxlength: 6,
             pattern: '[a-z0-9_\-]+',
-            value: ''
+            value: '',
+            visibility: {
+                hidden: true,
+                id: "fdtd1",
+                value: "secondItem",
+            },
         },
         {
             id: "fdti2",
             type: "input",
             label: "Test input 2",
             placeholder: "test placeholder",
-            value: 'example'
+            value: 'example',
         },
         {
             id: "fdtc1",
             type: "checkbox",
             label: "Test checkbox 1",
-            value: false
+            value: false,
+            visibility: {
+                hidden: false,
+                id: "fdti1",
+                value: "test1",
+            }
         },
         {
             id: "fdtd1",
             type: "dropdown",
             label: "Test dropdown",
+            required: true,
             value: '',
             items: [
                 {

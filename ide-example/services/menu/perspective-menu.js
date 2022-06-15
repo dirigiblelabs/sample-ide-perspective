@@ -21,7 +21,7 @@ exports.getMenu = function () {
 					{
 						label: "GitHub page",
 						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
-						event: "open",
+						action: "open",
 						order: 1
 					},
 					{
@@ -42,7 +42,7 @@ exports.getMenu = function () {
 					{
 						label: "GitHub page",
 						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
-						event: "open",
+						action: "open",
 						order: 1
 					},
 					{
@@ -57,7 +57,7 @@ exports.getMenu = function () {
 							{
 								label: "GitHub page",
 								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
-								event: "open",
+								action: "open",
 								order: 1
 							},
 							{
@@ -78,7 +78,7 @@ exports.getMenu = function () {
 							{
 								label: "GitHub page",
 								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
-								event: "open",
+								action: "open",
 								order: 1
 							},
 							{
@@ -93,7 +93,7 @@ exports.getMenu = function () {
 									{
 										label: "GitHub page",
 										data: "https://github.com/dirigiblelabs/sample-ide-perspective",
-										event: "open",
+										action: "open",
 										order: 1
 									},
 									{

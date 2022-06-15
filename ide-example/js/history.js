@@ -102,7 +102,7 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
         to = setTimeout(function () {
             $scope.jstreeWidget.jstree(true).search($('#treeSearch').val());
         }, 250);
-    }
+    };
 
     $scope.jstreeWidget.jstree({
         core: {
@@ -114,20 +114,40 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
             data: $scope.data,
         },
         plugins: ["wholerow", "dnd", "search", "state", "types", "indicator"],
-        // plugins: ["wholerow", "dnd", "search", "state", "types", "indicator", "checkbox"],
-        state: { "key": "dg-next" },
+        dnd: {
+            large_drop_target: true,
+            large_drag_target: true,
+            is_draggable: function (nodes) {
+                for (let i = 0; i < nodes.length; i++) {
+                    if (nodes[i].type === 'project') return false;
+                }
+                return true;
+            },
+        },
+        state: { "key": "ide-example" },
         types: {
+            '#': {
+                valid_children: ["project"]
+            },
             "default": {
-                icon: "sap-icon--question-mark"
+                icon: "sap-icon--question-mark",
+                valid_children: [],
             },
             file: {
-                icon: "jstree-file"
+                icon: "jstree-file",
+                valid_children: [],
             },
             folder: {
-                icon: "jstree-folder"
+                icon: "jstree-folder",
+                valid_children: ['folder', 'file', 'spinner'],
             },
             project: {
-                icon: "jstree-project"
+                icon: "jstree-project",
+                valid_children: ['folder', 'file', 'spinner'],
+            },
+            spinner: {
+                icon: "jstree-spinner",
+                valid_children: [],
             },
         },
     });

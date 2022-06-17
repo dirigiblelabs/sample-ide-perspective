@@ -1,0 +1,5 @@
+{
+    "module": "ide-example/services/singleViewPerspective.js",
+    "extensionPoint": "ide-perspective",
+    "description": "Single View Perspective"
+}

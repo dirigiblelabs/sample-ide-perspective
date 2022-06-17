@@ -57,6 +57,7 @@
 	</head>
 
 	<body class="fd-scrollbar" dg-contextmenu="contextMenuContent">
+
 		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
 			view</button>
 		<fd-button dg-label="Change state" ng-click="state()"></fd-button>
@@ -569,7 +570,7 @@
 			</fd-list-item>
 			<fd-list-item dg-selected="true">
 				<fd-list-form-item>
-					<fd-checkbox id="cbid7" compact="true" ng-model="fdListItemCheckboxModel" aria-labelledby="Az0bg1">
+					<fd-checkbox id="cbid7" compact="true" ng-model="fdListItem.checkboxModel" aria-labelledby="Az0bg1">
 					</fd-checkbox>
 					<fd-checkbox-label empty="true" compact="true" for="cbid7"></fd-checkbox-label>
 				</fd-list-form-item>
@@ -996,22 +997,22 @@
 		<div style="padding: 10px;">
 			<fd-card card-type="list">
 				<fd-badge>New</fd-badge>
-				<fd-card-header>
+				<fd-card-header interactive="false">
 					<fd-avatar image="http://picsum.photos/id/1018/400" dg-size="s" circle="true" aria-label="avatar">
 					</fd-avatar>
 					<fd-card-title>Card Title</fd-card-title>
 					<fd-card-subtitle>Card Subtitle</fd-card-subtitle>
-					<fd-card-counter status="positive"> 1 of 10</fd-card-counter>
+					<fd-card-status dg-type="counter" status="positive"> 1 of 10</fd-card-status>
 				</fd-card-header>
 				<fd-card-content>
-					<fd-list>
-						<fd-list-item>
+					<fd-list no-border="true">
+						<fd-list-item tabindex="0">
 							<fd-list-title>Item 1</fd-list-title>
 						</fd-list-item>
-						<fd-list-item>
+						<fd-list-item tabindex="0">
 							<fd-list-title>Item 2</fd-list-title>
 						</fd-list-item>
-						<fd-list-item>
+						<fd-list-item tabindex="0">
 							<fd-list-title>Item 3</fd-list-title>
 						</fd-list-item>
 					</fd-list>
@@ -1027,7 +1028,7 @@
 					</fd-avatar>
 					<fd-card-title>Table Card</fd-card-title>
 					<fd-card-subtitle>Compact mode</fd-card-subtitle>
-					<fd-card-counter status="positive"> 4 of 10</fd-card-counter>
+					<fd-card-status dg-type="counter" status="positive"> 4 of 10</fd-card-status>
 				</fd-card-header>
 				<fd-card-content>
 					<table fd-table inner-borders="none">

@@ -98,8 +98,23 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             ]
         },
     ];
+
     // setTimeout(function () {
-    //     messageHub.announceAlertSuccess(
+    //     messageHub.showBusyDialog(
+    //         "bdt",
+    //         "Loading examples",
+    //         'example.busy.closed'
+    //     );
+    // }, 2000);
+
+    // setTimeout(function () {
+    //     messageHub.hideBusyDialog(
+    //         "bdt",
+    //     );
+    // }, 3000);
+
+    // setTimeout(function () {
+    //     messageHub.showAlertSuccess(
     //         "Success",
     //         "This is good!"
     //     );
@@ -192,13 +207,11 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     // setTimeout(function () {
     //     messageHub.showDialogWindow(
     //         "about",
-    //         JSON.stringify(
-    //             {
-    //                 file: "&/workspace/ide-about/project.json",
-    //                 contentType: "application/json",
-    //                 gitName: "ide-about"
-    //             }
-    //         )
+    //         {
+    //             file: "/workspace/ide-about/project.json",
+    //             contentType: "application/json",
+    //             gitName: "ide-about"
+    //         }
     //     );
     // }, 1000);
 
@@ -221,17 +234,17 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     "example.selectDialog.test",
     //     function (data) {
     //         if (!Array.isArray(data.data.selected)) {
-    //             messageHub.announceAlertInfo(
+    //             messageHub.showAlertInfo(
     //                 "Item selected",
     //                 "Item ID: " + data.data.selected
     //             );
     //         }
     //         else if (data.data.selected.length > 0)
-    //             messageHub.announceAlertInfo(
+    //             messageHub.showAlertInfo(
     //                 "You have selected the following items",
     //                 data.data.selected.join(', ')
     //             );
-    //         else messageHub.announceAlertWarning(
+    //         else messageHub.showAlertWarning(
     //             "Nothing is selected",
     //             "If you don't select anything, you are not going to get anything."
     //         );
@@ -242,7 +255,6 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     // messageHub.onDidReceiveMessage(
     //     "example.formDialog.test",
     //     function (msg) {
-    //         console.log(msg.data);
     //         if (msg.data.buttonId === "b1") {
     //             if (msg.data.formData[0].value !== "wrong") {
     //                 setTimeout(function () {
@@ -303,17 +315,25 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
         "contextmenu",
         function (msg) {
             if (msg.data == "other") {
-                messageHub.announceAlertSuccess(
+                messageHub.showAlertSuccess(
                     "Success",
                     "You have selected the other option!"
                 );
             } else {
-                messageHub.announceAlertInfo(
+                messageHub.showAlertInfo(
                     "Nothing will happen",
                     "This is just a demo after all."
                 );
             }
         }
+    );
+
+    messageHub.onDidReceiveMessage(
+        "example.busy.closed",
+        function () {
+            messageHub.setStatusMessage('Busy dialog closed by the user.');
+        },
+        true
     );
 
     this.layoutModel = {

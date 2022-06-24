@@ -1093,7 +1093,66 @@
 					</table>
 				</fd-card-content>
 			</fd-card>
+		</div>
 
+		<h4>Wizard</h4>
+		<div>
+			<fd-wizard dg-size="md" current-step="wizard.currentStep" completed-steps="wizard.completedSteps">
+				<header>
+					<fd-bar bar-design="header-with-subheader" cozy="true" class="fd-bar--page-m_l">
+						<fd-bar-left>
+							<fd-bar-element>
+								<h1 fd-title header-size="3">Live Migration</h1>
+							</fd-bar-element>
+						</fd-bar-left>
+					</fd-bar>
+					<fd-wizard-navigation></fd-wizard-navigation>
+				</header>
+				<fd-wizard-content style="min-height: 300px;">
+					<fd-wizard-step dg-label="BTP Neo Credentials" indicator-label="1"
+						indicator-glyph="{{ getIndicatorGlyph(1) }}" step-click="gotoStep(step)">
+						<div>Step 1 content</div>
+						<fd-button dg-label="Revert" dg-type="emphasized" ng-click="revert(0)"></fd-button>
+					</fd-wizard-step>
+					<fd-wizard-step dg-label="HANA Credentials" indicator-label="2"
+						indicator-glyph="{{ getIndicatorGlyph(2) }}" step-click="gotoStep(step)">
+						<div>Step 2 content</div>
+						<fd-button dg-label="Revert" dg-type="emphasized" ng-click="revert(1)"></fd-button>
+					</fd-wizard-step>
+					<fd-wizard-step dg-label="Delivery Units" indicator-label="3"
+						indicator-glyph="{{ getIndicatorGlyph(3) }}" step-click="gotoStep(step)">
+						<div>Step 3 content</div>
+						<fd-button dg-label="Revert" dg-type="emphasized" ng-click="revert(2)"></fd-button>
+					</fd-wizard-step>
+					<fd-wizard-step dg-label="Changes" indicator-label="4" indicator-glyph="{{ getIndicatorGlyph(4) }}"
+						step-click="gotoStep(step)">
+						<div>Step 4 content</div>
+					</fd-wizard-step>
+					<fd-wizard-summary>
+						<div>Summary content</div>
+					</fd-wizard-summary>
+				</fd-wizard-content>
+				<footer>
+					<fd-bar bar-design="footer" class="fd-bar--page fd-bar--page-m_l">
+						<fd-bar-right>
+							<fd-bar-element>
+								<fd-button ng-if="!allStepsCompleted()" dg-label="Previous" compact="true"
+									ng-click="gotoPreviousStep()">
+								</fd-button>
+							</fd-bar-element>
+							<fd-bar-element>
+								<fd-button ng-if="!allStepsCompleted()"
+									dg-label="{{ isLastStep() ? 'Finish' : 'Next' }}" dg-type="emphasized"
+									compact="true" ng-click="gotoNextStep()"></fd-button>
+							</fd-bar-element>
+							<fd-bar-element>
+								<fd-button ng-if="!allStepsCompleted()" dg-label="Cancel" dg-type="transparent"
+									compact="true"></fd-button>
+							</fd-bar-element>
+							</fd-bar-left>
+					</fd-bar>
+				</footer>
+			</fd-wizard>
 		</div>
 
 		<br /><br /><br /><br />

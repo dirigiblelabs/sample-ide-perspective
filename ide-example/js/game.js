@@ -218,6 +218,48 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         else
             return "inactive";
     }
+
+    $scope.wizard = {
+        currentStep: 1,
+        completedSteps: 0,
+        stepsCount: 4
+    }
+
+    $scope.revert = function (completedStepsCount) {
+        $scope.wizard.completedSteps = completedStepsCount;
+    }
+
+    $scope.gotoNextStep = function () {
+        if ($scope.wizard.currentStep > $scope.wizard.completedSteps) {
+            $scope.wizard.completedSteps = $scope.wizard.currentStep;
+        }
+
+        if ($scope.wizard.currentStep <= $scope.wizard.stepsCount) {
+            $scope.gotoStep($scope.wizard.currentStep + 1);
+        }
+    }
+
+    $scope.gotoPreviousStep = function () {
+        if ($scope.wizard.currentStep > 1) {
+            $scope.gotoStep($scope.wizard.currentStep - 1);
+        }
+    }
+
+    $scope.gotoStep = function (step) {
+        $scope.wizard.currentStep = step;
+    }
+
+    $scope.getIndicatorGlyph = function (step) {
+        return step <= $scope.wizard.completedSteps ? 'sap-icon--accept' : undefined;
+    }
+
+    $scope.isLastStep = function () {
+        return $scope.wizard.currentStep === $scope.wizard.stepsCount;
+    }
+
+    $scope.allStepsCompleted = function () {
+        return $scope.wizard.completedSteps >= $scope.wizard.stepsCount;
+    }
 }]);
 
 gameView.filter('startFrom', function () {

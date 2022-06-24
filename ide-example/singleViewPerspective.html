@@ -50,19 +50,19 @@
         <!-- Top IDE panel and it's contents -->
         <ide-header menu-data-url="/services/v4/js/ide-core/services/menu.js"></ide-header>
         <!--
-        <ide-container active-id="single-view-perspective">
+        <ide-container>
             <split direction="horizontal" ng-transclude>
                 <split-pane size="80" min-size="0" snap-offset="100" ng-transclude>
-                    <view name="welcome"></view>
+                    <view id="welcome"></view>
                 </split-pane>
                 <split-pane size="20" min-size="0" snap-offset="100" ng-transclude>
-                    <view name="about"></view>
+                    <view id="about"></view>
                 </split-pane>
             </split>
         </ide-container>
         -->
 
-        <ide-container active-id="single-view-perspective">
+        <ide-container>
             <view id="welcome"></view>
         </ide-container>
 

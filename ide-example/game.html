@@ -1099,7 +1099,7 @@
 		<div>
 			<fd-wizard dg-size="md" current-step="wizard.currentStep" completed-steps="wizard.completedSteps">
 				<header>
-					<fd-bar bar-design="header-with-subheader" cozy="true" class="fd-bar--page-m_l">
+					<fd-bar bar-design="header-with-subheader" cozy="true" in-page="true" size="m_l">
 						<fd-bar-left>
 							<fd-bar-element>
 								<h1 fd-title header-size="3">Live Migration</h1>
@@ -1133,7 +1133,7 @@
 					</fd-wizard-summary>
 				</fd-wizard-content>
 				<footer>
-					<fd-bar bar-design="footer" class="fd-bar--page fd-bar--page-m_l">
+					<fd-bar bar-design="footer" in-page="true" size="m_l">
 						<fd-bar-right>
 							<fd-bar-element>
 								<fd-button ng-if="!allStepsCompleted()" dg-label="Previous" compact="true"
@@ -1153,6 +1153,56 @@
 					</fd-bar>
 				</footer>
 			</fd-wizard>
+		</div>
+
+		<h4>Panel</h4>
+		<div>
+			<fd-panel expanded="true">
+				<fd-panel-header>
+					<fd-panel-expand></fd-panel-expand>
+					<h4 fd-panel-title>Panel Header 1</h4>
+				</fd-panel-header>
+				<fd-panel-content aria-label="Panel Content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut laoreet lorem. Vestibulum ante
+					ipsum primis
+					in faucibus orci luctus et ultrices posuere cubilia curae; Aenean sagittis aliquam justo et
+					suscipit. Nam
+					molestie, magna at elementum pulvinar, nisi enim venenatis ante, id convallis mi neque nec risus.
+					Cras blandit
+					sagittis augue at facilisis. Mauris egestas nunc nec diam mollis auctor. Vestibulum sed euismod
+					elit, eget
+					accumsan quam. Donec eleifend porttitor viverra. Nunc porttitor dictum erat at molestie. Sed quis
+					velit dolor.
+					Vestibulum et turpis eget enim gravida gravida vitae at massa. Suspendisse facilisis elit ut dolor
+					posuere
+					consectetur. Morbi ac nibh sit amet dolor lobortis tincidunt in ornare erat. Vestibulum tristique
+					euismod enim,
+					ac volutpat odio cursus sit amet.
+				</fd-panel-content>
+			</fd-panel>
+			<fd-panel>
+				<fd-panel-header>
+					<fd-panel-expand></fd-panel-expand>
+					<h4 fd-panel-title>Panel Header 2</h4>
+				</fd-panel-header>
+				<fd-panel-content aria-label="Panel Content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut laoreet lorem. Vestibulum ante
+					ipsum primis
+					in faucibus orci luctus et ultrices posuere cubilia curae; Aenean sagittis aliquam justo et
+					suscipit. Nam
+					molestie, magna at elementum pulvinar, nisi enim venenatis ante, id convallis mi neque nec risus.
+					Cras blandit
+					sagittis augue at facilisis. Mauris egestas nunc nec diam mollis auctor. Vestibulum sed euismod
+					elit, eget
+					accumsan quam. Donec eleifend porttitor viverra. Nunc porttitor dictum erat at molestie. Sed quis
+					velit dolor.
+					Vestibulum et turpis eget enim gravida gravida vitae at massa. Suspendisse facilisis elit ut dolor
+					posuere
+					consectetur. Morbi ac nibh sit amet dolor lobortis tincidunt in ornare erat. Vestibulum tristique
+					euismod enim,
+					ac volutpat odio cursus sit amet.
+				</fd-panel-content>
+			</fd-panel>
 		</div>
 
 		<br /><br /><br /><br />

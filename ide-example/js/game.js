@@ -68,14 +68,14 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     };
 
     $scope.splitButtonClick = function () {
-        messageHub.announceAlertInfo(
+        messageHub.showAlertInfo(
             "Split button clicked",
             'You have clicked on the main action button.'
         );
     };
 
     $scope.popoverItemClick = function () {
-        messageHub.announceAlertInfo(
+        messageHub.showAlertInfo(
             "Popover item selected",
             'You have selected a popover item.'
         );
@@ -194,7 +194,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     messageHub.onDidReceiveMessage(
         "game.contextmenu",
         function (msg) {
-            messageHub.announceAlertInfo(
+            messageHub.showAlertInfo(
                 "Context menu item selected",
                 `You have selected a menu item with the following id - ${msg.data}`
             );

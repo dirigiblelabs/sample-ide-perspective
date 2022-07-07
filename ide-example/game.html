@@ -126,7 +126,7 @@
 		<fd-fieldset>
 			<fd-form-group dg-header="Input group header">
 				<fd-form-item>
-					<fd-checkbox id="cbid" compact="false" fd-checked="true" state="warning" dg-required="true"
+					<fd-checkbox id="cbid" compact="false" state="warning" dg-required="true"
 						ng-model="fdCheckboxModel">
 					</fd-checkbox>
 					<fd-checkbox-label for="cbid" dg-required="true">Checkbox</fd-checkbox-label>
@@ -1229,6 +1229,38 @@
 				</fd-message-page-more>
 			</fd-message-page>
 		</div>
+
+		<h4>Upload collection</h4>
+		<fd-upload-collection selection="true">
+			<fd-upload-collection-item ng-repeat="file in filesToUpload" file-name="{{file.fileName}}"
+				extension="{{file.extension}}" dg-selected="file.selected" ng-click="file.selected=!file.selected"
+				file-name-changed="file.fileName=fileName" delete-clicked="removeFileToUpload(file)">
+				<fd-list-form-item>
+					<fd-checkbox id="cbid10{{$index}}" aria-labelledby="title{{$index}}" ng-model="file.selected">
+					</fd-checkbox>
+					<fd-checkbox-label empty="true" for="cbid10{{$index}}" ng-click="$event.preventDefault()">
+					</fd-checkbox-label>
+				</fd-list-form-item>
+				<fd-list-thumbnail glyph="sap-icon--activate"></fd-list-thumbnail>
+				<fd-upload-collection-item-content>
+					<fd-upload-collection-title id="title{{$index}}"></fd-upload-collection-title>
+					<fd-upload-collection-form-item></fd-upload-collection-form-item>
+					<fd-upload-collection-description>
+						This is the file description
+						<span fd-upload-collection-text-separator></span>
+						This is an additional description
+					</fd-upload-collection-description>
+					<fd-upload-collection-status-group>
+						<span fd-object-status fd-upload-collection-status-item status="negative"
+							text="This is a negative status"></span>
+						<span fd-upload-collection-text-separator></span>
+						<span fd-object-status fd-upload-collection-status-item status="positive"
+							text="This is a positive status"></span>
+					</fd-upload-collection-status-group>
+				</fd-upload-collection-item-content>
+				<fd-upload-collection-button-group></fd-upload-collection-button-group>
+			</fd-upload-collection-item>
+		</fd-upload-collection>
 
 		<br /><br /><br /><br />
 

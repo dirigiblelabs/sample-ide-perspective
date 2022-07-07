@@ -260,6 +260,18 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.allStepsCompleted = function () {
         return $scope.wizard.completedSteps >= $scope.wizard.stepsCount;
     }
+
+    $scope.filesToUpload = [
+        { fileName: 'file1', extension: 'txt', selected: false },
+        { fileName: 'file2', extension: 'txt', selected: false },
+        { fileName: 'file3', extension: 'txt', selected: false }
+    ];
+
+    $scope.removeFileToUpload = function (file) {
+        let index = $scope.filesToUpload.indexOf(file);
+        if (index >= 0)
+            $scope.filesToUpload.splice(index, 1);
+    }
 }]);
 
 gameView.filter('startFrom', function () {

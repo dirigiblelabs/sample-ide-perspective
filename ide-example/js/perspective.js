@@ -27,7 +27,10 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             placeholder: "test placeholder",
             minlength: 3,
             maxlength: 6,
-            pattern: '[a-z0-9_\-]+',
+            inputRules: {
+                excluded: ['excludedword'],
+                patterns: ['^[^/]*$'],
+            },
             value: '',
             visibility: {
                 hidden: true,

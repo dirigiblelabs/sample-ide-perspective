@@ -1262,6 +1262,62 @@
 			</fd-upload-collection-item>
 		</fd-upload-collection>
 
+		<h4>Multi Combobox</h4>
+		<div style="width: 100%">
+			<fd-form-item>
+				<fd-combobox-input multi-select="true" selected-value="multiComboboxSelectedItems"
+					dropdown-items="multiComboboxItems" dg-placeholder="Search fruit ..." dg-aria-label="fruits">
+				</fd-combobox-input>
+			</fd-form-item>
+		</div>
+
+		<h4>Token Default</h4>
+		<div>
+			<fd-token dg-text="Bibendum" close-button-aria-label="Bibendum token close"></fd-token>
+			<fd-token dg-text="Lorem" close-button-aria-label="Lorem token close"></fd-token>
+			<fd-token dg-text="Dolor" close-button-aria-label="Dolor token close"></fd-token>
+			<fd-token dg-text="Filter (readonly)" dg-read-only="true"></fd-token>
+		</div>
+
+		<h4>Tokenizer</h4>
+		<div>
+			<fd-tokenizer>
+				<fd-token dg-text=" Long Token Option 1" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 2" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 3" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 4" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 5" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 6" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 7" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 8" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 9" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 10" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 11" close-button-aria-label="Token close"></fd-token>
+				<fd-token-indicator></fd-token-indicator>
+				<fd-input type="text" class="fd-tokenizer__input" autocomplete="off" placeholder="Find option">
+				</fd-input>
+			</fd-tokenizer>
+		</div>
+
+		<h4>Tokenizer scrollable</h4>
+		<div>
+			<fd-tokenizer scrollable="true">
+				<fd-token dg-text=" Long Token Option 1" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 2" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 3" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 4" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 5" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 6" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 7" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 8" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 9" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 10" close-button-aria-label="Token close"></fd-token>
+				<fd-token dg-text=" Long Token Option 11" close-button-aria-label="Token close"></fd-token>
+				<fd-input type="text" class="fd-tokenizer__input" autocomplete="off" placeholder="Find option">
+				</fd-input>
+			</fd-tokenizer>
+		</div>
+
 		<br /><br /><br /><br />
 
 		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload

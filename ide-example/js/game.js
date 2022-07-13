@@ -59,6 +59,15 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         { value: 4, text: 'Product 4', secondaryText: '40 EUR' }
     ];
 
+    $scope.multiComboboxItems = [
+        { value: 1, text: 'Apple' },
+        { value: 2, text: 'Pineapple' },
+        { value: 3, text: 'Banana' },
+        { value: 4, text: 'Kiwi' },
+        { value: 5, text: 'Strawberry' }
+    ];
+    $scope.multiComboboxSelectedItems = [3];
+
     $scope.setTristate = function () {
         $scope.tristate = true;
     };

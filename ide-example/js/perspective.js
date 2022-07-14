@@ -339,7 +339,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
         true
     );
 
-    this.layoutModel = {
+    $scope.layoutModel = {
         // Array of view ids
         views: ["example-game", "example-history"],
         viewSettings: {

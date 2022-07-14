@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ Copyright (c) 2010-2022 SAP and others.
   ~ All rights reserved. This program and the accompanying materials
   ~ are made available under the terms of the Eclipse Public License v2.0
   ~ which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" ng-app="example" ng-controller="ExampleViewController as evc" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="example" ng-controller="ExampleViewController" xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="utf-8" />
@@ -37,13 +37,13 @@
 	<body dg-contextmenu="contextMenuContent">
 
 		<!-- Top IDE panel and it's contents -->
-		<ide-header menu-data-url="/services/v4/js/ide-example/services/menu/menu.js"></ide-header>
+		<ide-header menu-ext-id="ide-example-menu"></ide-header>
 		<!-- Context menu overlay -->
 		<ide-contextmenu></ide-contextmenu>
 
 		<!-- The container which holds the sidebar and this perspective -->
 		<ide-container>
-			<ide-layout views-layout-model="evc.layoutModel"></ide-layout>
+			<ide-layout views-layout-model="layoutModel"></ide-layout>
 		</ide-container>
 
 		<!-- Alert dialog Overlay for alerts, notifications, dialogs -->

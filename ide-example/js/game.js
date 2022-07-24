@@ -66,7 +66,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         { value: 4, text: 'Kiwi' },
         { value: 5, text: 'Strawberry' }
     ];
-    $scope.multiComboboxSelectedItems = [3];
+    $scope.multiComboboxSelectedItems = [1];
 
     $scope.setTristate = function () {
         $scope.tristate = true;
@@ -280,6 +280,28 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         let index = $scope.filesToUpload.indexOf(file);
         if (index >= 0)
             $scope.filesToUpload.splice(index, 1);
+    }
+
+    $scope.select = {
+        s1: 1,
+        s2: 2,
+        s3: 3,
+        s4: 4,
+        s5: 2,
+        onS1Change: function () {
+            console.log($scope.select.s1);
+        }
+    }
+
+    $scope.cb = {
+        selectedModelValue: null,
+        selectedModelValues: [],
+        onCBChange: function () {
+            console.log($scope.cb.selectedModelValue);
+        },
+        onMCBChange: function () {
+            console.log($scope.cb.selectedModelValues);
+        }
     }
 }]);
 

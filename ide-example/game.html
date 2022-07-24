@@ -788,7 +788,7 @@
 
 		<h4>Select 2-column With Icons</h4>
 		<div>
-			<fd-select selected-value="selectSelectedValue">
+			<fd-select ng-model="selectSelectedValue">
 				<fd-option text="Option 1" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2">
@@ -822,7 +822,7 @@
 
 		<h4>Select dropdown position</h4>
 		<div class="dg-center">
-			<fd-select selected-value="1">
+			<fd-select ng-model="select.s1" ng-change="select.onS1Change()">
 				<fd-option text="Default (Bottom)" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -830,7 +830,7 @@
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
 			<br style="width: 1rem">
-			<fd-select placement="bottom-end" selected-value="1">
+			<fd-select placement="bottom-end" ng-model="select.s2">
 				<fd-option text="Bottom-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -838,7 +838,7 @@
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
 			<br style="width: 1rem">
-			<fd-select placement="top" selected-value="1">
+			<fd-select placement="top" ng-model="select.s3">
 				<fd-option text="Top" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -846,7 +846,7 @@
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
 			<br style="width: 1rem">
-			<fd-select placement="top-end" selected-value="1">
+			<fd-select placement="top-end" ng-model="select.s4">
 				<fd-option text="Top-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -854,7 +854,7 @@
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
 			<br style="width: 1rem">
-			<fd-select placement="right" selected-value="1">
+			<fd-select placement="right" ng-model="select.s5">
 				<fd-option text="Right" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -862,7 +862,7 @@
 				<fd-option text="Option 4" secondary-text="A4" glyph="sap-icon--activate" value="4"></fd-option>
 			</fd-select>
 			<br style="width: 1rem">
-			<fd-select placement="right-end" selected-value="1">
+			<fd-select placement="right-end" ng-model="select.s6" dg-placeholder="Select an option..." required>
 				<fd-option text="Right-end" secondary-text="A1" glyph="sap-icon--marketing-campaign" value="1">
 				</fd-option>
 				<fd-option text="Option 2" secondary-text="A2" glyph="sap-icon--shipping-status" value="2"></fd-option>
@@ -984,8 +984,8 @@
 				dg-placeholder="Search fruit ..." dg-aria-label="fruits">
 			</fd-combobox-input>
 
-			<fd-combobox-input dropdown-items="comboboxItems2" selected-value="2" dg-placeholder="Search product ..."
-				dg-aria-label="products">
+			<fd-combobox-input dropdown-items="comboboxItems2" ng-model="cb.selectedModelValue"
+				ng-change="cb.onCBChange()" required dg-placeholder="Search product ..." dg-aria-label="products">
 			</fd-combobox-input>
 
 			<fd-combobox-input input-id="test" dropdown-items="comboboxItems" dg-placeholder="Search fruit ..."
@@ -1109,7 +1109,7 @@
 					<fd-wizard-navigation></fd-wizard-navigation>
 				</header>
 				<fd-wizard-content dg-size="md" style="min-height: 300px;">
-					<fd-wizard-step dg-label="BTP Neo Credentials" indicator-label="1"
+					<fd-wizard-step dg-size="md" dg-label="BTP Neo Credentials" indicator-label="1"
 						indicator-glyph="{{ getIndicatorGlyph(1) }}" step-click="gotoStep(step)">
 						<div>Step 1 content</div>
 						<fd-button dg-label="Revert" dg-type="emphasized" ng-click="revert(0)"></fd-button>
@@ -1149,7 +1149,7 @@
 								<fd-button ng-if="!allStepsCompleted()" dg-label="Cancel" dg-type="transparent"
 									compact="true"></fd-button>
 							</fd-bar-element>
-							</fd-bar-left>
+						</fd-bar-right>
 					</fd-bar>
 				</footer>
 			</fd-wizard>
@@ -1265,7 +1265,7 @@
 		<h4>Multi Combobox</h4>
 		<div style="width: 100%">
 			<fd-form-item>
-				<fd-combobox-input multi-select="true" selected-value="multiComboboxSelectedItems"
+				<fd-combobox-input multi-select="true" ng-model="cb.selectedModelValues" ng-change="cb.onMCBChange()"
 					dropdown-items="multiComboboxItems" dg-placeholder="Search fruit ..." dg-aria-label="fruits">
 				</fd-combobox-input>
 			</fd-form-item>

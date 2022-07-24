@@ -61,19 +61,19 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             type: "dropdown",
             label: "Test dropdown",
             required: true,
-            value: '',
+            value: undefined,
             items: [
                 {
                     label: "First item",
-                    value: "firstItem",
+                    value: 0,
                 },
                 {
                     label: "Second item",
-                    value: "secondItem",
+                    value: 1,
                 },
                 {
                     label: "Third item",
-                    value: "thirdItem",
+                    value: 2,
                 }
             ]
         },

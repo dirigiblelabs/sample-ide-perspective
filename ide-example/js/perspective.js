@@ -211,12 +211,26 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     messageHub.showDialogWindow(
     //         "about",
     //         {
-    //             file: "/workspace/ide-about/project.json",
-    //             contentType: "application/json",
-    //             gitName: "ide-about"
-    //         }
+    //             param1: 1,
+    //             param2: 2,
+    //         },
+    //         'example.widnow.close',
+    //         false
     //     );
     // }, 1000);
+
+
+    // setTimeout(function () {
+    //     messageHub.closeDialogWindow("about");
+    // }, 4000);
+
+    // messageHub.onDidReceiveMessage(
+    //     'example.widnow.close',
+    //     function () {
+    //         console.log("Window closed");
+    //     },
+    //     true
+    // );
 
     // messageHub.onDidReceiveMessage(
     //     "example.dialog.test",

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ Copyright (c) 2010-2022 SAP and others.
   ~ All rights reserved. This program and the accompanying materials
   ~ are made available under the terms of the Eclipse Public License v2.0
   ~ which accompanies this distribution, and is available at
@@ -8,72 +8,49 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" ng-app="example" ng-controller="ExampleViewController as evc" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app="example" ng-controller="ExampleViewController" xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title brandtitle perspective-name="Guess my number!">Guess my number!</title>
+		<title dg-brand-title></title>
 
 		<!-- 'brandicon' is an AngularJS directive to set the proper favicon. Do this only for perspective and not regular views -->
-		<link rel="icon" href="data:;base64,iVBORw0KGgo=" brandicon />
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
 
-		<!-- FontAwesome icon set -->
-		<link type="text/css" href="/webjars/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- Perspective data -->
+		<script type="text/javascript" src="/services/v4/web/ide-example/services/perspective.js"></script>
 
-		<!-- jQuery -->
-		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+		<theme></theme>
 
-		<!-- AngularJS -->
-		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
-		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
+		<script type="text/javascript" src="/services/v4/js/resources-core/services/loader.js?id=ide-perspective-js">
+		</script>
 
-		<!-- Bootstrap with Theme Support -->
-		<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
-		<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		<!-- GoldenLayout with Theme Support -->
 		<link type="text/css" rel="stylesheet"
-			href="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
-		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/goldenlayout-theme.css" />
-		<script type="text/javascript" src="/services/v4/web/resources/goldenlayout/1.5.9/goldenlayout.min.js"></script>
-
-		<!-- MessageHub -->
-		<script src="/services/v4/web/ide-core/ui/message-hub.js"></script>
-
-		<!-- IDE Core UI -->
-		<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-layout.js"></script>
-		<script type="text/javascript" src="/services/v4/web/ide-core/ui/ui-core-ng-modules.js"></script>
-
-		<!-- Custom IDE Styles -->
-		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
+			href="/services/v4/js/resources-core/services/loader.js?id=ide-perspective-css" />
 
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/perspective.js"></script>
 
 	</head>
 
-	<body class="view example-body">
+	<body dg-contextmenu="contextMenuContent">
 
 		<!-- Top IDE panel and it's contents -->
-		<div menu menu-data-url="/services/v4/js/ide-example/services/menu/menu.js"></div>
+		<ide-header menu-ext-id="ide-example-menu"></ide-header>
+		<!-- Context menu overlay -->
+		<ide-contextmenu></ide-contextmenu>
 
-		<!-- The shell which holds the sidebar and main plane view -->
-		<div class="shell">
+		<!-- The container which holds the sidebar and this perspective -->
+		<ide-container>
+			<ide-layout views-layout-model="layoutModel"></ide-layout>
+		</ide-container>
 
-			<!-- IDE sidebar, holding the shortcuts for all Dirigible perspectives -->
-			<div class="sidebar list-group" sidebar active="Guess my number"></div>
-
-			<!-- Main 'plane' view which holds the layout and will show our subviews -->
-			<div id="example" class="plane" views-layout views-layout-model="evc.layoutModel">
-
-			</div>
-		</div>
-		<!-- Alert dialog overlay -->
-		<div alert></div>
+		<!-- Alert dialog Overlay for alerts, notifications, dialogs -->
+		<ide-dialogs></ide-dialogs>
 		<!-- Bottom IDE status bar -->
-		<div class="statusbar" status-bar>{{message}}</div>
+		<ide-status-bar></ide-status-bar>
 
 	</body>
 

@@ -9,13 +9,15 @@
  * SPDX-FileCopyrightText: 2010-2021 SAP SE or an SAP affiliate company and Eclipse Dirigible contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-exports.getView = function () {
-	return {
-		"id": "example-game",
-		"name": "Guess my number",
-		"factory": "frame",
-		"region": "main",
-		"label": "Guess my number",
-		"link": "../ide-example/game.html"
-	};
+const viewData = {
+	id: "example-game",
+	label: "Guess my number",
+	factory: "frame",
+	region: "bottom",
+	link: "../ide-example/game.html",
+};
+if (typeof exports !== 'undefined') {
+	exports.getView = function () {
+		return viewData;
+	}
 }

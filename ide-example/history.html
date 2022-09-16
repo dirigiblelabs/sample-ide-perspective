@@ -8,7 +8,7 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="history" ng-controller="HistoryViewController">
 
 	<head>
 		<meta charset="utf-8" />
@@ -17,41 +17,52 @@
 		<!-- Fake favicon to silent console errors and not waste a get request -->
 		<link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
 
-		<title>History</title>
+		<!-- Title directive -->
+		<title dg-view-title></title>
+
+		<!-- View data -->
+		<script type="text/javascript" src="/services/v4/web/ide-example/services/history-view.js"></script>
 
 		<!-- jQuery -->
 		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 		<!-- AngularJS -->
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
 		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
+		<script type="text/javascript" src="/webjars/angular-aria/1.8.2/angular-aria.min.js"></script>
 
-		<!-- Twitter Bootstrap with Theme Support -->
-		<link rel="stylesheet" href="/services/v4/js/theme/resources.js/bootstrap.min.css">
-		<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Fundamental-styles -->
+		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.24.0/dist/fundamental-styles.css">
+		<theme></theme>
+
+		<!-- Dirigible styles -->
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/core.css" />
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/widgets.css" />
 
 		<!-- MessageHub -->
-		<script type="text/javascript" src="/services/v4/web/ide-core/ui/message-hub.js"></script>
+		<script type="text/javascript" src="/services/v4/web/resources-core/core/message-hub.js"></script>
+		<script type="text/javascript" src="/services/v4/web/resources-core/core/ide-message-hub.js"></script>
 
-		<!-- Custom IDE Styles -->
-		<link type="text/css" rel="stylesheet" href="/services/v4/js/theme/resources.js/ide.css" />
+		<!-- IDE Core UI -->
+		<script type="text/javascript" src="/services/v4/web/resources-core/ui/theming.js"></script>
+		<script type="text/javascript" src="/services/v4/web/resources-core/ui/widgets.js"></script>
+		<script type="text/javascript" src="/services/v4/web/resources-core/ui/view.js"></script>
+
+		<!-- JSTree -->
+		<script type="text/javascript" src="/webjars/jstree/3.3.12/jstree.min.js"></script>
+		<script type="text/javascript" src="/services/v4/web/resources-core/ui/widgets/indicator.plugin.js"></script>
+		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/jstree.css" />
 
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/history.js"></script>
-		<link type="text/css" rel="stylesheet" href="css/history.css" />
 
 	</head>
 
-	<body ng-app="history" ng-controller="HistoryViewController" class="view history-body">
-		<table class="table">
-			<tr>
-				<th class="big-header">Game</th>
-				<th>Your number</th>
-			</tr>
-			<tr ng-repeat="number in history track by $index">
-				<td>{{$index + 1}}</td>
-				<td>{{number}}</td>
-			</tr>
-		</table>
+	<body dg-contextmenu="contextMenuContent" excluded-elements="excludedElements">
+		<div style="display: flex;flex-direction: column;height:100%">
+			<input class="fd-input" type="text" id="treeSearch" ng-keyup="search()" placeholder="Search tree">
+			<br>
+			<div id="jstree_demo" class="jstree-fiori--fill jstree-fiori--context-menu fd-scrollbar"></div>
+		</div>
 	</body>
 
 </html>

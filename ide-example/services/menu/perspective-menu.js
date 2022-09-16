@@ -11,18 +11,111 @@
  */
 exports.getMenu = function () {
 	return {
-		"name": "Example",
-		"order": "100",
-		"items": [
+		label: "Example",
+		order: 1,
+		items: [
 			{
-				"name": "GitHub page",
-				"link": "https://github.com/dirigiblelabs/sample-ide-perspective",
-				"order": "110"
+				label: "Submenu",
+				order: 1,
+				items: [
+					{
+						label: "GitHub page",
+						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+						action: "open",
+						order: 1
+					},
+					{
+						label: "Empty item with divider",
+						divider: true,
+						order: 2
+					},
+					{
+						label: "Empty item",
+						order: 3
+					}
+				]
 			},
 			{
-				"name": "About",
-				"link": "#",
-				"order": "120"
+				label: "Submenu",
+				order: 2,
+				items: [
+					{
+						label: "GitHub page",
+						data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+						action: "open",
+						order: 1
+					},
+					{
+						label: "Empty item with divider",
+						divider: true,
+						order: 2
+					},
+					{
+						label: "Empty item",
+						order: 3,
+						items: [
+							{
+								label: "GitHub page",
+								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+								action: "open",
+								order: 1
+							},
+							{
+								label: "Empty item with divider",
+								divider: true,
+								order: 2
+							},
+							{
+								label: "Empty item",
+								order: 3
+							}
+						]
+					},
+					{
+						label: "Empty item 2",
+						order: 2,
+						items: [
+							{
+								label: "GitHub page",
+								data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+								action: "open",
+								order: 1
+							},
+							{
+								label: "Empty item with divider",
+								divider: true,
+								order: 2
+							},
+							{
+								label: "Empty item",
+								order: 3,
+								items: [
+									{
+										label: "GitHub page",
+										data: "https://github.com/dirigiblelabs/sample-ide-perspective",
+										action: "open",
+										order: 1
+									},
+									{
+										label: "Empty item with divider",
+										divider: true,
+										order: 2
+									},
+									{
+										label: "Empty item",
+										order: 3
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				label: "About",
+				action: "openDialogWindow",
+				dialogId: "about",
+				order: 3
 			}
 		]
 	};

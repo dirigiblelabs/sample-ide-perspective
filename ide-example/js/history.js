@@ -13,6 +13,8 @@ let historyView = angular.module('history', ['ideUI', 'ideView']);
 
 historyView.controller('HistoryViewController', ['$scope', 'messageHub', function ($scope, messageHub) {
     $scope.history = [];
+    $scope.searchVisible = false;
+    $scope.searchField = { text: '' };
     $scope.excludedElements = {
         ids: ["treeSearch"],
         classes: ["fd-input"],
@@ -96,12 +98,22 @@ historyView.controller('HistoryViewController', ['$scope', 'messageHub', functio
         );
     };
 
-    let to = false;
+    let to = 0;
     $scope.search = function () {
         if (to) { clearTimeout(to); }
         to = setTimeout(function () {
-            $scope.jstreeWidget.jstree(true).search($('#treeSearch').val());
+            $scope.jstreeWidget.jstree(true).search($scope.searchField.text);
         }, 250);
+    };
+
+    $scope.reload = function () { // Doesn't do anything useful
+        $scope.jstreeWidget.jstree(true).refresh();
+    };
+
+    $scope.toggleSearch = function () {
+        $scope.searchField.text = '';
+        $scope.jstreeWidget.jstree(true).clear_search();
+        $scope.searchVisible = !$scope.searchVisible;
     };
 
     $scope.jstreeWidget.jstree({

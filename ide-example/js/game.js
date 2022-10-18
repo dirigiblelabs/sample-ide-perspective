@@ -27,6 +27,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.fdCheckboxModel = true;
     $scope.fdRadioModel = false;
     $scope.tristate = false;
+    $scope.menusShown = false;
     $scope.fdListItem = { checkboxModel: true };
     $scope.objectStatusIndicator = 8;
 
@@ -43,6 +44,42 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
             amount: Math.floor(Math.random() * 1000)
         });
     }
+
+    $scope.lastInputValue = "";
+
+    function isText(keycode) {
+        if (keycode >= 48 && keycode <= 90 || keycode >= 96 && keycode <= 111 || keycode >= 186 && keycode <= 222 || [8, 46, 173].includes(keycode)) return true;
+        return false;
+    }
+
+    $scope.onComboInputChange = function (event) {
+        if (isText(event.which)) {
+            if (event.originalEvent.target.value === "") {
+                $scope.dynamicItems = [
+                    { value: 1, text: 'Default value 1' },
+                    { value: 2, text: 'Default value 2' },
+                    { value: 3, text: 'Default value 3' },
+                    { value: 4, text: 'Default value 4' },
+                    { value: 5, text: 'Default value 5' },
+                ];
+            } else if ($scope.lastInputValue !== event.originalEvent.target.value) {
+                // Back-end stuff
+                $scope.dynamicItems.length = 0;
+                for (let i = 0; i < event.originalEvent.target.value.length; i++) {
+                    $scope.dynamicItems.push({ value: i, text: `Dynamic value ${event.originalEvent.target.value} ${i + 1}` });
+                }
+            }
+            $scope.lastInputValue = event.originalEvent.target.value;
+        }
+    };
+
+    $scope.dynamicItems = [
+        { value: 1, text: 'Default value 1' },
+        { value: 2, text: 'Default value 2' },
+        { value: 3, text: 'Default value 3' },
+        { value: 4, text: 'Default value 4' },
+        { value: 5, text: 'Default value 5' }
+    ];
 
     $scope.comboboxItems = [
         { value: 1, text: 'Apple' },
@@ -70,6 +107,10 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
 
     $scope.setTristate = function () {
         $scope.tristate = true;
+    };
+
+    $scope.toggleMenus = function () {
+        $scope.menusShown = !$scope.menusShown;
     };
 
     $scope.splitItemClick = function (selected) {

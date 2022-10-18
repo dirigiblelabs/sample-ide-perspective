@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-  ~ Copyright (c) 2010-2021 SAP and others.
+  ~ Copyright (c) 2010-2022 SAP and others.
   ~ All rights reserved. This program and the accompanying materials
   ~ are made available under the terms of the Eclipse Public License v2.0
   ~ which accompanies this distribution, and is available at
@@ -13,40 +13,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<!-- Fake favicon to silent console errors and not waste a get request -->
 		<link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
-
 		<!-- Title directive -->
 		<title dg-view-title></title>
-
 		<!-- View data -->
-		<script type="text/javascript" src="/services/v4/web/ide-example/services/game-view.js"></script>
-
-		<!-- jQuery -->
-		<script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
-		<!-- AngularJS -->
-		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular.min.js"></script>
-		<script type="text/javascript" src="/webjars/angularjs/1.8.2/angular-resource.min.js"></script>
-		<script type="text/javascript" src="/webjars/angular-aria/1.8.2/angular-aria.min.js"></script>
-
-		<!-- Fundamental-styles -->
-		<link type="text/css" rel="stylesheet" href="/webjars/fundamental-styles/0.24.0/dist/fundamental-styles.css">
-		<theme></theme>
-
-		<!-- Dirigible styles -->
-		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/core.css" />
-		<link type="text/css" rel="stylesheet" href="/services/v4/web/resources/styles/widgets.css" />
-
-		<!-- MessageHub -->
-		<script type="text/javascript" src="/services/v4/web/resources-core/core/message-hub.js"></script>
-		<script type="text/javascript" src="/services/v4/web/resources-core/core/ide-message-hub.js"></script>
-
+		<script type="text/javascript" src="services/game-view.js"></script>
 		<!-- IDE Core UI -->
-		<script type="text/javascript" src="/services/v4/web/resources-core/ui/theming.js"></script>
-		<script type="text/javascript" src="/services/v4/web/resources-core/ui/widgets.js"></script>
-		<script type="text/javascript" src="/services/v4/web/resources-core/ui/view.js"></script>
-
+		<script type="text/javascript" src="/services/v4/js/resources-core/services/loader.js?id=ide-view-js"></script>
+		<link type="text/css" rel="stylesheet"
+			href="/services/v4/js/resources-core/services/loader.js?id=ide-view-css" />
+		<theme></theme>
 		<!-- Project-specific stuff -->
 		<script type="text/javascript" src="js/game.js"></script>
 		<!-- <script type="text/javascript" src="js/game-screen-one.js"></script>
@@ -56,10 +33,9 @@
 
 	</head>
 
-	<body class="fd-scrollbar" dg-contextmenu="contextMenuContent">
-
-		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
-			view</button>
+	<body fd-scrollbar dg-contextmenu="contextMenuContent">
+		<fd-button dg-label="Reload view" onClick="window.location.reload();"></fd-button>
+		<h4>Buttons</h4>
 		<fd-button dg-label="Change state" ng-click="state()"></fd-button>
 
 		<fd-button dg-label="{{ btnText }}" badge="121" compact="true" glyph="sap-icon--folder" state="{{ btnState }}"
@@ -86,20 +62,20 @@
 
 		<fd-split-button main-action="{{ splitButtonAction }}" dg-type="emphasized" aria-label="button-split"
 			callback="splitButtonClick">
-			<fd-menu>
+			<fd-menu no-backdrop="true">
 				<fd-menu-item title="Split item" ng-click="splitItemClick('Split item')"></fd-menu-item>
 				<fd-menu-item title="Split item 2" ng-click="splitItemClick('Split item 2')"></fd-menu-item>
 				<fd-menu-item title="Split item 3" ng-click="splitItemClick('Split item 3')"></fd-menu-item>
 			</fd-menu>
 		</fd-split-button>
 
-		<fd-popover compact="true" dg-align="right">
+		<fd-popover dg-align="right">
 			<fd-popover-control>
-				<fd-button dg-label="test">
+				<fd-button dg-label="Popover scroll">
 				</fd-button>
 			</fd-popover-control>
-			<fd-popover-body dg-align="right">
-				<fd-menu>
+			<fd-popover-body can-scroll="true" dg-align="right" max-height="200">
+				<fd-menu no-backdrop="true" no-shadow="true">
 					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-separator></fd-menu-separator>
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -107,6 +83,23 @@
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
+				</fd-menu>
+			</fd-popover-body>
+		</fd-popover>
+
+		<fd-popover dg-align="right">
+			<fd-popover-control>
+				<fd-button dg-label="Popover sublist">
+				</fd-button>
+			</fd-popover-control>
+			<fd-popover-body can-scroll="false" dg-align="right">
+				<fd-menu no-backdrop="true" no-shadow="true">
+					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
+					<fd-menu-sublist title="Sublist 1">
+						<fd-menu-item title="Some sublist item 1"></fd-menu-item>
+						<fd-menu-item title="Some sublist item 2"></fd-menu-item>
+					</fd-menu-sublist>
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 				</fd-menu>
 			</fd-popover-body>
@@ -122,6 +115,42 @@
 
 		<fd-busy-indicator dg-size="l"></fd-busy-indicator>
 		<fd-busy-indicator-extended dg-size="m">Some text</fd-busy-indicator-extended>
+
+		<h4>Menus</h4>
+		<fd-button dg-label="Show menus" ng-click="toggleMenus()"></fd-button>
+		<div style="display:flex;justify-content:space-around;align-items:center;">
+			<fd-menu show="menusShown" can-scroll="true">
+				<fd-menu-item title="Menu item 1"></fd-menu-item>
+				<fd-menu-item title="Menu item 2"></fd-menu-item>
+				<fd-menu-item title="Menu item 3"></fd-menu-item>
+				<fd-menu-item title="Close menu" ng-click="toggleMenus()"></fd-menu-item>
+			</fd-menu>
+			<fd-menu show="menusShown" can-scroll="false">
+				<fd-menu-item title="Menu item 1"></fd-menu-item>
+				<fd-menu-item title="Menu item 2"></fd-menu-item>
+				<fd-menu-sublist title="Submenu 1">
+					<fd-menu-item title="Submenu item 1"></fd-menu-item>
+					<fd-menu-item title="Submenu item 2"></fd-menu-item>
+				</fd-menu-sublist>
+				<fd-menu-sublist title="Submenu 2">
+					<fd-menu-item title="Submenu item 3"></fd-menu-item>
+					<fd-menu-item title="Submenu item 4"></fd-menu-item>
+					<fd-menu-separator></fd-menu-separator>
+					<fd-menu-sublist title="Submenu 3">
+						<fd-menu-item title="Submenu item 5"></fd-menu-item>
+						<fd-menu-item title="Submenu item 6"></fd-menu-item>
+						<fd-menu-sublist title="Submenu 4">
+							<fd-menu-item title="Submenu item 8"></fd-menu-item>
+							<fd-menu-item title="Submenu item 9"></fd-menu-item>
+						</fd-menu-sublist>
+						<fd-menu-item title="Submenu item 7"></fd-menu-item>
+					</fd-menu-sublist>
+				</fd-menu-sublist>
+				<fd-menu-item title="Close menu" ng-click="toggleMenus()"></fd-menu-item>
+			</fd-menu>
+		</div>
+
+		<h4>Form inputs</h4>
 
 		<fd-fieldset>
 			<fd-form-group dg-header="Input group header">
@@ -204,7 +233,7 @@
 								</fd-button>
 							</fd-popover-control>
 							<fd-popover-body dg-align="right">
-								<fd-menu>
+								<fd-menu no-backdrop="true" no-shadow="true">
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -231,7 +260,7 @@
 								</fd-button>
 							</fd-popover-control>
 							<fd-popover-body dg-align="right">
-								<fd-menu>
+								<fd-menu no-backdrop="true" no-shadow="true">
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -992,6 +1021,13 @@
 				state="success" message="Success message" dg-aria-label="fruits"></fd-combobox-input>
 		</div>
 
+		<h4>ComboBox Input Dynamic</h4>
+		<div style="display:flex; justify-content: space-around">
+			<fd-combobox-input input-id="dynamic" dropdown-items="dynamicItems" ng-keyup="onComboInputChange($event)"
+				dg-placeholder="Start typing" dg-aria-label="dynamic cpmbobox">
+			</fd-combobox-input>
+		</div>
+
 		<h4>Card</h4>
 
 		<div style="padding: 10px;">
@@ -1318,10 +1354,307 @@
 			</fd-tokenizer>
 		</div>
 
-		<br /><br /><br /><br />
-
-		<button class="fd-button fd-button--emphasized" onClick="window.location.reload();" style="margin: 6px;">Reload
-			view</button>
+		<h4>Vertical Navigation</h4>
+		<h5>Default</h5>
+		<div style="height: 200px;">
+			<fd-vertical-nav>
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Home</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Sample</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Condensed</h5>
+		<div style="height: 200px;">
+			<fd-vertical-nav ng-init="isCondensed = true" condensed="isCondensed">
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Home</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Sample</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Condensed large icon mode</h5>
+		<div style="height: 100px;">
+			<fd-vertical-nav ng-init="isCondensed = true" condensed="isCondensed">
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon glyph="sap-icon--home" icon-size="lg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon svg-path="images/sample.svg" icon-size="lg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Grouping</h5>
+		<div style="height:300px;">
+			<fd-vertical-nav>
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-group-header>Group header</fd-list-navigation-group-header>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item ng-init="expanded = false" expandable="true"
+							ng-click="expanded = !expanded" is-expanded="expanded">
+							<fd-list-navigation-item-icon glyph="sap-icon--folder">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Folder</span>
+							<fd-list-navigation-item-arrow aria-label="expand submenu" is-expanded="expanded">
+							</fd-list-navigation-item-arrow>
+							<fd-list>
+								<fd-list-navigation-item>
+									<span fd-list-navigation-item-text>Inner item 1</span>
+								</fd-list-navigation-item>
+								<fd-list-navigation-item>
+									<span fd-list-navigation-item-text>Inner item 2</span>
+								</fd-list-navigation-item>
+							</fd-list>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Condensed expandable items</h5>
+		<div style="height:300px;">
+			<fd-vertical-nav ng-init="isCondensed = true" condensed="isCondensed">
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item condensed="isCondensed" ng-init="expanded = false" expandable="true"
+							ng-click="expanded = !expanded" is-expanded="expanded">
+							<fd-list-navigation-item-icon glyph="sap-icon--folder">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-arrow aria-label="expand submenu" is-expanded="expanded">
+							</fd-list-navigation-item-arrow>
+							<fd-list-navigation-item-popover level="1" is-expanded="expanded">
+								<fd-list>
+									<fd-list-navigation-item condensed="isCondensed">
+										<fd-list-navigation-item-icon glyph="sap-icon--folder">
+										</fd-list-navigation-item-icon>
+										<span fd-list-navigation-item-text>Folder</span>
+									</fd-list-navigation-item>
+								</fd-list>
+							</fd-list-navigation-item-popover>
+							<fd-list-navigation-item-popover level="2" is-expanded="expanded">
+								<fd-list>
+									<fd-list-navigation-item>
+										<span fd-list-navigation-item-text>Inner item 1</span>
+									</fd-list-navigation-item>
+									<fd-list-navigation-item>
+										<span fd-list-navigation-item-text>Inner item 2</span>
+									</fd-list-navigation-item>
+								</fd-list>
+							</fd-list-navigation-item-popover>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Scroll/Overflow</h5>
+		<div style="height: 200px;">
+			<fd-vertical-nav can-scroll="true">
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--calendar">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Calendar</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--course-book">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Deliveries</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--employee">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Employees</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--filter-analytics">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Analytics</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--headset">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Support</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--stethoscope">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Health</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Navigation Indication</h5>
+		<div ng-init="isIndicated = true" style="display:flex;justify-content:space-around;height:350px;">
+			<fd-vertical-nav>
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item indicated="isIndicated">
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+							<fd-list-navigation-item-indicator ng-if="isIndicated"></fd-list-navigation-item-indicator>
+						</fd-list-navigation-item>
+						<fd-list-navigation-group-header>Group</fd-list-navigation-group-header>
+						<fd-list-navigation-item ng-init="expanded = false" expandable="true"
+							ng-click="expanded = !expanded" is-expanded="expanded">
+							<fd-list-navigation-item-icon glyph="sap-icon--folder">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Folder</span>
+							<fd-list-navigation-item-arrow aria-label="expand submenu" is-expanded="expanded">
+							</fd-list-navigation-item-arrow>
+							<fd-list>
+								<fd-list-navigation-item>
+									<span fd-list-navigation-item-text>Inner item 1</span>
+								</fd-list-navigation-item>
+								<fd-list-navigation-item indicated="isIndicated">
+									<span fd-list-navigation-item-text>Inner item 2</span>
+									<fd-list-navigation-item-indicator ng-if="isIndicated">
+									</fd-list-navigation-item-indicator>
+								</fd-list-navigation-item>
+							</fd-list>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+			<fd-vertical-nav ng-init="isCondensed = true" condensed="isCondensed">
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item condensed="isCondensed">
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Home</span>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item indicated="isIndicated" condensed="isCondensed">
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<span fd-list-navigation-item-text>Sample</span>
+							<fd-list-navigation-item-indicator ng-if="isIndicated"></fd-list-navigation-item-indicator>
+						</fd-list-navigation-item>
+						<fd-list-navigation-group-header></fd-list-navigation-group-header>
+						<fd-list-navigation-item condensed="isCondensed" ng-init="expanded = false" expandable="true"
+							ng-click="expanded = !expanded" is-expanded="expanded">
+							<fd-list-navigation-item-icon glyph="sap-icon--folder">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-arrow aria-label="expand submenu" is-expanded="expanded">
+							</fd-list-navigation-item-arrow>
+							<fd-list-navigation-item-popover level="1" is-expanded="expanded">
+								<fd-list>
+									<fd-list-navigation-item condensed="isCondensed">
+										<fd-list-navigation-item-icon glyph="sap-icon--folder">
+										</fd-list-navigation-item-icon>
+										<span fd-list-navigation-item-text>Folder</span>
+									</fd-list-navigation-item>
+								</fd-list>
+							</fd-list-navigation-item-popover>
+							<fd-list-navigation-item-popover level="2" is-expanded="expanded">
+								<fd-list>
+									<fd-list-navigation-item>
+										<span fd-list-navigation-item-text>Inner item 1</span>
+									</fd-list-navigation-item>
+									<fd-list-navigation-item indicated="isIndicated">
+										<span fd-list-navigation-item-text>Inner item 2</span>
+										<fd-list-navigation-item-indicator ng-if="isIndicated">
+										</fd-list-navigation-item-indicator>
+									</fd-list-navigation-item>
+								</fd-list>
+							</fd-list-navigation-item-popover>
+							<fd-list-navigation-item-indicator></fd-list-navigation-item-indicator>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+			</fd-vertical-nav>
+		</div>
+		<h5>Utility section</h5>
+		<div style="height: 200px;">
+			<fd-vertical-nav>
+				<fd-vertical-nav-main-section aria-label="main navigation">
+					<fd-list>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon glyph="sap-icon--home">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Home</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+						<fd-list-navigation-item>
+							<fd-list-navigation-item-icon svg-path="images/sample.svg">
+							</fd-list-navigation-item-icon>
+							<fd-list-navigation-item-text>Sample</fd-list-navigation-item-text>
+						</fd-list-navigation-item>
+					</fd-list>
+				</fd-vertical-nav-main-section>
+				<fd-vertical-nav-utility-section aria-label="utility navigation">
+					<fd-list-navigation-item>
+						<fd-list-navigation-item-icon glyph="sap-icon--settings">
+						</fd-list-navigation-item-icon>
+						<fd-list-navigation-item-text>Settings</fd-list-navigation-item-text>
+					</fd-list-navigation-item>
+				</fd-vertical-nav-utility-section>
+			</fd-vertical-nav>
+		</div>
+		<br>
 	</body>
 
 </html>

@@ -127,6 +127,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     messageHub.showDialog(
     //         "Dialog example",
     //         'Clicking "Ok" will result in a statusbar message, while "Cancel" will result in an statusbar error warning.',
+    //         // ['First line', 'Second line', 'Third line'],
     //         [{
     //             id: "b1",
     //             type: "emphasized",

@@ -62,7 +62,7 @@
 
 		<fd-split-button main-action="{{ splitButtonAction }}" dg-type="emphasized" aria-label="button-split"
 			callback="splitButtonClick">
-			<fd-menu no-backdrop="true">
+			<fd-menu aria-label="split button items">
 				<fd-menu-item title="Split item" ng-click="splitItemClick('Split item')"></fd-menu-item>
 				<fd-menu-item title="Split item 2" ng-click="splitItemClick('Split item 2')"></fd-menu-item>
 				<fd-menu-item title="Split item 3" ng-click="splitItemClick('Split item 3')"></fd-menu-item>
@@ -75,7 +75,7 @@
 				</fd-button>
 			</fd-popover-control>
 			<fd-popover-body can-scroll="true" dg-align="right" max-height="200">
-				<fd-menu no-backdrop="true" no-shadow="true">
+				<fd-menu aria-label="popover items">
 					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-separator></fd-menu-separator>
 					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -94,13 +94,12 @@
 				</fd-button>
 			</fd-popover-control>
 			<fd-popover-body can-scroll="false" dg-align="right">
-				<fd-menu no-backdrop="true" no-shadow="true">
+				<fd-menu aria-label="popover items">
 					<fd-menu-item title="Specal item" ng-click="popoverItemClick()"></fd-menu-item>
 					<fd-menu-sublist title="Sublist 1">
 						<fd-menu-item title="Some sublist item 1"></fd-menu-item>
 						<fd-menu-item title="Some sublist item 2"></fd-menu-item>
 					</fd-menu-sublist>
-					<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 				</fd-menu>
 			</fd-popover-body>
 		</fd-popover>
@@ -119,13 +118,12 @@
 		<h4>Menus</h4>
 		<fd-button dg-label="Show menus" ng-click="toggleMenus()"></fd-button>
 		<div style="display:flex;justify-content:space-around;align-items:center;">
-			<fd-menu show="menusShown" can-scroll="true">
+			<fd-menu aria-label="example menu" show="menusShown" can-scroll="true">
 				<fd-menu-item title="Menu item 1"></fd-menu-item>
 				<fd-menu-item title="Menu item 2"></fd-menu-item>
 				<fd-menu-item title="Menu item 3"></fd-menu-item>
-				<fd-menu-item title="Close menu" ng-click="toggleMenus()"></fd-menu-item>
 			</fd-menu>
-			<fd-menu show="menusShown" can-scroll="false">
+			<fd-menu aria-label="example menu with submenus" show="menusShown" can-scroll="false">
 				<fd-menu-item title="Menu item 1"></fd-menu-item>
 				<fd-menu-item title="Menu item 2"></fd-menu-item>
 				<fd-menu-sublist title="Submenu 1">
@@ -146,7 +144,6 @@
 						<fd-menu-item title="Submenu item 7"></fd-menu-item>
 					</fd-menu-sublist>
 				</fd-menu-sublist>
-				<fd-menu-item title="Close menu" ng-click="toggleMenus()"></fd-menu-item>
 			</fd-menu>
 		</div>
 
@@ -233,7 +230,7 @@
 								</fd-button>
 							</fd-popover-control>
 							<fd-popover-body dg-align="right">
-								<fd-menu no-backdrop="true" no-shadow="true">
+								<fd-menu aria-label="table row menu">
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -260,7 +257,7 @@
 								</fd-button>
 							</fd-popover-control>
 							<fd-popover-body dg-align="right">
-								<fd-menu no-backdrop="true" no-shadow="true">
+								<fd-menu aria-label="table row menu">
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
 									<fd-menu-item title="Some option" ng-click="popoverItemClick()"></fd-menu-item>
@@ -1576,6 +1573,7 @@
 									</fd-list-navigation-item-indicator>
 								</fd-list-navigation-item>
 							</fd-list>
+							<fd-list-navigation-item-indicator></fd-list-navigation-item-indicator>
 						</fd-list-navigation-item>
 					</fd-list>
 				</fd-vertical-nav-main-section>

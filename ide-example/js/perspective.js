@@ -35,7 +35,7 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             visibility: {
                 hidden: true,
                 id: "fdtd1",
-                value: "secondItem",
+                value: 1,
             },
         },
         {
@@ -99,6 +99,17 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
                     value: "thirdRadio",
                 }
             ]
+        },
+        {
+            id: "fdtta1",
+            type: "textarea",
+            label: "Test text area 1",
+            placeholder: "Test placeholder",
+            rows: 10,
+            inputRules: {
+                excluded: ['ex'],
+            },
+            value: 'example',
         },
     ];
 

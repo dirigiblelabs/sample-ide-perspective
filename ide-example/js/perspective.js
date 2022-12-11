@@ -46,6 +46,17 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
             value: 'example',
         },
         {
+            id: "fdtsi1",
+            type: "number",
+            label: "Test step input 1",
+            placeholder: "3280",
+            required: true,
+            value: 15,
+            max: 20,
+            min: 10,
+            step: 5,
+        },
+        {
             id: "fdtc1",
             type: "checkbox",
             label: "Test checkbox 1",
@@ -293,9 +304,8 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //                 msg.data.formData[0].error = true;
     //                 msg.data.formData[0].errorMsg = "This is an example error.";
     //                 for (let i = 0; i < msg.data.formData[4].items.length; i++) {
-    //                     if (msg.data.formData[4].items[i].value === msg.data.formData[4].value) {
-    //                         msg.data.formData[4].items[i].error = true;
-    //                         console.log(msg.data.formData[4].items);
+    //                     if (msg.data.formData[5].items[i].value === "thirdRadio") {
+    //                         msg.data.formData[5].items[i].error = true;
     //                         break;
     //                     }
     //                 }

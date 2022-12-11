@@ -30,7 +30,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.menusShown = false;
     $scope.fdListItem = { checkboxModel: true };
     $scope.objectStatusIndicator = 8;
-
+    $scope.stepInputValue = 4;
     $scope.selectSelectedValue = 2;
 
     $scope.currentPage = 1;

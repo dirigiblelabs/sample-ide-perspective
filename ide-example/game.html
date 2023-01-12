@@ -486,11 +486,13 @@
 			<fd-toolbar-separator></fd-toolbar-separator>
 			<fd-toolbar-overflow>
 				<fd-toolbar-overflow-label>Label</fd-toolbar-overflow-label>
-				<fd-toolbar-overflow-button dg-label="Edit"></fd-toolbar-overflow-button>
-				<fd-toolbar-overflow-button dg-label="Delete"></fd-toolbar-overflow-button>
-				<fd-toolbar-overflow-button dg-label="Assign"></fd-toolbar-overflow-button>
+				<fd-button is-overflow="true" compact="true" dg-type="transparent" dg-label="Edit"></fd-button>
+				<fd-button is-overflow="true" compact="true" dg-type="transparent" dg-label="Delete"></fd-button>
+				<fd-button is-overflow="true" compact="true" dg-type="transparent" dg-label="Assign"></fd-button>
 				<fd-toolbar-separator></fd-toolbar-separator>
-				<fd-toolbar-overflow-button dg-label="Exit"></fd-toolbar-overflow-button>
+				<fd-button is-overflow="true" compact="true" dg-type="transparent" dg-label="Exit"></fd-button>
+				<fd-checkbox id="fafd" compact="true"></fd-checkbox>
+				<fd-checkbox-label compact="true" for="fafd">Test</fd-checkbox-label>
 			</fd-toolbar-overflow>
 		</fd-toolbar>
 

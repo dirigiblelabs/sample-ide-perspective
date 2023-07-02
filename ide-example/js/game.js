@@ -21,9 +21,9 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     $scope.btnText = "Badge button";
     $scope.btnType = "positive";
     $scope.btnState = "";
-    $scope.btnToggled = false;
+    $scope.btnToggled = true;
 
-    $scope.splitButtonAction = "Default";
+    $scope.splitButtonAction = "Action";
     $scope.segmentedModel = "middle";
     $scope.fdCheckboxModel = true;
     $scope.fdRadioModel = false;
@@ -106,14 +106,6 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
     ];
     $scope.multiComboboxSelectedItems = [1];
 
-    $scope.setTristate = function () {
-        $scope.tristate = true;
-    };
-
-    $scope.toggleMenus = function () {
-        $scope.menusShown = !$scope.menusShown;
-    };
-
     $scope.splitItemClick = function (selected) {
         $scope.splitButtonAction = selected;
     };
@@ -170,35 +162,6 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
                     ]
                 },
                 {
-                    id: "new1",
-                    label: "New",
-                    icon: "sap-icon--create",
-                    items: [
-                        {
-                            id: "file1",
-                            label: "File",
-                            icon: "sap-icon--document"
-                        },
-                        {
-                            id: "folder1",
-                            label: "Folder",
-                            icon: "sap-icon--folder-blank",
-                            items: [
-                                {
-                                    id: "file2",
-                                    label: "File",
-                                    icon: "sap-icon--document"
-                                },
-                                {
-                                    id: "folder2",
-                                    label: "Folder",
-                                    icon: "sap-icon--folder-blank"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     id: "copy",
                     label: "Copy",
                     shortcut: "Ctrl+C",
@@ -219,15 +182,6 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
                 }
             ]
         }
-    };
-
-    $scope.test = function () {
-        $scope.btnText = "test";
-        $scope.btnType = "attention";
-    };
-
-    $scope.state = function () {
-        $scope.btnState = "disabled-focusable";
     };
 
     $scope.toggle = function () {
@@ -259,7 +213,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
                 break;
             }
         };
-    }
+    };
 
     $scope.isStepActive = function (stepId) {
         if (stepId == $scope.currentStep.id)
@@ -268,17 +222,17 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
             return "done";
         else
             return "inactive";
-    }
+    };
 
     $scope.wizard = {
         currentStep: 1,
         completedSteps: 0,
         stepsCount: 4
-    }
+    };
 
     $scope.revert = function (completedStepsCount) {
         $scope.wizard.completedSteps = completedStepsCount;
-    }
+    };
 
     $scope.gotoNextStep = function () {
         if ($scope.wizard.currentStep > $scope.wizard.completedSteps) {
@@ -288,29 +242,29 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         if ($scope.wizard.currentStep <= $scope.wizard.stepsCount) {
             $scope.gotoStep($scope.wizard.currentStep + 1);
         }
-    }
+    };
 
     $scope.gotoPreviousStep = function () {
         if ($scope.wizard.currentStep > 1) {
             $scope.gotoStep($scope.wizard.currentStep - 1);
         }
-    }
+    };
 
     $scope.gotoStep = function (step) {
         $scope.wizard.currentStep = step;
-    }
+    };
 
     $scope.getIndicatorGlyph = function (step) {
         return step <= $scope.wizard.completedSteps ? 'sap-icon--accept' : undefined;
-    }
+    };
 
     $scope.isLastStep = function () {
         return $scope.wizard.currentStep === $scope.wizard.stepsCount;
-    }
+    };
 
     $scope.allStepsCompleted = function () {
         return $scope.wizard.completedSteps >= $scope.wizard.stepsCount;
-    }
+    };
 
     $scope.filesToUpload = [
         { fileName: 'file1', extension: 'txt', selected: false },
@@ -322,7 +276,7 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         let index = $scope.filesToUpload.indexOf(file);
         if (index >= 0)
             $scope.filesToUpload.splice(index, 1);
-    }
+    };
 
     $scope.select = {
         s1: 1,
@@ -333,18 +287,18 @@ gameView.controller('GameViewController', ['$scope', 'messageHub', function ($sc
         onS1Change: function () {
             console.log($scope.select.s1);
         }
-    }
+    };
 
-    $scope.cb = {
+    $scope.combobox = {
         selectedModelValue: null,
         selectedModelValues: [],
         onCBChange: function () {
-            console.log($scope.cb.selectedModelValue);
+            console.log($scope.combobox.selectedModelValue);
         },
         onMCBChange: function () {
-            console.log($scope.cb.selectedModelValues);
+            console.log($scope.combobox.selectedModelValues);
         }
-    }
+    };
 }]);
 
 gameView.filter('startFrom', function () {

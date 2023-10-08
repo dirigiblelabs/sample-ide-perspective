@@ -1,0 +1,5 @@
+{
+    "module": "ide-example/services/subview.js",
+    "extensionPoint": "ide-subview",
+    "description": "Example subview"
+}

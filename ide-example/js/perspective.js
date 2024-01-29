@@ -325,6 +325,17 @@ examplePerspective.controller("ExampleViewController", ["$scope", "messageHub", 
     //     true
     // );
 
+    messageHub.onDidReceiveMessage(
+        'example.menu.event',
+        function () {
+            messageHub.showAlertSuccess(
+                "Event",
+                "You clicked on the 'Event' menu item!"
+            );
+        },
+        true
+    );
+
     $scope.contextMenuContent = function (element) {
         return {
             callbackTopic: "example.contextmenu",

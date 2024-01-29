@@ -112,10 +112,16 @@ exports.getMenu = function () {
 				]
 			},
 			{
+				label: "Event",
+				order: 3,
+				event: "example.menu.event",
+				divider: true,
+			},
+			{
 				label: "About",
 				action: "openDialogWindow",
 				dialogId: "about",
-				order: 3
+				order: 4
 			}
 		]
 	};

@@ -1,5 +1,7 @@
 # Example project
 
+**This project has been archived. If you want an up-to-date sample, look at [sample-platform](https://github.com/dirigiblelabs/sample-platform).**
+
 Example project, showing how to write Dirigible perspectives and views.
 
 ## Components
@@ -56,7 +58,6 @@ The extension files are used by Dirigible to know that this project contains Dir
 
 - `module`: Path to the JavaScript file exporting the project perspective.
 - `extensionPoint`: Where and how this perspective will be shown. 'ide-perspective' means that it will be opened in its own page and it will not be embedded. Some of the possible values are:
-
   - ide-perspective
   - ide-view
   - ide-editor
@@ -118,7 +119,6 @@ exports.getView = function () {
 - `name`: The name of the view.
 - `factory`: The type of the factory used during instantiating the view.
 - `region`: If this is a subview, this tells GoldenLayout where the view should be opened. Possible options are:
-
   - main
   - left
   - left-top
@@ -242,7 +242,12 @@ Example:
 ```html
 <html ng-app="example" ng-controller="ExampleViewController as evc">
   ...
-  <div id="example" class="plane" views-layout views-layout-model="evc.layoutModel"></div>
+  <div
+    id="example"
+    class="plane"
+    views-layout
+    views-layout-model="evc.layoutModel"
+  ></div>
 </html>
 ```
 
@@ -349,7 +354,11 @@ someView.factory("$messageHub", [
 - Include it along with the scope of the controller
 
 ```javascript
-gameView.controller("GameViewController", ["$scope", "$messageHub", function ($scope, $messageHub) {}]);
+gameView.controller("GameViewController", [
+  "$scope",
+  "$messageHub",
+  function ($scope, $messageHub) {},
+]);
 ```
 
 - Trigger an event
@@ -380,7 +389,7 @@ $messageHub.on(
         console.log(msg.data.hasData);
       });
     }
-  }.bind(this)
+  }.bind(this),
 );
 ```
 
@@ -428,7 +437,7 @@ messageHub.post(
       type: type,
     },
   },
-  "ide.alert"
+  "ide.alert",
 );
 ```
 
